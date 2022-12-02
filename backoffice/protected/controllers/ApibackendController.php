@@ -2420,7 +2420,7 @@ HTML;
 		$page = intval($page)/intval($length);		
 		$criteria=new CDbCriteria();
 		$criteria->alias = "a";
-		$criteria->select="a.invoice_number,a.invoice_ref_number,a.created,a.amount,a.status,a.payment_code,b.title";
+		$criteria->select="a.invoice_number,a.date_created,a.invoice_ref_number,a.created,a.amount,a.status,a.payment_code,b.title";
 		$criteria->join='LEFT JOIN {{plans_translation}} b on  a.package_id=b.package_id ';
 				
 		$criteria->addCondition('a.merchant_id=:merchant_id AND b.language=:language');
@@ -2446,7 +2446,7 @@ HTML;
         		  'payment_code'=>$item->payment_code,
         		  'invoice_number'=>$item->invoice_number,
         		  'invoice_ref_number'=>$item->invoice_ref_number,
-        		  'created'=>Date_Formatter::date($item->created),
+        		  'created'=>Date_Formatter::dateTime($item->date_created,"MM/dd/yyyy",true),
         		  'package_id'=>Yii::app()->input->xssClean($item->title),
         		  'amount'=>Price_Formatter::formatNumber($item->amount),
         		  'status'=>'<span class="badge payment '.$item->status.' ">'.$item->status.'</span>',

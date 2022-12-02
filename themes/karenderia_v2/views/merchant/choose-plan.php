@@ -1,11 +1,11 @@
 <div id="vue-subscription" class="container mt-3 mb-3" v-cloak>
 <?php 
 
-echo  $pkid=Yii::app()->user->getState("package_id");
+ $pkid=Yii::app()->user->getState("package_id");
 
 ?>
 <div class="text-center">
-  <h4 class="mb-4 mt-4"><?php echo t("Subscription Plans")?></h4>
+  <!--<h4 class="mb-4 mt-4"><?php echo t("Subscription Plans")?></h4>-->
   
   <DIV class="w-75 m-auto">
   <input type="hidden" ref="merchant" value="<?php echo $merchant_uuid?>">    

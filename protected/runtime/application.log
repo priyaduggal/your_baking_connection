@@ -7048,3 +7048,1015 @@ HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
 2022/12/02 10:33:23 [error] [application] {"event":"customer.subscription.updated","found":"13","status":"active"}
 2022/12/02 10:34:41 [error] [application] {"event":"customer.subscription.updated","found":"13","status":"active"}
 2022/12/02 10:36:00 [error] [application] {"event":"customer.subscription.updated","found":"13","status":"active"}
+2022/12/02 11:05:03 [error] [application] {"event":"customer.subscription.updated","found":"13","status":"active"}
+2022/12/02 11:21:48 [error] [application] {"event":"customer.subscription.updated","found":"12","status":"active"}
+2022/12/02 11:22:13 [error] [application] {"event":"customer.subscription.updated","found":"12","status":"active"}
+2022/12/02 11:22:24 [error] [application] {"event":"customer.subscription.updated","found":"12","status":"active"}
+2022/12/02 11:48:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 11:48:09 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 11:48:09 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 11:48:09 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 11:48:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 11:48:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 11:48:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 11:48:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 11:58:08 [error] [application] null
+2022/12/02 11:58:43 [error] [application] {"event":"invoice.created","msg":"successful"}
+2022/12/02 11:58:43 [error] [application] {"event":"customer.subscription.created"}
+2022/12/02 11:59:00 [error] [application] {"event":"invoice.updated"}
+2022/12/02 11:59:00 [error] [application] {"event":"invoice.paid","msg":"invoice already exist"}
+2022/12/02 11:59:00 [error] [application] {"event":"customer.subscription.updated","found":"27","status":"active","actions":"active"}
+2022/12/02 11:59:00 [error] [application] {"event":"payment_intent.succeeded","msg":"Payment reference not found"}
+2022/12/02 11:59:01 [error] [application] {"event":"invoice.payment_succeeded","payment_method":"pm_1MASk1CQZWRuTtpZKoJCxajv","0":"successful"}
+2022/12/02 11:59:01 [error] [application] {"event":"customer.subscription.updated","found":"27","status":"active"}
+2022/12/02 11:59:03 [error] [application] null
+2022/12/02 11:59:07 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 11:59:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 11:59:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 11:59:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:33:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:33:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:33:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:33:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:42:54 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:42:54 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:43:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:43:46 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:43:47 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:44:16 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:44:17 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:44:17 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:44:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:44:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:44:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:44:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:48:36 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:48:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:48:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:48:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:49:42 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:49:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:49:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:49:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:49:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:49:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:49:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:50:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:50:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:50:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:50:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:51:19 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:51:20 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:51:20 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:51:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:51:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:51:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:51:37 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:51:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:51:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:51:38 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:53:57 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:53:57 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:53:57 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:53:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:53:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:53:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:53:59 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:54:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:54:33 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:54:33 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:54:33 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:54:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:54:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:54:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:54:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:54:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:54:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:54:45 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:56:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:56:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:56:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:56:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 12:56:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:56:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:56:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:57:22 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/popper.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/p...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/popper.min.js.map
+---
+2022/12/02 12:57:23 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/axios.min.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/a...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/axios.min.map
+---
+2022/12/02 12:57:23 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/VueStarRating.umd.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/V...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/VueStarRating.umd.min.js.map
+---
+2022/12/02 12:57:23 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/vendor/element-plus/index.full.min.js.map". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('assets/vendor/e...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/assets/vendor/element-plus/index.full.min.js.map
+---
+2022/12/02 12:58:35 [error] [application] null
+2022/12/02 14:16:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 14:16:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 14:36:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+---
+2022/12/02 14:36:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+---
+2022/12/02 14:36:19 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+---
+2022/12/02 14:36:19 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+---
+2022/12/02 14:36:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 14:36:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 16:16:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 16:16:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:15:15 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:15:15 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:15:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:15:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:16:12 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:16:12 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:16:13 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:17:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:17:30 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:17:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:17:42 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:17:42 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:17:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:19:24 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:19:25 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:19:32 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:19:32 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:44:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:44:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:44:39 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:44:39 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:44:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:44:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:52:09 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/app-store@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/app-store@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---
+2022/12/02 17:52:09 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/karenderia_v2/assets/images/img/google-play@2x.png". in /home/devindiit/public_html/your_baking_connection/framework/yiilite.php:1801
+Stack trace:
+#0 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1717): CWebApplication->runController('themes/karender...')
+#1 /home/devindiit/public_html/your_baking_connection/framework/yiilite.php(1236): CWebApplication->processRequest()
+#2 /home/devindiit/public_html/your_baking_connection/index.php(15): CApplication->run()
+#3 {main}
+REQUEST_URI=/your_baking_connection/themes/karenderia_v2/assets/images/img/google-play@2x.png
+HTTP_REFERER=https://dev.indiit.solutions/your_baking_connection/
+---

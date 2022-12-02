@@ -313,6 +313,19 @@ class ManageController extends CommonServices
 		   $meta = AR_merchant_meta::getValue($merchant_id,'payment_method_stripe');
 		   $payment_method = isset($meta['meta_value'])?$meta['meta_value']:'';
 		   
+		  // if(empty($payment_method)){
+		    
+		  //   if(count($cards->data)>0){
+                
+    //             $all=Yii::app()->db->createCommand('
+    //             INSERT INTO `st_merchant_meta` (`merchant_id`, `meta_name`, `meta_value`) VALUES ( "'.Yii::app()->merchant->merchant_id.'", "payment_method_stripe","'.$cards->data[0]['id'].'");
+    //             ')->queryAll(); 
+            
+		  //   }
+		     
+		  // }
+		 
+		   $payment_method = isset($meta['meta_value'])?$meta['meta_value']:''; 
 		   foreach ($cards->data as $items) {		   		   	  
 		   	  $expiry = $items->card->exp_year."-".$items->card->exp_month."-01";
 		   	  $data[] = array(
