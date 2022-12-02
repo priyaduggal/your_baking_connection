@@ -1,0 +1,23 @@
+{
+	"name": "Mobile app",
+	"version": "1.0.0",
+    "uuid" : "F6JyoUM3udQvNeJZS2l+BIIrhhrqY1JpsUi6UUDCrANJXIqwEwN9lp4ypv+HBshQFAdLbejgJzSCbw==",
+	"image": "mobileapp_banner.png",
+	"file":[
+        {
+            "action": "copy",
+            "file": "filesupdate/front_main.txt",
+            "to": "protected/config/front_main.php"
+        },
+        {
+            "action": "copy",
+            "file": "AppIdentity.php",
+            "to": "protected/components/AppIdentity.php"
+        },        
+        {
+            "action": "extract",
+            "file": "files.zip",
+            "to": "protected/controllers"
+        }
+    ]
+}

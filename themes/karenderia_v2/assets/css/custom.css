@@ -1,0 +1,469 @@
+.order-box {
+    position: relative;
+    margin-bottom: 50px;
+}
+.order-box table {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+}
+.order-box thead tr {
+    background: #f8f8f8;
+    color: inherit;
+}
+.order-box table th, .order-box table td {
+    padding: 14px;
+    border: 1px solid #e0e6ea;
+    font-size: 17px;
+    font-weight: 400;
+}
+.order-box table .product-total, .order-box table .cart-subtotal td, .order-box table .order-total td {
+    border-left: 0;
+    text-align: right;
+}
+.order-box table .cart-subtotal th, .order-box table .cart-subtotal td {
+    font-weight: 600;
+}
+.order-box table .order-total {
+    color: #a7e8d4;
+    font-size: 16px;
+    background: #f8f8f8;
+}
+
+.card.style-2 {
+    border-color: #e2e6ec;
+}
+.profilebox.loginbox .boxsha .card-body ul.listitem {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.listitem li {
+    background: #ffffff;
+    margin-bottom: 15px;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    border: none;
+    border-left: 2px solid #a7e8d4;
+    box-shadow: 0px 0px 4px 3px rgb(210 210 210 / 14%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.listitem img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.listitem .listitem__info {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1.25rem;
+    flex-grow: 1;
+}
+.listitem .listitem__username {
+    font-weight: 500;
+    font-size: 14px;
+    color: #f8b4cb;
+    transition: color 0.3s ease;
+}
+.listitem .listitem__text {
+    font-weight: 500;
+    font-size: 12px;
+    color: #595d6e;
+    margin-bottom: 0;
+}
+.listitem .time-rigt {
+    font-size: 11px;
+    font-weight: 500;
+    color: #989898;
+}
+
+
+
+.section-title h2 {
+   
+    font-size: 48px;
+    line-height: 34px;
+    margin-bottom: 50px;
+    font-family: 'OneWishPrint';
+    color: #000;
+}
+
+.section-title.titlewhite h2
+{
+    color: #fff;
+     text-align: center;
+}
+
+.login-section h4 {
+    color: #f8b4cb;
+}
+
+.features-section.style-two {
+    padding: 100px 0 95px;
+    margin-bottom: -50px;
+}
+.features-section {
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#ab-sec.features-section .shape_inner:before {
+    background-color: rgb(255 255 255 / 87%) !important;
+}
+
+.posrel {
+    position: relative;
+    z-index: 2;
+}
+
+
+.features-section h2 {
+        position: relative;
+    display: block;
+    font-size: 48px;
+    line-height: 1.2em;
+    color: #4b4342;
+    font-weight: 500;
+      font-family: 'OneWishPrint';
+  
+}
+
+.features-section .text {
+    margin-bottom: 38px;
+    font-size: 16px;
+    color: #000;
+}
+.feature-block .inner-box p {
+    color: #000;
+    font-size: 16px;
+}
+.feature-block .icon-box {
+    position: relative;
+    display: inline-block;
+    height: 125px;
+    width: 125px;
+    margin-bottom: 25px;
+}
+
+.feature-block .inner-box {
+    position: relative;
+    text-align: center;
+}
+
+.features-section .shape_inner:before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    z-index: 1;
+    background-color: rgba(95,202,199,0.9);
+}
+
+
+#ab-sec .feature-block .icon-box svg {
+    stroke: #230000;
+}
+.feature-block .icon-box svg {
+    stroke-width: 12px;
+    fill: transparent;
+    stroke: #ffffff;
+}
+
+
+.feature-block .icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+    color: #ffffff;
+    font-size: 62px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+#ab-sec .feature-block .icon {
+    color: #000000;
+}
+
+
+
+.testimonial-section{
+    position: relative;
+    padding: 120px 0 60px;
+    background-color: transparent;
+}
+
+.testimonial-section .shape_wrapper .overlay{
+    background-color: #f8b4cb;
+}
+
+.testimonial-section h2{
+    color: #4b4342;
+    margin-bottom: 25px;
+}
+
+.testimonial-carousel{
+    position: relative;
+}
+
+.testimonial-block{
+    position: relative;
+}
+
+.testimonial-block .inner-box{
+    position: relative;
+    text-align: center;
+}
+
+.testimonial-block .testimonial_img{
+    position: relative;
+}
+
+.testimonial-block .testimonial_img img{
+    width: 100px;
+    height: 100px;
+    margin: 15px auto 20px;
+    border-radius: 100px;
+    border: 2px solid #f8b4cb;
+    padding: 2px;
+}
+
+
+
+.testimonial-block .text{
+    position: relative;
+    color: #4b4342;
+    max-width: 750px;
+    margin: 0 auto 25px;
+}
+
+.testimonial-block .name{
+    position: relative;
+    display: block;
+    font-size: 24px;
+    color: #f8b4cb;
+    margin-bottom: 5px;
+}
+
+.testimonial-block .designation{
+    position: relative;
+    display: block;
+    font-size: 17px;
+    color: #ffffff;
+}
+
+.testimonial-carousel .owl-nav{
+    display: none;
+}
+
+.testimonial-carousel .owl-dots{
+    position: relative;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.testimonial-carousel .owl-dot{
+    position: relative;
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: 0.6;
+}
+
+.testimonial-carousel .owl-dot:hover,
+.testimonial-carousel .owl-dot.active{
+    opacity: 1;
+}
+
+
+.testimonial-section.style-two .overlay{
+    background-color: rgba(0,0,0,0.3);
+}
+
+
+.testimonial-section {
+    position: relative;
+    padding: 120px 0 60px;
+   background-color: #ace9d7;
+}
+#ab-sec .shape_inner, #ab-sec .shape_wrapper {
+    background-color: #ace9d7;
+}
+
+.fancybox-is-open .fancybox-bg {
+    opacity: .87;
+    transition-timing-function: cubic-bezier(.22,.61,.36,1);
+}
+
+.fancybox-bg {
+    background-color: rgba(255,255,255,0.9);
+}
+
+/*==========================
+    Accordian Box
+===========================*/
+
+.accordion-box{
+    position:relative;
+    border-radius: 24px;
+    padding: 10px;
+    margin:0px;
+    border: 3px solid #edecec;
+    background: #ffffff;
+    list-style: none;
+}
+
+.accordion-box .block{
+    position: relative;
+    border-radius: 24px;
+    padding: 9px 5px;
+    margin-bottom: 20px;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.accordion-box .block:before{
+    content: '';
+    position: absolute;
+    z-index: 1;
+    height: 3px;
+    width: 100%;
+    background: #edecec;
+    bottom: -10px;
+    left: 0;
+}
+
+.accordion-box .block.active-block{
+    background-color: #5fcac7;
+    margin-bottom: 10px;
+}
+
+.accordion-box .block:last-child{
+    margin-bottom: 0;
+}
+
+.accordion-box .block:last-child:before,
+.accordion-box .block.active-block:before{
+    display: none;
+}
+
+.accordion-box .block .acc-btn{
+    position: relative;
+    font-size: 23px;
+    padding: 5px 20px;
+    padding-left: 55px;
+    line-height: 1em;
+    color: #4b4342;
+    font-family: Merienda One;
+    cursor: pointer;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.accordion-box .block .icon-outer{
+    position:absolute;
+    left: 10px;
+    top: 3px;
+    font-size: 20px;
+    line-height: 25px;
+    color: #5fcac7;
+    text-align:center;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.accordion-box .block.active-block .icon-outer{
+    color: #ffffff;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.accordion-box .block.active-block .icon-outer .icon:before{
+  content: "\f068";
+  font-weight: 900;
+}
+
+.accordion-box .block .acc-btn .icon-outer .icon{
+    position: relative;
+}
+
+.accordion-box .block .acc-btn.active .icon-outer{
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    transform:rotate(0deg);
+}
+
+.accordion-box .block .acc-content{
+    position:relative;
+    display:none;
+    padding-left: 55px;
+}
+
+.accordion-box .block .acc-content.current{
+    display:block;  
+}
+
+.accordion-box .block .content{
+    position:relative;
+}
+
+.accordion-box .block .content .text{
+    position:relative;
+    font-size: 16px;
+    padding-top: 5px;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.accordion-box .block.active-block .acc-btn,
+.accordion-box .block.active-block .text{
+    color: #ffffff;
+}

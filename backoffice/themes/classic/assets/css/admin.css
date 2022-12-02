@@ -1,0 +1,389 @@
+.sidebar-panel .siderbar-menu li.addon_manager ,
+.sidebar-panel .siderbar-menu li.media_library ,
+.sidebar-panel .siderbar-menu li.sales_channel ,
+.sidebar-panel .siderbar-menu li.admin_user ,
+.sidebar-panel .siderbar-menu li.admin_earnings ,
+.sidebar-panel .siderbar-menu li.reports ,
+.sidebar-panel .siderbar-menu li.sms ,
+.sidebar-panel .siderbar-menu li.admin_thirdparty ,
+.sidebar-panel .siderbar-menu li.notifications ,
+.sidebar-panel .siderbar-menu li.promo ,
+.sidebar-panel .siderbar-menu li.admin_withdrawals ,
+.sidebar-panel .siderbar-menu li.payment_gateway ,
+.sidebar-panel .siderbar-menu li.position-relative.order_settings ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_order_status ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_currency ,
+.sidebar-panel .siderbar-menu li.position-relative.location_country_list ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_zone_list ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_featured_loc ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_language_list,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_status_mgt ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_services_list ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_merchant_type_list ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_rejection_list ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_pause_reason_list ,
+.sidebar-panel .siderbar-menu li.position-relative.attributes_actions_list
+{
+    display: none;
+}.profilebox.loginbox.tabs-box
+{    background: #fff;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    overflow: hidden;
+}
+.profilebox.loginbox.tabs-box > .card-header , .profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between
+{
+        background-color: #f8b4cb;
+    border-color: #e2e6ec;
+    padding: 20px;
+}
+.profilebox.loginbox.tabs-box > .card-header h4 , .profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between a h5 ,  
+.profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between .breadcrumbs > a  ,
+.profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between .breadcrumbs span.separator ,
+.profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between .breadcrumbs span.separator + span ,
+.profilebox.loginbox.tabs-box .card.boxsha.all_notifications .card.style-2 .card-header > h4.mb-0 ,
+.profilebox.pt-0.loginbox.tabs-box .card.producteditlist.boxsha .producteditinner .card-header.d-flex.justify-content-between.align-items-center h4.mb-0 ,
+.orderlistadmin nav.navbar.navbar-light.justify-content-between a.navbar-brand h5
+{
+    color: #fff;  
+    font-size: 1.5rem !important;
+    font-family: 'OneWishPrint';
+    font-weight: 500;
+    margin-bottom:0px!important;
+}
+.profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between .breadcrumbs span.separator + span
+{
+    opacity: 0.75;
+}
+.main-container .main-container-wrap .container {
+    max-width: 100%;
+}
+ .profilebox.loginbox.tabs-box >  nav.navbar.navbar-light.justify-content-between .breadcrumbs{
+     margin-bottom:0px;  
+ }.sidebar-panel.nice-scroll {
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}.sidebar-panel.nice-scroll .siderbar-menu ul li a {
+    font-weight:400;
+    font-size: 16px;
+}.sidebar-panel.nice-scroll .siderbar-menu {
+    padding-right: 0px;
+    padding-left: 0;
+    padding-top: 0px;
+}
+.headroom.headroom--pinned {
+    padding-bottom: 5px!important;
+    padding-top: 5px!important;
+}.headroom.headroom--top {
+    background: #fff!important;
+    border-bottom: 0px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}.accountinfo.contactus form .form-label-group input.form-control ,
+.accountinfo.contactus form .form-label-group select.form-control ,
+.accountinfo.contactus form .form-label-group textarea.form-control ,
+.accountinfo.contactus form select.form-control ,
+.accountinfo.contactus .input-group .form-control 
+{
+    color: #4b4342;    padding: 10px;
+    border-radius: 0px;
+    border: 1px solid #edecec;
+    background: #fff;
+}
+.accountinfo.contactus form .select2-container--classic .select2-selection--multiple, .accountinfo.contactus form .select2-container--classic .select2-selection--single{
+    border-radius: 0px;
+    border: 1px solid #edecec;
+    background: #fff;  color: #4b4342; 
+}
+.accountinfo.contactus form .input-group-prepend span.input-group-text {
+    background: #fff;
+    border-radius: 0;
+    border: 1px solid #edecec;
+}
+.accountinfo.contactus form .form-label-group > label {
+    position: initial;
+    padding-left: 0;
+}
+.accountinfo.contactus form .form-label-group > label, 
+.accountinfo.contactus form h6.mb-4  , .accountinfo.contactus form .form-label-group > label, .accountinfo.contactus form h6{
+    position: initial;
+    padding: 0 0 2px;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 0!important;
+    color: #8f8f8f;
+    font-weight: 500;
+    line-height: 1.5;
+    text-transform: capitalize;
+}.accountinfo.contactus form  .btn-submit {
+    padding: 0 50px;
+    line-height: 50px;
+    background-color: #a7e8d4;
+    font-size: 16px;
+    border: 1px solid #a7e8d4;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 3px;
+}.accountinfo.contactus form  .btn-submit:hover {
+    color: #a7e8d4;
+    background-color: #ffffff;
+    border: 1px solid #a7e8d4;
+}
+.accountinfo.contactus form  .note-toolbar.card-header {
+    background: transparent;
+    padding: 0 0 5px 5px;
+}.accountinfo.contactus .producteditinner form > .card >.card-body ,
+.producteditinner div#vue-commission-statement  > .card-body ,
+.accountinfo.contactus form#upload-form > .card > .card-body
+{
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+.accountinfo.contactus .page-item.active .page-link {
+    background-color: #a7e8d4;
+    border-color: #a7e8d4;
+}
+.accountinfo.contactus form label.custom-file-label.image_label {
+padding: 15px;
+    border: 1px solid #edecec;
+    border-radius: 0px;
+    min-height: 50px;
+}
+.accountinfo.contactus form  .input-group .custom-file {
+    height: 50px;
+}
+.accountinfo.contactus form .select2-container--classic .select2-search__field {
+    background-color: #fff!important;
+}
+.accountinfo.contactus form label.custom-file-label.image_label::after {
+    height: 50px;
+    padding: 14px 12px;
+}
+.accountinfo.contactus form label.custom-file-label.image_label::after
+{
+      border-radius: 0px;  
+}
+.categorylist.card.boxsha.default-tabs.tabs-box > .card.style-2 > .card-body {
+    padding: 0px;
+}.categorylist.card.boxsha.default-tabs.tabs-box .card.style-2 .card-body form#frm-merchant  , .producteditinner > .featurecreate {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+}.producteditinner > form#frm-merchant , .paymenthistorytable {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+}
+.orderlistadmin
+{
+      border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 0;  
+}
+.orderlistadmin nav.navbar.navbar-light.justify-content-between {
+    background-color: #f8b4cb;
+    border-color: #e2e6ec;
+    padding: 10px 15px;
+        border-radius: 10px 10px 0px 0px;
+}.orderlistadmin div#vue-tables .card-body
+{
+        border-radius: 0px 0px 10px 10px ;
+}
+/*
+table .btn-group.btn-group-actions .tool_tips i {
+    color: #fff;
+}*/table.table thead tr th  , table.table_datatables thead tr th  {
+    color: #f8b4cb;
+    font-size: 16px;
+    font-weight: 700;
+    border-top:none;
+    border-bottom: 1px solid #f8b4cb;
+}
+table tr th , table tr td
+{
+    vertical-align:middle!important;
+}
+table tr td p.dim {
+    margin: 0;
+}
+/*table .btn-group.btn-group-actions .tool_tips {
+    background-color: #a7e8d4!important;
+    border-color: #a7e8d4!important;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%!important;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3px;
+}*/
+.accountinfo.contactus .btn-yellow {
+    background: #a7e8d4;
+    color: #fff;
+}
+#modal_adjustment .form-label-group {
+    display: flex;
+    flex-direction: column;
+}
+#modal_adjustment .form-label-group label{
+  order:1;
+}
+#modal_adjustment .form-label-group .form-control
+{
+  order:2;   
+}.seobox .card.mt-3 {
+    margin: 0px!important;
+}.seobox .card.mt-3 .card-body {
+    padding: 0px;
+}
+.seobox .card.mt-3 .card-body a.btn
+{
+    padding: 0px 0 10px;
+}.attributes-menu-wrap li.plans_payments {
+    display: none;
+}.accountinfo.contactus .btn-yellow:hover {
+    background: #8dc7b5!important;
+}
+.accountinfo.contactus .btn-info {
+    color: #fff;
+    background-color: #a7e8d4;
+    border-color: #a7e8d4;
+}
+.accountinfo.contactus .btn-info:hover {
+    color: #fff;
+     background: #8dc7b5;
+    border-color: #8dc7b5;
+}
+.top-menu-nav .line-bottom {
+    border-bottom: none!important;
+}
+.profilebox.pt-0.loginbox.tabs-box .card.producteditlist.boxsha .producteditinner .card-header.d-flex.justify-content-between.align-items-center {
+    background-color: #f8b4cb;
+    border-color: #e2e6ec;
+}
+table tr td .btn-group.btn-group-actions a.ref_view_order.normal.btn.btn-light.tool_tips,
+table tr td  .btn-group.btn-group-actions a.ref_pdf_order.normal.btn.btn-light.tool_tips ,
+table tr td .btn-group.btn-group-actions a.btn.btn-light.tool_tips ,
+table tr td .btn-group.btn-group-actions a.btn.btn-light.datatables_delete.tool_tips
+{
+    border: 1px solid #a7e8d4;
+    background-color: #a7e8d4;
+    margin-right: 6px;
+    border-radius: 50%!important; 
+    padding: 0px; 
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+table tr td .btn-group.btn-group-actions a.ref_view_order.normal.btn.btn-light.tool_tips:hover,
+table tr td  .btn-group.btn-group-actions a.ref_pdf_order.normal.btn.btn-light.tool_tips:hover ,
+table tr td .btn-group.btn-group-actions a.btn.btn-light.tool_tips:hover ,
+table tr td .btn-group.btn-group-actions a.btn.btn-light.datatables_delete.tool_tips:hover
+{
+    border: 1px solid #a7e8d4;
+    background-color: #fff;
+}
+table tr td .btn-group.btn-group-actions a.ref_view_order.normal.btn.btn-light.tool_tips:hover i.zmdi.zmdi-eye,
+table tr td  .btn-group.btn-group-actions a.ref_pdf_order.normal.btn.btn-light.tool_tips:hover i.zmdi.zmdi-download,
+table tr td  .btn-group.btn-group-actions a.btn.btn-light.tool_tips:hover i.zmdi.zmdi-border-color ,
+table tr td  .btn-group.btn-group-actions a.btn.btn-light.datatables_delete.tool_tips:hover i.zmdi.zmdi-delete ,
+table tr td  .btn-group.btn-group-actions a.ref_delete.normal.btn.btn-light.tool_tips:hover i.zmdi.zmdi-delete
+{
+  color:#a7e8d4;
+}
+table tr td .btn-group.btn-group-actions  a.ref_view_order.normal.btn.btn-light.tool_tips i.zmdi.zmdi-eye,
+table tr td  .btn-group.btn-group-actions a.ref_pdf_order.normal.btn.btn-light.tool_tips i.zmdi.zmdi-download,
+table tr td  .btn-group.btn-group-actions a.btn.btn-light.tool_tips i.zmdi.zmdi-border-color ,
+table tr td  .btn-group.btn-group-actions a.btn.btn-light.datatables_delete.tool_tips i.zmdi.zmdi-delete ,
+table tr td  .btn-group.btn-group-actions a.ref_delete.normal.btn.btn-light.tool_tips i.zmdi.zmdi-delete
+{
+  color:#fff;
+}
+.accountinfo.contactus .rounded-status-report.r1 {
+    background: #c7b8d7;
+}
+.accountinfo.contactus .rounded-status-report.r2 {
+    background: #f8b4cb;
+}
+.accountinfo.contactus .rounded-status-report.r3 {
+    background: #a7e8d4;
+}
+.accountinfo.contactus .rounded-status-report.r4 {
+    background: #ffd17b;
+}
+.accountinfo.contactus .rounded-status-report .report-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.accountinfo.contactus .rounded-status-report .report-inner  span i.zmdi
+{
+    font-size: 67px;
+    opacity: 0.3;
+}
+html body .badge-green {
+    background-color:#a7e8d4;
+}
+html body .footer-dropdown a {
+    color: #a7e8d4 !important;
+}
+.accountinfo.contactus .rounded-status-report .report-inner p {
+    margin: 0;
+}
+.accountinfo.contactus .rounded-status-report .report-inner h5
+{
+    font-weight: 700;
+}
+.accountinfo.contactus .ccustomer {
+    padding: 7px 10px;
+}.addbtn:hover, .addbtn:active, .addbtn:focus {
+    color: #000!important;
+}div#vue-order-view.position-relative.fixed-height {
+    height: auto!important;
+}
+.orderdetailadmin h5
+{
+    font-family: 'OneWishPrint';
+    font-weight: 500;
+}
+.orderdetailadmin .card.border-0.style-2 {
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}
+.orderdetailadmin .card.border-0.style-2  .card-header {
+    padding: 20px;
+    border-radius: 10px 10px 0px 0px;
+}.orderdetailadmin .card.border-0.style-2  .card-header  h4
+{
+        color: #fff;
+}.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: #fff url('../images/loader.gif') 50% 50% no-repeat;
+	background-size: 150px 113px;
+}
+.accountinfo.contactus .progress-bar {
+    background-color: #a7e8d4;
+}
+@media only screen and (min-width: 992px)
+{.accountinfo.contactus .rounded-status-report {
+    min-height: 115px;
+}
+.accountinfo.contactus .main-container {
+    padding-top: 85px;
+}
+}
+@media only screen and (min-width: 320px)
+{
+.accountinfo.contactus .rounded-status-report {
+    max-width: 100%;
+}
+}
