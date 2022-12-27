@@ -24,7 +24,8 @@
             <div class="card-body">
             <div id="boxes" class="d-flex align-items-center">
             <div class="mr-2"><div class="rounded box box-1 d-flex align-items-center justify-content-center">
-            <i class="zmdi zmdi-money-box"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Orders")?></h6>
+            <!--<i class="zmdi zmdi-money-box"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Orders")?></h6>-->
+            <i class="zmdi zmdi-shopping-cart"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Orders")?></h6>
             <h6 class="m-0 position-relative" ref="summary_orders">0</h6>
             </div>
             </div>
@@ -61,7 +62,7 @@
             <div id="boxes" class="d-flex align-items-center">
             <div class="mr-2"><div class="rounded box box-4 d-flex align-items-center justify-content-center">
             <i class="zmdi zmdi-money-box"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Sales")?></h6>
-            <h6 class="m-0 position-relative" ref="summary_total">0</h6>
+            <h6 class="m-0 position-relative" ref="summary_total">$0</h6>
             </div>
             </div>
          </div>

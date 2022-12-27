@@ -92,6 +92,58 @@ class ApiController extends SiteCommon
             
 	    
 	}
+	public function actiongetLocationsDetails(){
+	    
+	    //$this->data=$_POST;
+	    try {
+					   
+		   $q = isset($this->data['q'])?$this->data['q']:'';
+		   
+		
+		   if(!isset(Yii::app()->params['settings']['map_provider'])){
+		   	   $this->msg = t("No default map provider, check your settings.");
+		   	   $this->responseJson();
+		   }
+		   
+		   MapSdk::$map_provider = Yii::app()->params['settings']['map_provider'];		   
+		   MapSdk::setKeys(array(
+		     'google.maps'=>Yii::app()->params['settings']['google_geo_api_key'],
+		     'mapbox'=>Yii::app()->params['settings']['mapbox_access_token'],
+		   ));
+		   		   
+		   if ( $country_params = AttributesTools::getSetSpecificCountry()){
+		  
+		   	   MapSdk::setMapParameters(array(
+		        'country'=>$country_params
+		       ));
+		   }		   
+		     		  
+		   $resp = MapSdk::findPlace($q);
+		   
+// 	$local_id = CommonUtility::getCookie(Yii::app()->params->local_id);		  
+// 		  $local_info = CMaps::locationDetails($local_id,'');	
+		  //print_r($local_info);die;
+		  
+		  $resp = CMaps::locationDetails($resp[0]['id'],'');
+		//	print_r($resp);die;
+		  	$resp_place_id = $resp['place_id'];
+			$set_place_id = !empty($resp_place_id)?$resp_place_id:$place_id;
+									
+			CommonUtility::WriteCookie( Yii::app()->params->local_id , $set_place_id );	
+			Yii::app()->user->setState("type_filter_id", $this->data['type']);
+		//	CommonUtility::WriteCookie( Yii::app()->params->type_filter_id , $this->data['type'] );		
+		   $this->code =1; $this->msg = "ok";
+		   
+		   $this->details = array(
+		     'data'=>$resp
+		   );
+		   
+		 
+		} catch (Exception $e) {
+		   $this->msg = t($e->getMessage());
+		}
+		$this->responseJson();
+	}
 	public function actiongetlocation_autocomplete()
 	{						
 		try {
@@ -119,27 +171,43 @@ class ApiController extends SiteCommon
 		   $resp = MapSdk::findPlace($q);
 		   
 		   
+	//	 print_r($resp);die;
+		 
+		  //  $local_id = CommonUtility::getCookie(Yii::app()->params->local_id);		  
+		  //$local_info = CMaps::locationDetails($local_id,'');	
+		  
+		  //print_r($local_info);die;
+		  
+		  
 		   $this->code =1; $this->msg = "ok";
+		   
 		   $this->details = array(
 		     'data'=>$resp
-		   );		   
+		   );
+		   
+		  //  $this->details1=$this->actiongetLocationDetails(array('id'=>$resp[0]['id']));
 		} catch (Exception $e) {
 		   $this->msg = t($e->getMessage());
 		}
 		$this->responseJson();
+		
+	   
 	}
 		
-	public function actiongetLocationDetails()
+	public function actiongetLocationDetails($data='')
 	{
+	    //print_r($this->data);die;
 	    
 		try {
 			$address_uuid = '';
-			$place_id = isset($this->data['id'])?trim($this->data['id']):'';			
+			$place_id = isset($this->data['id'])?trim($this->data['id']):$data['id'];			
 			$autosaved_addres = isset($this->data['autosaved_addres'])?trim($this->data['autosaved_addres']):'';
 			$auto_generate_uuid = isset($this->data['auto_generate_uuid'])?($this->data['auto_generate_uuid']):'';
 			$cart_uuid = isset($this->data['cart_uuid'])?$this->data['cart_uuid']:'';
 			
 			$resp = CMaps::locationDetails($place_id,'');
+		//	print_r($resp);die;
+			
 						
 			$resp_place_id = $resp['place_id'];
 			$set_place_id = !empty($resp_place_id)?$resp_place_id:$place_id;
@@ -277,7 +345,16 @@ class ApiController extends SiteCommon
 		  	 	 $todays_date = !empty($set_date)?date("Y-m-d H:i" , strtotime($set_date)):$todays_date;	
 		  	 }
 		  }
-		  		  		  		
+		  
+		  
+		   if(isset($filters['cuisine']) && count($filters['cuisine'])==0)
+		   {
+		       $filters['cuisine']=[Yii::app()->user->getState('type_filter_id')];
+		        
+		   }
+		 // print_r($filters);die;
+		  
+		  
 		  $day_of_week = strtolower(date("N",strtotime($todays_date)));
 		  $filter = array(
 		    'lat'=>isset($local_info['latitude'])?$local_info['latitude']:'',
@@ -291,6 +368,8 @@ class ApiController extends SiteCommon
 		    'client_id'=>!Yii::app()->user->isGuest?Yii::app()->user->id:0,
 		    'filters'=>$filters,
 		  );
+		  
+		 
 		  
 		  
 		  $count = CMerchantListingV1::preSearch($filter);
@@ -309,6 +388,10 @@ class ApiController extends SiteCommon
 		  $filter['offset'] = intval($offset);
 		  
 		  $data = CMerchantListingV1::Search($filter);
+		  
+		  
+		//print_r($data);die;
+		  
 		  $services = CMerchantListingV1::services( $filter );	
 		  $estimation = CMerchantListingV1::estimation( $filter );			
 		  		  
@@ -322,7 +405,9 @@ class ApiController extends SiteCommon
 	        'data'=>$data,
 	        'services'=>$services,
 	        'estimation'=>$estimation
-		  );		  
+		  );
+		  
+		  Yii::app()->user->setState('type_filter_id','');
 		} catch (Exception $e) {
 			$this->msg[] = $e->getMessage();			
 		}
@@ -662,7 +747,9 @@ class ApiController extends SiteCommon
 		try {
 												
 			require_once 'get-cart.php';			
-						
+				
+			
+				
 			$this->code = 1; $this->msg = "ok";
 		    $this->details = array(			      
 		      'cart_uuid'=>$cart_uuid,
@@ -1934,7 +2021,7 @@ $payload = array(
 		    $include_utensils = $include_utensils=="true"?true:false;
 		    CCart::savedAttributes($cart_uuid,'include_utensils',$include_utensils);
 		    
-		 //   print_r($data);die;
+	
 		    
 			
 			if(is_array($error) && count($error)>=1){				
@@ -1959,7 +2046,7 @@ $payload = array(
 				));						
 				
 				$payments = CPayments::getPaymentMethod( $payment_uuid, Yii::app()->user->id );
-				$sub_total_less_discount  = CCart::getSubTotal_lessDiscount();				
+				$sub_total_less_discount  = CCart::getSubTotal_lessDiscount();			
 													
 				if(is_array($summary) && count($summary)>=1){	
 					foreach ($summary as $summary_item) {						
@@ -2012,15 +2099,15 @@ $payload = array(
 						}
 					}									
 				}
-				
+			
                 $all=Yii::app()->db->createCommand('
                 SELECT *
-                FROM st_merchant_meta
-                Where  merchant_id='.$merchant_id.' and meta_name="auto_accept"
+                FROM st_merchant
+                Where  merchant_id='.$merchant_id.' and auto_accept="1"
                 limit 0,8
                 ')->queryAll(); 
         
-        
+        $status='new';
                 if(isset($all) && count($all)>0){
                     if($all[0]['meta_value']==1){
                         $status='accepted';
@@ -2028,7 +2115,7 @@ $payload = array(
                 }else{
                     $status='new';
                 }
-              										
+              
 				$model = new AR_ordernew;
 				$model->scenario = $transaction_type;
 			
@@ -2049,7 +2136,7 @@ $payload = array(
 				$model->courier_tip = floatval($tip);				
 				$model->total = floatval($total);
 				$model->total_original = floatval($total);				
-				
+					
 				if(is_array($promo_details) && count($promo_details)>=1){
 					if($promo_details['promo_type']=="voucher"){
 						$model->promo_code = $promo_details['voucher_name'];
@@ -2064,14 +2151,13 @@ $payload = array(
 				if($model->whento_deliver=="now"){
 					$model->delivery_date = CommonUtility::dateNow();
 				} else {
-				    $choosen_delivery = isset($this->data['choosen_delivery'])?$this->data['choosen_delivery']:'';
-				    	$time=json_decode($choosen_delivery['delivery_time']);
-					
-				$time_now = isset($time)?$time->start_time:$time_now;
-				
+				     
+				 
 			
 				    if($transaction_type=='delivery'){
-				       
+				        $choosen_delivery = isset($this->data['choosen_delivery'])?$this->data['choosen_delivery']:'';
+				    	$time=json_decode($choosen_delivery['delivery_time']);
+				    		$time_now = isset($time)?$time->start_time:$time_now;
 				     $model->delivery_date = isset($choosen_delivery['delivery_date'])?$choosen_delivery['delivery_date']:'';  
 				     $model->delivery_time = isset($time)?$time->start_time:'';
 					$model->delivery_time_end = isset($time)?$time->end_time:'';
@@ -2117,10 +2203,7 @@ $payload = array(
 				$model->tax_for_delivery = $tax_delivery;
 				
 				
-				// print_r($address_component);
-				// echo '<pre>';
-				// print_r($model);die;
-				
+			
 								
 				if($model->save()){
 										
@@ -3716,38 +3799,164 @@ $payload = array(
 		}
 		$this->responseJson();
 	}
+	public function actionsaveRequest()
+	{
+	    
+	    	$upload_uuid = CommonUtility::generateUIID();
+	    	$filename='';
+		$allowed_extension = explode(",",  Yii::app()->params['upload_type']);
+		$maxsize = (integer) Yii::app()->params['upload_size'] ;
+		if (!empty($_FILES)) {
+			
+			$title = $_FILES['images']['name'];   
+		
+			$file_size = (integer)$_FILES['images']['size'];   
+			$filetype = $_FILES['images']['type'];   								
+			
+			
+			if(isset($_FILES['images']['name'])){
+			   $extension = pathinfo($_FILES['images']['name'], PATHINFO_EXTENSION);
+			} else $extension = strtolower(substr($title,-3,3));
+		
+			if(!in_array($extension,$allowed_extension)){			
+				$this->msg = t("Invalid file extension");
+				$this->jsonResponse();
+			}
+			if($file_size>$maxsize){
+				$this->msg = t("Invalid file size");
+				$this->jsonResponse();
+			}
+			
+			$allowed_extension = explode(",",Helper_imageType);
+		    $maxsize = (integer)Helper_maxSize;			
+		    
+		    if(isset($_FILES['images']['name'])){
+			   $extension = pathinfo($_FILES['images']['name'], PATHINFO_EXTENSION);
+			   $extension = strtolower($extension);
+			} else $extension = strtolower(substr($title,-3,3)); 	
+				
+			if(!in_array($extension,$allowed_extension)){			
+				$this->msg = t("Invalid file extension");
+				$this->jsonResponse();
+			}
+			if($file_size>$maxsize){
+				$this->msg = t("Invalid file size, allowed size are {{size}}",array(
+				 '{{size}}'=>CommonUtility::HumanFilesize($maxsize)
+				));
+				$this->jsonResponse();
+			}
+			
+			$upload_path = CMedia::avatarFolder();
+			$tempFile = $_FILES['images']['tmp_name'];
+			$upload_uuid = CommonUtility::createUUID("{{media_files}}",'upload_uuid');
+			$filename = $upload_uuid.".$extension";			
+			$path = CommonUtility::uploadDestination($upload_path)."/".$filename;						
+			$path2 = CommonUtility::uploadDestination($upload_path)."/";
+						
+			if(move_uploaded_file($tempFile,$path)){					
+			   	$this->code = 1; $this->msg = "OK";	
+				$this->details = array(			   
+				   'url_image'=> CMedia::getImage($filename,$upload_path,'',CommonUtility::getPlaceholderPhoto('customer')),
+				   'filename'=>$filename,
+				   'id'=>$upload_uuid			   
+				);		
+			}
+					
+		}
+		 if(empty(Yii::app()->user->id)){
+		     $clientid=0;
+		 }else{
+		     $clientid=Yii::app()->user->id;
+		 }
+		$order_uuid=CommonUtility::generateUIID();
+		  $all=Yii::app()->db->createCommand('
+            INSERT INTO `st_ordernew` ( `order_uuid`,`merchant_id`, `client_id`,`status`,`service_code`,`delivery_date`,`request_name`,`request_email`,`request_phone`,`request_order_date`,`occasion`,`requested_quantity`,`requested_details`,`inspiration_photo`,`date_created`) VALUES ("'.$order_uuid.'",'.$this->data['merchant_id'].', '.$clientid.',"new","pos",
+            "'.$this->data['request_order_date'].'","'.$this->data['request_name'].'","'.$this->data['request_email'].'","'.$this->data['request_phone'].'","'.$this->data['request_order_date'].'","'.$this->data['occasion'].'","'.$this->data['requested_quantity'].'","'.$this->data['requested_details'].'","'.$filename.'","'.CommonUtility::dateNow().'");
+            ')->queryAll(); 
+        
+       
+          
+           $data = CNotifications::getOrder($order_uuid , array(
+	    	 'merchant_info','items','summary','order_info','customer','logo','total'
+	    	));	
+	    	
+	    
+	    	$merchant_uuid = $data['merchant']['merchant_uuid'];
+           $merchant_id=$this->data['merchant_id'];
+           $find = array('merchant_enabled_alert','merchant_email_alert','merchant_mobile_alert');
+           
+           $message_parameters = array();
+			if(is_array($data['order_info']) && count($data['order_info'])>=1){
+				foreach ($data['order_info'] as $data_key=>$data_value) {
+					if($data_key=="service_code"){
+						$data_key='order_type';
+					}
+					$message_parameters["{{{$data_key}}}"]=$data_value;
+				}
+			}
+			if(is_array($data['merchant']) && count($data['merchant'])>=1){
+				foreach ($data['merchant'] as $data_key=>$data_value) {				
+					$message_parameters["{{{$data_key}}}"]=$data_value;
+				}
+			}
+			$als="'".json_encode($message_parameters)."'";
+			 $all1=Yii::app()->db->createCommand('
+		    INSERT INTO `st_notifications` (`notification_uuid`, `notication_channel`, `notification_event`, `notification_type`, `message`, `message_parameters`, `image_type`, `image`,`date_created`,`type`) VALUES ("'.CommonUtility::generateUIID().'","'.$merchant_uuid.'","notification-event","order_update","Order#{{order_id}} from '.$this->data['request_name'].'",'.$als.',"image","'.$data['merchant']['logo'].'","'.CommonUtility::dateNow().'","2");	
+		     ')->queryAll(); 
+		    			    					
+		    		// 			$noti = new AR_notifications;    							
+    				// 			$noti->notication_channel = $merchant_uuid;
+    				// 			$noti->notification_event ="notification-event" ;
+    				// 			$noti->notification_type ="order_update";
+    				// 			$noti->message = 'Order#{{order_id}} from '.$this->data['request_name'];
+    				// 			$noti->message_parameters = json_encode($message_parameters);
+    				// 			if(!empty($data['merchant']['logo'])){
+    				// 				$noti->image_type = 'image';
+    				// 				$noti->image = $data['merchant']['logo'];
+	    			// 				$noti->image_path = $data['merchant']['path'];
+    				// 			} else {
+	    			// 				$noti->image_type = 'icon';
+	    			// 				$noti->image = 'zmdi zmdi-shopping-basket';
+    				// 			}
+    				// 			$noti->save();
+		
+           
+          	$this->code = 1;
+		   	$this->msg = t("Request Saved Successfully");
+       
+		$this->jsonResponse();	
+	   
+	}
 	public function actionsaveImage()
 	{
 	    if(empty(Yii::app()->user->id)){
-	      
 			$this->code = 1;
-		    		$this->msg = t("Profile updated");
-
-		
+		    $this->msg = t("Profile updated");
+		   
 	    }else{
-	         $all=Yii::app()->db->createCommand('
-        SELECT *
-        FROM st_ins_favorites
-        Where  user_id='.Yii::app()->user->id.' and ins_gall_id='.$this->data['id'].'
-        limit 0,8
-        ')->queryAll(); 
+            $all=Yii::app()->db->createCommand('
+            SELECT *
+            FROM st_ins_favorites
+            Where  user_id='.Yii::app()->user->id.' and ins_gall_id='.$this->data['id'].'
+            limit 0,8
+            ')->queryAll(); 
         if(count($all)>0)
         {
-          
+            
             $all=Yii::app()->db->createCommand('
-           DELETE FROM `st_ins_favorites`   Where  user_id='.Yii::app()->user->id.' and ins_gall_id='.$this->data['id'].'
+            DELETE FROM `st_ins_favorites`   Where  user_id='.Yii::app()->user->id.' and ins_gall_id='.$this->data['id'].'
             ')->queryAll(); 
-           //delete
-           	$this->code = 3;
+            //delete
+            $this->code = 3;
 		
         }else{
             $all=Yii::app()->db->createCommand('
             INSERT INTO `st_ins_favorites` ( `user_id`, `ins_gall_id`) VALUES ( '.Yii::app()->user->id.', '.$this->data['id'].');
             ')->queryAll(); 
-        
+            
             //insert
             $this->code = 2;
-		$this->msg = t("Profile updated");
+            $this->msg = t("Profile updated");
         }
         
         
@@ -4013,8 +4222,8 @@ $payload = array(
 						
 			$merchant_id = isset($this->data['merchant_id'])?intval($this->data['merchant_id']):'';			
 			
-// 			$date = date("Y-m-d");
-// 			$time_now = date("H:i");
+			$date = date("Y-m-d");
+ 			$time_now = date("H:i");
 			
 // 			$choosen_delivery = isset($this->data['choosen_delivery'])?$this->data['choosen_delivery']:'';		
 // 			$whento_deliver = isset($choosen_delivery['whento_deliver'])?$choosen_delivery['whento_deliver']:'';
@@ -4027,9 +4236,9 @@ $payload = array(
 // 			$datetime_to = date("Y-m-d g:i:s a",strtotime("$date $time_now"));
 // 			CMerchantListingV1::checkCurrentTime( date("Y-m-d g:i:s a") , $datetime_to);		
 			
-		//	$resp = CMerchantListingV1::checkStoreOpen($merchant_id,$date,$time_now);
+		$resp = CMerchantListingV1::checkStoreOpen($merchant_id,$date,$time_now);
 			$this->code = 1;
-			$this->msg = $resp['merchant_open_status']>0?"ok":t("This store is close right now, but you can schedulean order later.");
+			$this->msg = 'ok';
 			$this->details =  $resp;
 					
 		} catch (Exception $e) {							
@@ -4043,8 +4252,9 @@ $payload = array(
 		try {		   
 			
 			$merchant_uuid = Yii::app()->input->post('merchant_uuid');
-			CMerchantListingV1::storeAvailable($merchant_uuid);
+			$res=CMerchantListingV1::storeAvailable($merchant_uuid);
 			$this->code = 1; $this->msg = "ok";
+			$this->details=$res;
 		} catch (Exception $e) {							
 		    $this->msg = t($e->getMessage());		    
 		}					

@@ -6,7 +6,7 @@ class AR_merchant_meta extends CActiveRecord
 	public $running_balance;	
 	public $tax_enabled, $tax_on_delivery_fee,$tax_type,
 	$tax_service_fee, $tax_packaging, $tax_for_delivery,
-	$zone,$website_url, $api_url,$payment_api_url,$auto_accept
+	$zone,$website_url, $api_url,$payment_api_url,$auto_accept,$tax_on_products
 	;	
 	
 	/**

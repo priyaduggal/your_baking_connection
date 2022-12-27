@@ -1892,7 +1892,7 @@ class COrders
 		    if($transaction){		    	
 		    	if($transaction->status=="paid"){
 		    		$payment_name_stats = t("Paid by [payment_name]",array('[payment_name]'=>$payment_name));
-		    		$paid_on = t("Paid on [date]",array('[date]'=>Date_Formatter::dateTime($transaction->date_created)));
+		    		$paid_on =Date_Formatter::dateTime($transaction->date_created,"MM/dd/yyyy",true);
 		    	} else {
 		    		$payment_name_stats = t("Payment by {{payment_name}}",array('{{payment_name}}'=>$payment_name));
 		    	}		    	
@@ -1925,6 +1925,14 @@ class COrders
 		   
     		$order_info = array(
     		  'client_id'=>$order->client_id,
+    		  'occasion'=>$order->occasion,
+    		  'request_name'=>$order->request_name,
+    		  'request_email'=>$order->request_email,
+    		  'requested_quantity'=>$order->requested_quantity,
+    		  'requested_details'=>$order->requested_details,
+    		  'inspiration_photo'=>Yii::app()->createAbsoluteUrl('../upload/avatar/'.$order->inspiration_photo),
+    		  'request_phone'=>$order->request_phone,
+    		  'request_order_date'=>$order->request_order_date, 
     		  'merchant_id'=>$order->merchant_id,
     		  'order_id'=>$order->order_id,    		      		  
     		  'order_uuid'=>$order->order_uuid, 

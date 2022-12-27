@@ -1063,10 +1063,21 @@ class CCart
     			$price = isset($item_price_data['price'])?(float)$item_price_data['price']:0;
     			$total = intval($val['qty']) * floatval($price);
     			$total_after_discount = intval($val['qty']) * floatval($item_price);
+    			
+    		 $all=Yii::app()->db->createCommand('
+        SELECT non_taxable
+        FROM st_item
+        Where  item_id='.$val['item_id'].'
+        ')->queryAll();
+        
+        $taxable=$all[0]['non_taxable'];
+		
+    			
     			$results[] = array(
     			   'cart_row'=>$val['cart_row'],
     			   'cat_id'=>$val['cat_id'],
     			   'item_id'=>$val['item_id'],
+    			   'taxable'=>$taxable,
     			   'item_token'=>$val['item_token'],
     			   'item_name'=>$val['item_name'],
     			   'url_image'=>$val['url_image'],

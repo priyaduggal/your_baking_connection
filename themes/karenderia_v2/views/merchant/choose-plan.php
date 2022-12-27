@@ -1,7 +1,7 @@
 <div id="vue-subscription" class="container mt-3 mb-3" v-cloak>
 <?php 
 
- $pkid=Yii::app()->user->getState("package_id");
+ echo $pkid=Yii::app()->user->getState("package_id");
 
 ?>
 <div class="text-center">

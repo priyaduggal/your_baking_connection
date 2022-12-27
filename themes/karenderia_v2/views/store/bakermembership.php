@@ -150,11 +150,12 @@
                                </svg>
                            </div>
                            <div class="title-box">
-                              <h3>{{item.title}}</h3>
+                              <h3>{{item.title}}<br><span style="font-size:14px">Already have a business website or established method for receiving orders but looking to grow your customer base?</span></h3>
+                              
                            </div>
-                           <h4 class="head4 cursorimg">{{item.description}}
-                           </h4>
-                           <h3 class="prebox">The {{item.title}} may be best for you!</h3>
+                           <!--h4 class="head4 cursorimg">{{item.description}}
+                           </h4-->
+                           <h3 class="prebox">The {{item.title}} may be best for you!<br>$12 monthly or get 2 months free when you join annually ($120)</h3>
                            <div class="table-content  showdata " :data-id="item.package_id" style="display:none">
                               <!--<ul v-if="plan_details[item.package_id]" class="checkgreen list-group list-group-flush ">-->
                               <!--    <li v-for="details in plan_details[item.package_id]" -->
@@ -162,17 +163,17 @@
                               <!--    {{details}}-->
                               <!--    </li>        -->
                               <!--</ul> -->
-                              <div class="price-box">
-                                 <div class="price"> {{item.price}}
+                              <!--<div class="price-box">-->
+                              <!--   <div class="price"> {{item.price}}-->
                                   
-                                 </div>
-                              </div>
-                              <ul v-if="plan_details[item.package_id]" class="checkgreen list-group list-group-flush ">
+                              <!--   </div>-->
+                              <!--</div>-->
+                              <ul v-if="plan_details[item.package_id]" class="checkgreen list-group list-group-flush "  style="list-style-type: none;">
                                  <h3>
                                     <strong>Features include:</strong>
                                  </h3>
                                  <li v-for="details in plan_details[item.package_id]">
-                                    <!-- <i class="fa fa-check"></i> -->
+                                    <i class="fa fa-check mr-2" style="color:#a7e8d4 !important;"></i>
                                     <span>
                                     {{details}}</span>
                                  </li>
@@ -187,7 +188,9 @@
                                     <?php echo $item->package_id;?>" class="btn-more learn_more">Learn More </a>
                                  <!--<a href="#" class="btn-more ml-2">Join Now</a>-->
                                  <div class="btn-more ml-2">
-                                    <button class="btn btn-sm clickmerchant" :data-id="item.package_uuid">&nbsp; <?php echo t("Join Now")?>&nbsp; </button>
+                                     <button class="btn btn-sm clickbasic" data-type="basic" data-month="fbcc4ec5-5cd0-11ed-b019-00163c6ba7cd" 
+                                     data-year="46a7fa97-77bb-11ed-92c4-00163c6ba7cd">&nbsp; <?php echo t("Join Now")?>&nbsp; </button>
+                                    <!--<button class="btn btn-sm clickmerchant" :data-id="item.package_uuid">&nbsp; <?php echo t("Join Now")?>&nbsp; </button>-->
                                  </div>
                               </div>
                            </div>
@@ -218,11 +221,11 @@
                    </svg>
                </div>
                            <div class="title-box">
-                              <h3>{{item.title}}</h3>
+                              <h3>{{item.title}}<br><span style="font-size:14px">Looking for a one-stop shop to market and manage your business?</span></h3>
                            </div>
                           <!--  <h4 class="head4 cursorimg">{{item.description}}
                            </h4> -->
-                           <h3 class="prebox">The {{item.title}} may be best for you!</h3>
+                           <h3 class="prebox">The {{item.title}} may be best for you!<br>$24 monthly or get 2 months free when you join annually ($240)</h3>
                            <div class="table-content  showdata1" :data-id="item.package_id" style="display:none">
                               <!--<ul v-if="plan_details[item.package_id]" class="checkgreen list-group list-group-flush ">-->
                               <!--    <li v-for="details in plan_details[item.package_id]" -->
@@ -230,17 +233,17 @@
                               <!--    {{details}}-->
                               <!--    </li>        -->
                               <!--</ul> -->
-                              <div class="price-box">
-                                 <div class="price"> {{item.price}}
+                              <!--<div class="price-box">-->
+                              <!--   <div class="price"> {{item.price}}-->
                                   
-                                 </div>
-                              </div>
-                              <ul v-if="plan_details[item.package_id]" class="pink list-group list-group-flush ">
+                              <!--   </div>-->
+                              <!--</div>-->
+                              <ul v-if="plan_details[item.package_id]" class="pink list-group list-group-flush " style="list-style-type: none;">
                                  <li>
                                     <strong>Features include:</strong>
                                  </li>
                                  <li v-for="details in plan_details[item.package_id]">
-                                    <!-- <i class="fa fa-check"></i> -->
+                                    <i class="fa fa-check mr-2" style="color:#f8b4cb !important;"></i>
                                     <span>
                                     {{details}}</span>
                                  </li>
@@ -280,7 +283,12 @@
                                     <!--:disabled="package_id==item.package_id"-->
                                     <!--class="btn btn-sm ">&nbsp;<?php echo t("Join Now")?>&nbsp;-->
                                     <!--</button>-->
-                                    <button class="btn btn-sm clickmerchant" :data-id="item.package_uuid">&nbsp; <?php echo t("Join Now")?>&nbsp; </button>
+                                    
+                                    <button class="btn btn-sm clickpremium" data-type="premium" data-month="59533dd3-5ccf-11ed-b019-00163c6ba7cd" 
+                                     data-year="77293889-77bb-11ed-92c4-00163c6ba7cd">&nbsp; <?php echo t("Join Now")?>&nbsp; </button>
+                                     
+                                     
+                                    <!--<button class="btn btn-sm clickmerchant" :data-id="item.package_uuid">&nbsp; <?php echo t("Join Now")?>&nbsp; </button>-->
                                  </div>
                               </div>
                            </div>
@@ -519,3 +527,61 @@
       </div>
    </div>
 </section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Choose <span id="type"></span> Plan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <input type="radio" name="basic" class="basicradio" value="" package-uuid="" id="basicann" >Annually
+       <input type="radio" name="basic" class="basicradio" value="" package-uuid="" id="basicmon">Monthly
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary save_package" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+	var token=document.querySelector('meta[name=YII_CSRF_TOKEN]').content;
+    $( document ).ready(function() {
+       
+        $('body').on('click', '.save_package', function() {
+            
+            var id=$('input[class="basicradio"]:checked').val();
+            if(!empty(id)){
+             $('#exampleModal').modal('hide');
+             window.location.href = 'signup?id='+id;
+            }else{
+                alert('Choose Plan');
+            }
+        });
+        $('body').on('click', '.clickpremium', function() {
+             var type=$(this).attr('data-type');
+            var month=$(this).attr('data-month');
+            var year=$(this).attr('data-year');
+            $('#type').html(type);
+            $('#exampleModal').modal('show');
+            $('#basicann').val(year);
+            $('#basicmon').val(month);
+        });
+        $('body').on('click', '.clickbasic', function() {
+            var type=$(this).attr('data-type');
+            var month=$(this).attr('data-month');
+            var year=$(this).attr('data-year');
+            $('#type').html(type);
+            $('#exampleModal').modal('show');
+            $('#basicann').val(year);
+            $('#basicmon').val(month);
+        });
+    });
+</script>

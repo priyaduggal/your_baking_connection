@@ -8,14 +8,16 @@
     right: 52px;
 }
 </style>
-<div class="row ">
+<iframe id="txtArea1" style="display:none"></iframe>
+<div class="row "><div id="buttons"></div>
                <div class="col-md-12">
                   <div class="text-right">
                      <div class="form-group d-flex justify-content-end">
                         <a  href="<?php echo Yii::app()->createUrl('/pos/create_order')?>" class="btn btn-success addbtn">
                            <span>Create Order</span>
                         </a>
-                         <a  href="#" class="btn btn-success addbtn ml-3">
+                        
+                         <a  href="#" id="btnExport" class="btn btn-success addbtn ml-3">
                            <span>Export</span>
                         </a>
                      </div>
@@ -73,9 +75,12 @@ actions="orderHistory"
 :table_col='<?php echo json_encode($table_col)?>'
 :columns='<?php echo json_encode($columns)?>'
 :filter="<?php echo true; ?>"
+:export="<?php echo true; ?>"
 :settings="{
     filter : '<?php echo false;?>',
-   
+    export:'<?php echo true;?>',
+    dom: 'Bfrtip',
+    buttons: 'copyHtml5',
     ordering :'<?php echo true;?>',    
     order_col :'<?php echo intval($order_col);?>',   
     sortby :'<?php echo $sortby;?>', 
@@ -101,3 +106,43 @@ page_limit = "<?php echo Yii::app()->params->list_limit?>"
 
 </div> <!--card-->
 <?php $this->renderPartial("/orders/template-filter");?>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+	var token=document.querySelector('meta[name=YII_CSRF_TOKEN]').content;
+    $( document ).ready(function() {
+        
+       $('body').on('click','#btnExport',function(){
+           
+    var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+    var textRange; var j=0;
+    tab = document.getElementById('DataTables_Table_0'); // id of table
+
+    for(j = 0 ; j < tab.rows.length ; j++) 
+    {     
+        tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+        //tab_text=tab_text+"</tr>";
+    }
+
+    tab_text=tab_text+"</table>";
+    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE "); 
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(tab_text);
+        txtArea1.document.close();
+        txtArea1.focus(); 
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }  
+    else                 //other browser not tested on IE 11    
+    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+    return (sa);
+});
+    });
+</script>

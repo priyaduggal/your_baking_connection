@@ -24,8 +24,8 @@ class PlansController extends SiteCommon
 		return true;
 		
 		
-// 			print_r($this->data);
-// 		die;
+			print_r($this->data);
+		die;
 	}
 	
 	public function actionIndex()

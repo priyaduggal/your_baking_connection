@@ -9,6 +9,7 @@ class CPos
 		  ':status'=>$status,
 		  ':service_code'=>$service_code
 		));
+		
 		if($model){
 			return $model;
 		}
@@ -17,12 +18,16 @@ class CPos
 	
 	public static function createOrder($merchant_id=0)
 	{
+	    
 		$order_uuid = '';
 		$pos_code = AttributesTools::PosCode();		
+	
 		if($model = CPos::get($merchant_id,'draft',$pos_code)){
+		  
 			return $model->order_uuid;
-		} else {
 			
+		} else {
+		    
 			/*GET TAX*/
 			$tax_settings = array(); $tax_delivery = array(); $tax = 0;
 			try {
@@ -49,17 +54,23 @@ class CPos
 			$order->service_code = $pos_code ;
 			$order->payment_code = "cash" ;
 			$order->order_uuid = CommonUtility::createUUID("{{ordernew}}",'order_uuid');
-			$order->whento_deliver = "now";
+			$order->whento_deliver = "schedule";
 			$order->delivery_date = CommonUtility::dateNow();
+			$order->delivery_time = '10:20am';
 			
 			$order->tax_type = isset($tax_settings['tax_type'])?$tax_settings['tax_type']:'';
 			$order->tax_use = $tax_settings;	
 			$order->tax = $tax;
 			$order->tax_for_delivery = $tax_delivery;
+		
+			
 									
 			if($order->save()){
+			    
 				return $order->order_uuid;
 			} else throw new Exception( CommonUtility::parseModelErrorToString($order->getErrors()) );
+			
+	
 		}	
 	}
 	

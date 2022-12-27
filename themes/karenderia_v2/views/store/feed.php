@@ -328,6 +328,8 @@ ajax_url="<?php echo Yii::app()->createUrl("/api")?>"
 			</div>
        </div>
 	</template>  
+	
+
 	<template #default>
 		
 	<div class="row equal position-relative">
@@ -339,6 +341,14 @@ ajax_url="<?php echo Yii::app()->createUrl("/api")?>"
 	</DIV>   -->	
 	
 	   <template v-for="(data,data_index) in datas"  >
+	       <div class="container mt-3 mb-5" v-if="data.length=='0'">
+	               <div class="no-results-section mb-4 mt-5">
+	                   <img class="img-350 m-auto d-block" src="/your_baking_connection/themes/karenderia_v2/assets/images/404@2x.png">
+	                   </div><div class="text-center w-50 m-auto">
+	                       <h3>Sorry! We're not there yet</h3>
+	                       <p>We're working hard to expand our area. However, 
+	                       we're not in this location yet. So sorry about this, we'd still love to have you as a customer.</p></div></div>
+	      
 	       <div class="col-md-4 list-items"  v-for="item in data" 
 	   :class="{ 'make-grey': item.merchant_open_status=='0' || item.close_store=='1' || item.disabled_ordering=='1' }"  >
 	           

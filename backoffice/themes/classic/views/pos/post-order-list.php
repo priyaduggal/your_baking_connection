@@ -14,7 +14,21 @@
     }
 
 </style>
-
+<div class="row "><div id="buttons"></div>
+               <div class="col-md-12">
+                  <div class="text-right">
+                     <div class="form-group d-flex justify-content-end">
+                        <a  href="<?php echo Yii::app()->createUrl('/pos/create_order')?>" class="btn btn-success addbtn">
+                           <span>Create Order</span>
+                        </a>
+                        
+                        <!-- <a  href="#" id="btnExport" class="btn btn-success addbtn ml-3">-->
+                        <!--   <span>Export</span>-->
+                        <!--</a>-->
+                     </div>
+                  </div>
+               </div>
+            </div>
 <div id="vue-tables" class="custom_order card boxsha default-tabs tabs-box">
     <div class="card style-2">
 <div class="card-header">

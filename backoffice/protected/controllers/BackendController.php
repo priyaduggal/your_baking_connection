@@ -14,7 +14,105 @@ class BackendController extends CommonController
 		//} 		
 		return false;
 	}
+		public function actioninvoiceList()
+	{
+		
+		$view_link = Yii::app()->createUrl("/invoice/view",array(		  
+			'invoice_uuid'=>'-action_id-',	 
+		 ));   
+
+		$html='
+		<div class="btn-group btn-group-actions" role="group" >				
+				  
+		  <a href="'.$view_link.'" class="btn btn-light tool_tips"
+		  data-toggle="tooltip" data-placement="top" title="'.t("Update").'"
+		  >
+		  <i class="zmdi zmdi-eye"></i>
+		  </a>		
+		  
+		 <a href="javascript:;" data-id="-action_id-" 
+		  class="btn btn-light datatables_delete tool_tips"
+		  data-toggle="tooltip" data-placement="top" title="'.t("Delete").'"
+		  >
+		  <i class="zmdi zmdi-delete"></i>
+		  </a>
+		  
+		</div>
+		';	
+
+		$cols=array(
+			array(
+			  'key'=>'invoice_number',
+			  'value'=>'date_created',	
+			  'action'=>'date'
+			),
+			array(
+			  'key'=>'restaurant_name',
+			   'value'=>'restaurant_name',	
+			   'action'=>"format",	 	  
+			   'format'=>'<h6>[restaurant_name]</h6>
+			   <div>#[invoice_number]</div>	 	    
+			   ',
+			   'format_value'=>array(
+				'[invoice_number]'=>'invoice_number',
+				'[restaurant_name]'=>'restaurant_name',	 	     
+				'[payment_status]'=>'payment_status',			
+			   )
+			),			
+			array(
+				'key'=>'payment_status',
+				 'value'=>'payment_status',	
+				 'action'=>"format",	 	  
+				 'format'=>'<div class="badge payment [payment_status]">[payment_status]</div>
+				 <div>'.t("Due").' [due_date]</div>	 	    
+				 ',
+				 'format_value'=>array(
+				  '[payment_status]'=>'payment_status',
+				  //'[due_date]'=>'due_date',					  
+				  '[due_date]'=>array(
+						'value'=>'due_date',
+						'display'=>"date"
+				   )
+				 )
+			  ),
+			array(
+			  'key'=>'invoice_total',
+			  'value'=>'invoice_total',	
+			  'action'=>'price'
+			),
+			array(
+				 'key'=>'invoice_uuid',
+				 'value'=>'invoice_uuid',		 	  
+				 'action'=>"format",	 	   
+				 'format'=>$html,
+				 'format_value'=>array(
+					'-action_id-'=>'invoice_uuid',
+				 )
+			),			
+		  );
 	
+		$stmt = "
+	 	 SELECT SQL_CALC_FOUND_ROWS a.*,b.restaurant_name,a.amount as invoice_total		
+		 FROM {{plans_invoice}} a
+		 INNER JOIN {{merchant}} b
+		 on
+		 b.merchant_id=a.merchant_id
+		 WHERE 1		 
+		 [and]
+		 [search]
+		 [order]
+		 [limit]
+	 	";
+	 	
+	 	
+	 	DatatablesTools::$action_edit_path = "invoice/update";		 
+	 	if( $feed_data = DatatablesTools::getTables($cols,$stmt,$this->data)){		 		
+	 		$this->DataTablesData($feed_data);
+	 		Yii::app()->end();
+	 	}
+	 	$this->DataTablesNodata();	
+	}
+
 	public function filters()
 	{
 		return array(

@@ -197,6 +197,68 @@ class OrdersController extends Commonmerchant
 		));
 	}
 	
+	public function actionviewPos()
+	{
+	   	$this->layout = 'backend_merchant';	
+		$this->pageTitle = t("Order Details");		
+		CommonUtility::setMenuActive('.pos','.merchant_all_order');		
+		$order_uuid = Yii::app()->input->get('order_uuid'); 
+		$ajax_url = Yii::app()->createUrl("/apibackend");
+		ScriptUtility::registerScript(array(
+		  "var _order_uuid='$order_uuid';",		  
+		  "var _ajax_url='$ajax_url';",	
+		),'order_uuid');
+				
+		$this->render('order-viewpos',array(		  
+		  'order_uuid'=>$order_uuid,
+		  'merchant_id'=>Yii::app()->merchant->merchant_id,
+		  'ajax_url'=>Yii::app()->createUrl("/apibackend"),
+		  'view_admin'=>false,
+		  'responsive'=>AttributesTools::CategoryResponsiveSettings('full')		  
+		)); 
+	}
+	
+		public function actionvieworders()
+	{		
+		$this->layout = 'backend_merchant';	
+		$this->pageTitle = t("Order Details");		
+		CommonUtility::setMenuActive('.merchant_orders','.merchant_all_order');		
+		$order_id = Yii::app()->input->get('order_id'); 
+		 $all=Yii::app()->db->createCommand('SELECT * FROM `st_ordernew` where order_id='.$order_id.'
+            ')->queryAll(); 
+        
+		$order_uuid = $all[0]['order_uuid']; 
+		$ajax_url = Yii::app()->createUrl("/apibackend");
+		ScriptUtility::registerScript(array(
+		  "var _order_uuid='$order_uuid';",		  
+		  "var _ajax_url='$ajax_url';",	
+		),'order_uuid');
+		
+		if($all[0]['service_code']=='pos'){	
+		    	$this->render('order-viewpos',array(		  
+		  'order_uuid'=>$order_uuid,
+		  'merchant_id'=>Yii::app()->merchant->merchant_id,
+		  'ajax_url'=>Yii::app()->createUrl("/apibackend"),
+		  'view_admin'=>false,
+		  'responsive'=>AttributesTools::CategoryResponsiveSettings('full')		  
+		)); 
+	
+		
+		}else{
+			$this->render('order-view',array(		  
+		  'order_uuid'=>$order_uuid,
+		  'merchant_id'=>Yii::app()->merchant->merchant_id,
+		  'ajax_url'=>Yii::app()->createUrl("/apibackend"),
+		  'view_admin'=>false,
+		  'responsive'=>AttributesTools::CategoryResponsiveSettings('full')		  
+		));
+		
+		}
+		
+		
+		
+	}
+	
 	public function actionview()
 	{		
 		$this->layout = 'backend_merchant';	
@@ -220,9 +282,9 @@ class OrdersController extends Commonmerchant
 	}
 	
 	public function actionhistory()
-	{
+	{   
 		$this->layout = 'backend_merchant';	
-		$this->pageTitle = t("Order history");
+		$this->pageTitle = t("Order History");
 		
 		$table_col = array(
 		 'client_id'=>array(

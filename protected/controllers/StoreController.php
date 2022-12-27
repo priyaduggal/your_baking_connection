@@ -188,10 +188,7 @@ class StoreController extends SiteCommon
 			 Yii::app()->end();
 		}
 		AssetsFrontBundle::includeMaps();
-		$this->render('feed',array(
-			'responsive'=>AttributesTools::FrontCarouselResponsiveSettings('full'), 
-			'tabs_suggestion'=>AttributesTools::suggestionTabs()
-		));
+		$this->render('feed');
 	}
 	
 	public function actionFeed()

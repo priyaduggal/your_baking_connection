@@ -739,17 +739,13 @@ class FoodController extends Commonmerchant
    {
 		$this->pageTitle = $update==false? t("Add Item") : t("Update Item");
 		CommonUtility::setMenuActive('.food','.food_items');			
-		
 		$multi_language = CommonUtility::MultiLanguage();
-		
 		$merchant_id = (integer) Yii::app()->merchant->merchant_id;
 		$id='';		
 		$upload_path = CMedia::merchantFolder();
-				
 		$item_id = (integer) Yii::app()->input->get('item_id');	
-		
-		if($update){				
-			
+		if($update){
+		   
 			$model = AR_item::model()->find('merchant_id=:merchant_id AND item_id=:item_id', 
 		    array(':merchant_id'=>$merchant_id, ':item_id'=>$item_id ));	
 		    
@@ -763,14 +759,29 @@ class FoodController extends Commonmerchant
 			}										
 			$model->scenario = 'update';									
 		} else {
-			$model=new AR_item;
+		    $model=new AR_item;
 			$model->scenario = 'create';
 		}
 		
 		$model->multi_language = $multi_language;		
 
 		if(isset($_POST['AR_item'])){
+		    
 			$model->attributes=$_POST['AR_item'];
+			if(isset($_POST['AR_item']['available_day'])){
+				$model->available_day = $_POST['AR_item']['available_day'];
+				$model->available_time_start = $_POST['AR_item']['available_time_start'];
+				$model->available_time_end = $_POST['AR_item']['available_time_end'];
+			}
+            
+         
+
+		   $model->non_taxable=$_POST['AR_item']['non_taxable'];
+		   $model->available=$_POST['AR_item']['available'];
+		   $model->inventory_stock=$_POST['AR_item']['inventory_stock'];
+		   $model->not_for_sale=$_POST['AR_item']['not_for_sale'];
+		   $model->available_at_specific=$_POST['AR_item']['available_at_specific'];
+			
 			if($model->validate()){		
 				$model->merchant_id = $merchant_id;
 				
@@ -781,11 +792,176 @@ class FoodController extends Commonmerchant
 					} else $model->photo = '';
 				} else $model->photo = '';
 										
+			
 				if($model->save()){
-					if(!$update){						
+			
+            	//for specific days 
+                 $days = AttributesTools::dayWeekList();					
+                foreach ($days as $key=>$item) {				
+                $day_of_week = isset($model->available_day[$key])?$key:0;		
+                $status = isset($model->available_day[$key])? $model->available_day[$key] :0;						
+                $start = isset($model->available_time_start[$key])? $model->available_time_start[$key] :null;				
+                $end = isset($model->available_time_end[$key])? $model->available_time_end[$key] :null;						
+                if($day_of_week>0){
+                AR_availability::saveMeta($model->merchant_id,'item',$model->item_id,$day_of_week,$status,$start,$end);
+                }
+                }
+					
+		if(!$update){
+                $itemmodel=new AR_item_size;
+                $itemmodel->merchant_id = (integer) $model->merchant_id;
+				$itemmodel->item_id = (integer) $model->item_id;
+				$itemmodel->price = (float) $model->item_price;
+                $itemmodel->save();
+				
+           
+               
+                if(isset($_POST['label'])){
+                
+                $model1 = AR_subcategory::model()->find('merchant_id=:merchant_id AND item_id=:item_id', 
+                array(':merchant_id'=>$model->merchant_id, ':item_id'=>$model->item_id ));
+                
+                $subcat=array();
+                if(!$model1){
+                foreach($_POST['label'] as $key=>$value){
+                
+                $model1=new AR_subcategory;
+                $model1->merchant_id=$model->merchant_id;
+                $model1->item_id = $model->item_id;					
+                $model1->subcategory_name = $value;					
+                $model1->save();
+                $subcat[]=$model1->subcat_id;
+                
+                //echo $_POST['multi_option'][$key];
+
+            
+            
+                $all123=Yii::app()->db->createCommand('
+                INSERT INTO `st_item_relationship_subcategory` ( `merchant_id`, `item_id`, `item_size_id`, `subcat_id`, `multi_option`) VALUES ( "'.$model->merchant_id.'", "'.$model->item_id.'","'.$itemmodel->item_size_id.'","'.$model1->subcat_id.'","'.$_POST['multi_option'][$key].'");
+                ')->queryAll(); 
+                
+                
+             
+            
+            }
+            
+            $_POST['price']=array_values($_POST['price']);
+            $_POST['value']=array_values($_POST['value']);
+           
+            
+             if(isset($_POST['price'])){
+                        
+                     foreach($_POST['price'] as $k=>$v){
+                        
+                         
+                        foreach($v as $kk=>$vv){
+                          
+                        $all=Yii::app()->db->createCommand('
+                        INSERT INTO `st_subcategory_item` ( `merchant_id`, `item_id`, `item_description`, `status`, `sub_item_name`,`price`) VALUES ( "'.$model->merchant_id.'", "'.$model->item_id.'","Description","publish","'.$_POST['value'][$k][$kk].'","'.$vv.'");
+                        ')->queryAll(); 
+                        
+                         $id = Yii::app()->db->getLastInsertID();
+                         
+                        
+                         
+                         $all223=Yii::app()->db->createCommand('
+                        INSERT INTO `st_subcategory_item_translation` ( `sub_item_id`, `language`,`sub_item_name`,`item_description`) VALUES ( "'.$id.'","en", "'.$_POST['value'][$k][$kk].'","description");
+                        ')->queryAll(); 
+                        
+                         
+                        $all1=Yii::app()->db->createCommand('
+                        INSERT INTO `st_subcategory_item_relationships` ( `subcat_id`, `sub_item_id`) VALUES 
+                        ( "'.$subcat[$k].'", "'.$id.'");
+                        ')->queryAll(); 
+                        
+                        
+                       
+                        }
+                     }
+                    }
+            }
+            
+            }
+					    
 					   Yii::app()->user->setFlash('success',CommonUtility::t(Helper_created));
 					   $this->redirect(array(Yii::app()->controller->id.'/item_update', 'item_id'=>$model->item_id ));		
 					} else {
+   
+                $itemmodel = AR_item_size::model()->find('merchant_id=:merchant_id AND item_id=:item_id', 
+                array(':merchant_id'=>$model->merchant_id, ':item_id'=>$model->item_id ));
+
+                
+				if(isset($_POST['label'])){
+				    
+                $dl1=Yii::app()->db->createCommand('
+                DELETE FROM `st_subcategory`   Where  merchant_id='.$model->merchant_id.' and item_id='.$model->item_id.'
+                ')->queryAll(); 
+                
+                 $dl2=Yii::app()->db->createCommand('
+                DELETE FROM `st_item_relationship_subcategory`   Where  merchant_id='.$model->merchant_id.' and item_id='.$model->item_id.'
+                ')->queryAll(); 
+                
+                 $dl3=Yii::app()->db->createCommand('
+                DELETE FROM `st_subcategory_item`   Where  merchant_id='.$model->merchant_id.' and item_id='.$model->item_id.'
+                ')->queryAll(); 
+                
+                
+                
+                //add category
+                $model1 = AR_subcategory::model()->find('merchant_id=:merchant_id AND item_id=:item_id', 
+                array(':merchant_id'=>$model->merchant_id, ':item_id'=>$model->item_id ));
+                
+                $subcat=array();
+                if(!$model1){
+                foreach($_POST['label'] as $key=>$value){
+                
+                $model1=new AR_subcategory;
+                $model1->merchant_id=$model->merchant_id;
+                $model1->item_id = $model->item_id;					
+                $model1->subcategory_name = $value;					
+                $model1->save();
+                $subcat[]=$model1->subcat_id;
+                
+            
+                $all123=Yii::app()->db->createCommand('
+                INSERT INTO `st_item_relationship_subcategory` ( `merchant_id`, `item_id`, `item_size_id`, `subcat_id`, `multi_option`) VALUES ( "'.$model->merchant_id.'", "'.$model->item_id.'","'.$itemmodel->item_size_id.'","'.$model1->subcat_id.'","'.$_POST['multi_option'][$key].'");
+                ')->queryAll(); 
+            
+            }
+            
+            $_POST['price']=array_values($_POST['price']);
+            $_POST['value']=array_values($_POST['value']);
+             if(isset($_POST['price'])){
+                        
+                     foreach($_POST['price'] as $k=>$v){
+                        foreach($v as $kk=>$vv){
+                          
+                        $all=Yii::app()->db->createCommand('
+                        INSERT INTO `st_subcategory_item` ( `merchant_id`, `item_id`, `item_description`, `status`, `sub_item_name`,`price`) VALUES ( "'.$model->merchant_id.'", "'.$model->item_id.'","Description","publish","'.$_POST['value'][$k][$kk].'","'.$vv.'");
+                        ')->queryAll(); 
+                        
+                         $id = Yii::app()->db->getLastInsertID();
+                       
+                         $all223=Yii::app()->db->createCommand('
+                        INSERT INTO `st_subcategory_item_translation` ( `sub_item_id`, `language`,`sub_item_name`,`item_description`) VALUES ( "'.$id.'","en", "'.$_POST['value'][$k][$kk].'","description");
+                        ')->queryAll(); 
+                        
+                         
+                        $all1=Yii::app()->db->createCommand('
+                        INSERT INTO `st_subcategory_item_relationships` ( `subcat_id`, `sub_item_id`) VALUES 
+                        ( "'.$subcat[$k].'", "'.$id.'");
+                        ')->queryAll(); 
+                        
+                        
+                       
+                        }
+                     }
+                    }
+            }
+            
+            }
+					    
+					    
 						Yii::app()->user->setFlash('success',CommonUtility::t(Helper_update));
 						$this->refresh();
 					}
@@ -847,12 +1023,16 @@ class FoodController extends Commonmerchant
 		);
 
 		$model->status = $model->isNewRecord?'publish':$model->status;	
+// 		$model->available = '1';	
+// 		$model->not_for_sale = '0';	
+// 		$model->available_at_specific = '0';	
 				
 		$avatar = CMedia::getImage($model->photo,$model->path,'@thumbnail',
 		CommonUtility::getPlaceholderPhoto('item'));
 		
 				
 		if($update){
+		  
 			$links = array(
 	            t("All Item")=>array(Yii::app()->controller->id.'/items'),        
 	            $model->item_name=>array(Yii::app()->controller->id.'/item_update','item_id'=>$model->item_id),        
@@ -864,28 +1044,56 @@ class FoodController extends Commonmerchant
 	            $this->pageTitle,
 		    );
 		}
-				
-		$params_model = array(
-		    'model'=>$model,	
-		    'multi_language'=>$multi_language,
-		    'language'=>AttributesTools::getLanguage(),
-		    'fields'=>$fields,
-		    'data'=>$data,		    
-		    'ctr'=>Yii::app()->controller->id."/item_remove_image",
-		    'status'=>(array)AttributesTools::StatusManagement('post'),		
-		    'category'=>(array)AttributesTools::Category( $merchant_id ),
-		    'units'=> (array) AttributesTools::Size( $merchant_id ),
-		    'discount_type'=> AttributesTools::CommissionType(),
-		    'links'=>$links,
-		    'item_featured'=>AttributesTools::ItemFeatured(),
-		    'upload_path'=>$upload_path,
-		);
+			if($update){
+			    	$data = AR_availability::getValue($model->merchant_id,'item',$model->item_id);
+			    	
+                        $subcategory=Yii::app()->db->createCommand('
+                        SELECT *
+                        FROM st_subcategory
+                        Where  merchant_id='.$merchant_id.' and item_id='.$model->item_id.'
+                        limit 0,8
+                        ')->queryAll(); 
+			    	
+			 //   		$subcategory = AR_subcategory::model()->find('merchant_id=:merchant_id AND item_id=:item_id', 
+		  //  array(':merchant_id'=>$merchant_id, ':item_id'=>$model->item_id ));
+		  
+		    
+			}else{
+			$data = array(
+			   'day'=>array(),
+			   'start'=>array(),
+			   'end'=>array(),
+			   
+			   );
+			   $subcategory=array();
+			}
+		//	print_r($data);die;
+            
+            $params_model = array(
+            'model'=>$model,	
+            'days'=>AttributesTools::dayWeekList(),
+            'data'=>$data,
+            'subcategory'=>$subcategory,
+            'multi_language'=>$multi_language,
+            'language'=>AttributesTools::getLanguage(),
+            'fields'=>$fields,
+            'data'=>$data,		    
+            'ctr'=>Yii::app()->controller->id."/item_remove_image",
+            'status'=>(array)AttributesTools::StatusManagement('post'),		
+            'category'=>(array)AttributesTools::Category( $merchant_id ),
+            'units'=> (array) AttributesTools::Size( $merchant_id ),
+            'discount_type'=> AttributesTools::CommissionType(),
+            'links'=>$links,
+            'item_featured'=>AttributesTools::ItemFeatured(),
+            'upload_path'=>$upload_path,
+            );
 		
 		if($update){
 			$menu = new WidgetItemMenu;
             $menu->init();    
 			$this->render("//tpl/submenu_tpl",array(
 			    'model'=>$model,
+			    'days'=>AttributesTools::dayWeekList(),
 				'template_name'=>"//food/item_create",
 				'widget'=>'WidgetItemMenu',		
 				'avatar'=>$avatar,
@@ -1779,7 +1987,9 @@ class FoodController extends Commonmerchant
 			 'error'=>array( 'message'=>t(HELPER_RECORD_NOT_FOUND))
 			));						
 			Yii::app()->end();
-		}				
+		}		
+		
+	
 		
 		if($update){			
 			$id = (integer) Yii::app()->input->get('id');				

@@ -1,4 +1,15 @@
 <style>
+.colgreen{
+    border: 1px solid #a7e8d4;
+    background-color: #a7e8d4;
+    margin-right: 6px;
+    border-radius: 50%!important;
+    padding: 0px!important;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color:#fff;
+}
     .profilebox.pt-0.loginbox.tabs-box {
     background: transparent;
     box-shadow: none;
@@ -39,8 +50,33 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
    
      <div class="report-inner">
           <div>
-            <h5><?php echo t("Total Bakers")?></h5>
-            <p ref="summary_merchant">0</p>
+            <h5><?php echo t("Total Basic Bakers")?></h5>
+            <?php    $basic=Yii::app()->db->createCommand('
+                       SELECT * from st_merchant where status="active" and package_id in (2,3)
+                        limit 0,8
+                        ')->queryAll();
+                        echo count($basic);
+                        ?>
+            <p ></p>
+          </div>
+         <span><i class="zmdi zmdi-cake"></i></span>
+      </div>  
+   
+   </div> <!--rounded-status-report--> 
+ </div> <!--col-->
+ <div class="col col-lg-3 col-md-3 col-sm-6 col-6  mb-3 mb-xl-0"> 
+   <div class="rounded-status-report rounded r2">   
+   
+     <div class="report-inner">
+          <div>
+            <h5><?php echo t("Total Premium Bakers")?></h5>
+              <?php    $basic=Yii::app()->db->createCommand('
+                       SELECT * from st_merchant where status="active" and package_id in (1,4)
+                        limit 0,8
+                        ')->queryAll();
+                        echo count($basic);
+                        ?>
+            <p ></p>
           </div>
          <span><i class="zmdi zmdi-cake"></i></span>
       </div>  
@@ -48,7 +84,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
    </div> <!--rounded-status-report--> 
  </div> <!--col-->
  
- <div class="col col-lg-3 col-md-3 col-sm-6 col-6  mb-3 mb-xl-0"> 
+ <!--div class="col col-lg-3 col-md-3 col-sm-6 col-6  mb-3 mb-xl-0"> 
    <div class="rounded-status-report rounded r3">   
    
     <div class="report-inner">
@@ -60,7 +96,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
       </div>  
   
    </div> <!--rounded-status-report--> 
- </div> <!--col-->
+ </div--> <!--col-->
  
  <div class="col col-lg-3 col-md-3 col-sm-6 col-6  mb-3 mb-xl-0"> 
    <div class="rounded-status-report rounded r4">   
@@ -82,7 +118,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
 <div class="row">
  <div class="col-lg-8 mb-3 mb-xl-0">
 
-    <div class="position-relative">
+    <!--div class="position-relative">
       <components-sales-summary
       ref="sales_overview"
       ajax_url="<?php echo $ajax_url?>"        
@@ -94,7 +130,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
       domain="<?php echo Yii::app()->request->getServerName()?>"        
       >
       </components-sales-summary>
-     </div>
+     </div-->
      
      <!--div class="dashboard-statistic position-relative mb-3">
      <components-daily-statistic
@@ -125,7 +161,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
       </components-last-orders>
       </div>
 
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-body">
             <div class="row">
                 <div class="col mb-3 mb-xl-0">
@@ -153,7 +189,8 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
                                                 <a class="dropdown-item">Completed</a>
                                                 </div></div></div></div></div>
                                                 <div class="mt-3 table-orders table-responsive">
-                                                    <table class="table"><thead><tr><th class="p-0 mw-200">
+                                                    <table class="table"><thead>
+                                                        <tr><th class="p-0 mw-200">
                                                         
                                                     </th>
                                                     <th class="p-0 mw-200">
@@ -166,20 +203,211 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
                                                         
                                                     </th></tr></thead>
                                                     <tbody>
+                        <?php    $recent=Yii::app()->db->createCommand('
+                      SELECT * from st_merchant order by  merchant_id DESC limit 0,5
+                        ')->queryAll();
+                        
+                      foreach($recent as $re){?>
+                      
                                                         <tr>
                                                             <td class="pl-0 align-middle">
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="mr-2"><!----><!----></div>
                                                                     <div><div><a 
                                                                     href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=d054802b-5b6c-11ed-b019-00163c6ba7cd" 
-                                                                    class="font-weight-bold hover-text-primary mb-1">Order #10024</a></div>
+                                                                    class="font-weight-bold hover-text-primary mb-1">ID #<?php echo $re['merchant_id'];?></a></div>
                                                                     <div><a class="text-muted font-weight-bold hover-text-primary" 
-                                                                    href="javascript:;">Walk-in Customer</a></div><div 
-                                                                    class="text-muted font11">Yesterday</div></div></div></td>
-                                                                    <td width="15%" class="text-left align-middle">Nick Bakers</td>
-                                                                    <td class="text-right align-middle">
-                                                                        <span class="font-weight-bold d-block">350.00$</span>
-                                                                        <span class="badge payment paid">Paid</span></td><td class="text-right align-middle"><span class="text-muted font-weight-500">Credit/Debit Card</span></td><td class="text-right align-middle"><span class="badge order_status complete">complete</span></td><td class="text-right align-middle pr-0"><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=d054802b-5b6c-11ed-b019-00163c6ba7cd" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3 mr-2"><i class="zmdi zmdi-eye"></i></a><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/preprint/pdf?order_uuid=d054802b-5b6c-11ed-b019-00163c6ba7cd" target="_blank" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3"><i class="zmdi zmdi-download"></i></a></td></tr><tr><td class="pl-0 align-middle"><div class="d-flex align-items-center"><div class="mr-2"><!----><!----></div><div><div><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=b4acbdda-5943-11ed-b019-00163c6ba7cd" class="font-weight-bold hover-text-primary mb-1">Order #10023</a></div><div><a class="text-muted font-weight-bold hover-text-primary" href="javascript:;">Walk-in Customer</a></div><div class="text-muted font11">3 days ago</div></div></div></td><td width="15%" class="text-left align-middle">Nick Bakers</td><td class="text-right align-middle"><span class="font-weight-bold d-block">120.00$</span><span class="badge payment paid">Paid</span></td><td class="text-right align-middle"><span class="text-muted font-weight-500">Credit/Debit Card</span></td><td class="text-right align-middle"><span class="badge order_status complete">complete</span></td><td class="text-right align-middle pr-0"><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=b4acbdda-5943-11ed-b019-00163c6ba7cd" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3 mr-2"><i class="zmdi zmdi-eye"></i></a><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/preprint/pdf?order_uuid=b4acbdda-5943-11ed-b019-00163c6ba7cd" target="_blank" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3"><i class="zmdi zmdi-download"></i></a></td></tr><tr><td class="pl-0 align-middle"><div class="d-flex align-items-center"><div class="mr-2"><!----><div class="blob red"></div></div><div><div><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=7608f503-58e9-11ed-b019-00163c6ba7cd" class="font-weight-bold hover-text-primary mb-1">Order #10022</a></div><div><a class="text-muted font-weight-bold hover-text-primary" href="javascript:;">test1 user</a></div><div class="text-muted font11">4 days ago</div></div></div></td><td width="15%" class="text-left align-middle">Nick Bakers</td><td class="text-right align-middle"><span class="font-weight-bold d-block">123.00$</span><span class="badge payment unpaid">Unpaid</span></td><td class="text-right align-middle"><span class="text-muted font-weight-500">Credit/Debit Card</span></td><td class="text-right align-middle"><span class="badge order_status new">new</span></td><td class="text-right align-middle pr-0"><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=7608f503-58e9-11ed-b019-00163c6ba7cd" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3 mr-2"><i class="zmdi zmdi-eye"></i></a><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/preprint/pdf?order_uuid=7608f503-58e9-11ed-b019-00163c6ba7cd" target="_blank" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3"><i class="zmdi zmdi-download"></i></a></td></tr><tr><td class="pl-0 align-middle"><div class="d-flex align-items-center"><div class="mr-2"><!----><div class="blob red"></div></div><div><div><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=6f62908d-510e-11ed-b019-00163c6ba7cd" class="font-weight-bold hover-text-primary mb-1">Order #10021</a></div><div><a class="text-muted font-weight-bold hover-text-primary" href="javascript:;">test1 user</a></div><div class="text-muted font11">2 weeks ago</div></div></div></td><td width="15%" class="text-left align-middle">Nick Bakers</td><td class="text-right align-middle"><span class="font-weight-bold d-block">120.00$</span><span class="badge payment unpaid">Unpaid</span></td><td class="text-right align-middle"><span class="text-muted font-weight-500">Credit/Debit Card</span></td><td class="text-right align-middle"><span class="badge order_status new">new</span></td><td class="text-right align-middle pr-0"><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=6f62908d-510e-11ed-b019-00163c6ba7cd" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3 mr-2"><i class="zmdi zmdi-eye"></i></a><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/preprint/pdf?order_uuid=6f62908d-510e-11ed-b019-00163c6ba7cd" target="_blank" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3"><i class="zmdi zmdi-download"></i></a></td></tr><tr><td class="pl-0 align-middle"><div class="d-flex align-items-center"><div class="mr-2"><div class="blob green mb-1"></div><div class="blob red"></div></div><div><div><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=cac5d063-5047-11ed-b019-00163c6ba7cd" class="font-weight-bold hover-text-primary mb-1">Order #10020</a></div><div><a class="text-muted font-weight-bold hover-text-primary" href="javascript:;">test1 user</a></div><div class="text-muted font11">2 weeks ago</div></div></div></td><td width="15%" class="text-left align-middle">Cake My Day Bakery</td><td class="text-right align-middle"><span class="font-weight-bold d-block">245.00$</span><span class="badge payment unpaid">Unpaid</span></td><td class="text-right align-middle"><span class="text-muted font-weight-500">Credit/Debit Card</span></td><td class="text-right align-middle"><span class="badge order_status new">new</span></td><td class="text-right align-middle pr-0"><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=cac5d063-5047-11ed-b019-00163c6ba7cd" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3 mr-2"><i class="zmdi zmdi-eye"></i></a><a href="https://dev.indiit.solutions/your_baking_connection/backoffice/preprint/pdf?order_uuid=cac5d063-5047-11ed-b019-00163c6ba7cd" target="_blank" class="btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3"><i class="zmdi zmdi-download"></i></a></td></tr></tbody></table></div><!----></div></div>
+                                                                    href="javascript:;">
+                                                                        <?php echo $re['restaurant_name'];?></a></div><div 
+                                                                    class="text-muted font11"></div></div></div></td>
+                                                                    <td width="15%" class="text-left align-middle"><?php echo $re['contact_email'];?></td>
+                                                                   <td width="15%" class="text-left align-middle"><?php echo $re['contact_phone'];?></td>
+                                                                        <td>
+                                                                            <div><a 
+                                                                    href="https://dev.indiit.solutions/your_baking_connection/backoffice/order/view?order_uuid=d054802b-5b6c-11ed-b019-00163c6ba7cd" 
+                                                                    class="font-weight-bold hover-text-primary mb-1"> 
+                                          <?php if($re['package_id']=='1' || $re['package_id']=='4'){
+                                              ?>
+                                              <?php echo 'Premium Membership';?>
+                                         <?php } ?>
+                                         
+                                           <?php if($re['package_id']=='2' || $re['package_id']=='3'){
+                                              ?>
+                                              <?php echo 'Basic Membership';?>
+                                         <?php } ?>
+                                               
+                                        <?php if($re['package_id']==0){
+                                            
+                                            
+                                        }   ?>                  
+                                        </a></div>
+                                                                        </td>
+                                                                        <td>
+                                           <?php if($re['status']=='active'){
+                                           ?>
+                                          <span class="badge order_status complete"><?php echo $re['status'];?></span> 
+                                           
+                                           <?php }else{?><span class="badge payment unpaid"><?php echo $re['status'];?></span>
+                                           <?php } ?>
+                                                                        </td>
+                                                                        <td>
+             <a href="<?php echo Yii::app()->createUrl("/vendor/edit",array(		  
+			'id'=>$re['merchant_id'],				 
+		  ));   ?>" class="colgreen btn btn-light tool_tips" 
+		  data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+			<i class="zmdi zmdi-border-color"></i>
+			</a>
+		
+                                                                            </td>
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                      
+                                                                    
+                                                          
+                                                                    </tr>
+                      
+                      
+                      
+                          
+                      <?php } ?>
+                        
+                        </tbody></table></div><!----></div></div>
+                        
+                        
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col mb-3 mb-xl-0">
+                    <h5 class="m-0">Auto Renewals</h5>
+                    <p class="m-0 text-muted">Auto Renewals in coming  month</p>
+                    </div><div class="col"><div class="d-none d-sm-block">
+                     
+                                </div>
+                                <div class="d-block d-sm-none text-right">
+                                    <div class="dropdown btn-group dropleft">
+                                        <button class="btn btn-sm dropdown-togglex dropleft" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="zmdi zmdi-more-vert"></i>
+                                            </button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item active">All</a>
+                                                <a class="dropdown-item">Processing</a>
+                                                <a class="dropdown-item">Ready</a>
+                                                <a class="dropdown-item">Completed</a>
+                                                </div></div></div></div></div>
+                                                <div class="mt-3 table-orders table-responsive">
+                                                    <table class="table"><thead>
+                                                        <tr>
+                                                   <th class="p-0 mw-200">Baker ID</th>
+                                                    <th class="p-0 mw-200">
+                                                        Baker Name
+                                                    </th>
+                                                    <th class="p-0 mw-200">
+                                                       Payment Method
+                                                    </th>
+                                                    <th class="p-0 mw-200">
+                                                        Amount
+                                                    </th>
+                                                     <th class="p-0 mw-200">
+                                                        Package Name
+                                                    </th>
+                                                    <th class="p-0 mw-200">
+                                                        Due Date 
+                                                    </th>
+                                                   </tr></thead>
+                                                    <tbody>
+                        <?php   
+                        
+                        $recent1=Yii::app()->db->createCommand('
+                        SELECT st_merchant.restaurant_name,st_plans_invoice.*,st_plans.title,st_plans.package_period from  st_plans_invoice 
+                        inner join st_merchant 
+                        on 
+                        st_plans_invoice.merchant_id=st_merchant.merchant_id
+                        inner join st_plans
+                        on
+                        st_plans.package_id=st_plans_invoice.package_id
+                        
+                        order by  invoice_number DESC limit 0,5
+                        ')->queryAll();
+                        
+                      foreach($recent1 as $re){
+                           if($re['package_period']=='anually'){
+                                              
+                                                 $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 year'));
+                                               
+                                          }else if($re['package_period']=='monthly'){
+                                              
+                                                 $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 months'));
+                                               
+                                          }           
+                         // echo $re['package_period'];
+                         // echo  $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 months'));
+                         $next_month = date('Y-m-d', strtotime('+1 month'));
+                         //echo $next_month;
+                         //echo date('Ym',strtotime($next_month));
+                         
+                                $testdate=strtotime($newDate); // this will be converted to 2018-07-01
+                                if (date('Ym',strtotime($next_month))==date('Ym', $testdate)) {
+                                 $curr=true;
+                                } else {
+                                $curr=false;
+                                }
+                                if($curr==true){
+                      ;?>
+                      
+                                                        <tr>
+                                                            <td class="pl-0 align-middle"><?php echo $re['invoice_number'];?></td>
+                                                                    <td width="15%" class="text-left align-middle"><?php echo $re['restaurant_name'];?></td>
+                                                                      <td>
+                                         
+                                          <span class="badge order_status complete"><?php echo $re['payment_code'];?></span> 
+                                           
+                                                                        </td>
+                                                                   <td width="15%" class="text-left align-middle">$<?php echo $re['amount'];?></td>
+                                                                   
+                                                                   
+                                                                        <td>
+                         <div><a 
+                                     href="#" 
+                                                                    class="font-weight-bold hover-text-primary mb-1"> 
+                                          <?php if($re['package_id']=='1' || $re['package_id']=='4'){
+                                              ?>
+                                              <?php echo 'Premium Membership';?>
+                                         <?php } ?>
+                                         
+                                           <?php if($re['package_id']=='2' || $re['package_id']=='3'){
+                                              ?>
+                                              <?php echo 'Basic Membership';?>
+                                         <?php } ?>
+                                               
+                                        <?php if($re['package_id']==0){
+                                            
+                                            
+                                        }   ?>                  
+                                        </a></div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php 
+                                          if($re['package_period']=='anually'){
+                                              
+                                               echo  $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 year'));
+                                               
+                                          }else if($re['package_period']=='monthly'){
+                                              
+                                               echo  $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 months'));
+                                               
+                                          }                                 
+                                                                            
+                                                                            ?>
+                                                                        </td>
+                                                                       
+                                                                        
+                                      
+                                        </tr>
+              <?php } } ?>
+                        
+                        </tbody></table></div><!----></div></div>
       
       <components-customer-details
 	  ref="customer"    

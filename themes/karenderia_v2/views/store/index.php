@@ -26,15 +26,7 @@
                <div class="header-main">
                   <h3>Welcome to the <br> Home Bakery Marketplace!</h3>
                </div>
-               <?php
-                  $form = $this->beginWidget(
-                  'CActiveForm',
-                  array(
-                  'id' => 'upload-form',
-                  'enableAjaxValidation' => false,    
-                  )
-                  );
-                  ?>
+              
                <div class="content-main">
                   <p>Enter your address to find talented bakers and creative treats near you!</p>
                   <!--<DIV id="vue-home-search" class="home-search-wrap position-relative d-none d-lg-block">  -->
@@ -51,6 +43,8 @@
                   <div class="form-group form-box">
                      <div id="vue-merchant-signup" class="row">
                         <div class="auto-complete position-relative">
+                          
+                            <input type="hidden" id="address" :value="address">
                            <component-auto-complete
                               v-model="address" 
                               :modelValue="address"
@@ -72,14 +66,14 @@
                      ')->queryAll(); 
                      ?>
                   <div class="form-group form-box">
-                     <select class="form-control" name="type">
+                     <select class="form-control product_type" name="type">
                         <option>Select product type</option>
                         <?php foreach($meta1 as $m){?>
                         <option value="<?php echo $m['cuisine_id'];?>"><?php echo $m['cuisine_name'];?></option>
                         <?php } ?>
                      </select>
                   </div>
-                  <button class="btn btn-green w-100 mt-3"    
+                  <button class="btn btn-green w-100 mt-3 btn-search"    
                      :class="{ loading: loading }" 
                      :disabled="checkForm"
                      >
@@ -87,7 +81,7 @@
                      <div v-cloak v-if="loading==true" class="m-auto" data-loader="circle-side"></div>
                   </button>
                </div>
-               <?php $this->endWidget(); ?>
+              
             </div>
          </div>
          <!--h2 class="text-center mb-3"><?php echo t("Let's find best food for you")?></h2-->
@@ -616,4 +610,33 @@
    
    </div> 
    <!-- carousel -->
+</script>
+
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+	var token=document.querySelector('meta[name=YII_CSRF_TOKEN]').content;
+    $( document ).ready(function() {
+        
+        $('body').on('click', '.btn-search', function() {
+        var id=$(this).val();
+         $.ajax({
+                url: "https://dev.indiit.solutions/your_baking_connection/api/getLocationsDetails",
+                type: "put",
+                 contentType: 'application/json;charset=UTF-8',
+                 data  : JSON.stringify({'q':  $('#address').val(),'type':$('.product_type').val(),'YII_CSRF_TOKEN':token}),
+            
+                success: function (response) {
+                    
+                    window.location.href="https://dev.indiit.solutions/your_baking_connection/store/bakers";
+                  
+               
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+                }
+                });
+        
+        });
+    });
 </script>

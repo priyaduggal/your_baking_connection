@@ -80,7 +80,7 @@ $form = $this->beginWidget(
   </div>
   <div class="p-2"><h5><?php echo t("Check All")?></h5></div>
 </div> <!--flex-->
-
+<?php print_r($data);?>
 <?php foreach ($days as $key=> $item):?>
 <div class="row mt-3 align-items-center">
  <div class="col">

@@ -2545,3 +2545,74 @@ select#interval_pickup {
 {
     margin-bottom: 15px !important;
 }
+
+.profilebox.loginbox .boxsha .card-body {
+    padding: 18px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.box-shadow-none {
+    box-shadow: none !important;
+	    border-radius: 0 !important;
+}
+
+.card.style-2 ul.item-groups li:last-child {
+    border: 0;
+    margin-bottom: 0;
+}
+
+.card.style-2 ul.item-groups li img {
+    height: 90px;
+    min-width: 90px;
+}
+
+.card.style-2 .list-group-sm .list-group-item:last-child {
+    border-bottom: 0;
+}
+
+.total-order-amount {
+    font-weight: 700;
+}
+.card-body div#vue-uploader {
+    margin-bottom: 15px;
+}
+.card-body div#vue-uploader .custom-file {
+    height: 50px;
+}
+.card-body div#vue-uploader .custom-file  label.custom-file-label.image_label {
+    border-radius: 0;
+    border: 1px solid #edecec;
+    min-height: 50px;
+    line-height: 35px;
+}
+.card-body div#vue-uploader .custom-file  label.custom-file-label.image_label::after {
+    height: 50px;
+    padding: 15px 15px;
+    border-radius: 0;
+}
+.searchord.has-search .form-control-feedback {
+    top: 6px;
+}.searchord.has-search input.form-control {
+    padding-left: 32px;
+}
+.rightposorder .card .card-body {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%)!important;
+}
+.rightposorder .card .card-body button.btn.btn-secondary.text-left {
+    padding-left: 0.5rem!important;
+    padding-right: 0.5rem!important;
+}.profilebox.loginbox .boxsha .card.boxsha.mt-3 {
+    margin-bottom: 15px;
+}
+.bootstrap-datetimepicker-widget .btn-primary
+{
+  background-color: #a7e8d4;
+    border-color: #a7e8d4;
+}
+.bootstrap-datetimepicker-widget .fa
+{
+  
+    color: #a7e8d4;
+}

@@ -35,7 +35,6 @@
  
  </div>
  <div class="col-md-6">
- 
  <div class="form-label-group">    
   <?php    
     echo $form->labelEx($model,'URL extension'); ?>
@@ -46,11 +45,8 @@
   
    <?php echo $form->error($model,'restaurant_slug'); ?>
 </div>
- 
  </div>
 </div> <!--row-->
-
-
  <div class="form-label-group">    
   <?php    
     echo $form->labelEx($model,'contact_name'); ?>
@@ -61,11 +57,8 @@
   
    <?php echo $form->error($model,'contact_name'); ?>
 </div>
-
-
 <div class="row">
  <div class="col-md-6">
- 
  <div class="form-label-group">    
   <?php    
     echo $form->labelEx($model,'contact_phone'); ?>
@@ -76,10 +69,8 @@
   
    <?php echo $form->error($model,'contact_phone'); ?>
 </div>
- 
  </div>
  <div class="col-md-6">
- 
  <div class="form-label-group">    
   <?php    
     echo $form->labelEx($model,'contact_email'); ?>
@@ -90,11 +81,8 @@
   
    <?php echo $form->error($model,'contact_email'); ?>
 </div>
- 
  </div>
 </div> <!--row-->
-
-
 <div id="vue-uploader">
 <component-uploader
 ref="uploader"
@@ -203,17 +191,60 @@ save_path="<?php echo $model->path2?>"
    )); ?>         
    <?php echo $form->error($model,'cuisine2'); ?>
 </div>
+<?php 
+if(isset($model->service2)){
+    if(count($model->service2)>0){
+        if(in_array('delivery',$model->service2)){
+            $delivery=1;
+        }
+        if(in_array('pickup',$model->service2)){
+            $pickup=1;
+        }
+    }
+}else{
+     $delivery=0;
+     $pickup=0;
+}
+?>
+<h6 class="mb-0"><?php echo t("Fulfillment Methods")?></h6>
 
-<h6 class="mb-0"><?php echo t("Services")?></h6>
-
-<div class="form-label-group">    
+<!--div class="form-label-group">    
    <?php echo $form->dropDownList($model,'service2', (array)$services,array(
      'class'=>"form-control custom-select form-control-select select_two",
      'placeholder'=>$form->label($model,'service2'),
      'multiple'=>true,
-   )); ?>         
+   )); ?> 
+   
    <?php echo $form->error($model,'service2'); ?>
+</div-->
+<div class="row">
+ <div class="col-lg-4">
+<div class="custom-control custom-switch custom-switch-md">  
+  <?php echo $form->checkBox($model,"delivery",array(
+     'class'=>"custom-control-input",     
+     'value'=>1,
+     'id'=>"delivery",     
+     'checked'=>$delivery==1?true:false,     
+   )); ?>   
+  <label class="custom-control-label" for="delivery">
+   <?php echo t("Delivery")?>
+  </label>
+</div>  
+</div>  
+ <div class="col-lg-4">
+<div class="custom-control custom-switch custom-switch-md">  
+  <?php echo $form->checkBox($model,"pickup",array(
+     'class'=>"custom-control-input",     
+     'value'=>1,
+     'id'=>"pickup",     
+     'checked'=>$pickup==1?true:false,     
+   )); ?>   
+  <label class="custom-control-label" for="pickup">
+   <?php echo t("Pickup")?>
+  </label>
+</div>    
 </div>
+ </div>
 
 
 <h6 class="mb-0"><?php echo t("Tags")?></h6>
@@ -229,8 +260,6 @@ save_path="<?php echo $model->path2?>"
 <h6 class="mb-0"><?php echo t("Allergen information")?></h6>
 
 <div class="form-label-group">    
-
- 
    <?php echo $form->textField($model,'allergen',array(
      'class'=>"form-control form-control-text",
      'placeholder'=>$form->label($model,'allergen'),     
@@ -240,7 +269,6 @@ save_path="<?php echo $model->path2?>"
 </div>
 
 <h6 class="mb-0"><?php echo t("Featured")?></h6>
-
 <div class="form-label-group">    
    <?php echo $form->dropDownList($model,'featured',(array)$featured,array(
      'class'=>"form-control custom-select form-control-select select_two",
@@ -252,7 +280,6 @@ save_path="<?php echo $model->path2?>"
 
 <div class="row">
  <div class="col-md-6">
- 
  <div class="form-label-group">    
  <?php    
     echo $form->labelEx($model,'delivery_distance_covered'); ?>
@@ -266,7 +293,6 @@ save_path="<?php echo $model->path2?>"
  
  </div>
  <div class="col-md-6">
- 
  <div class="form-label-group">    
  <label>&nbsp;</label>
    <?php echo $form->dropDownList($model,'distance_unit',(array)$unit,array(
@@ -277,6 +303,19 @@ save_path="<?php echo $model->path2?>"
 </div>
  
  </div>
+ <div class="col-lg-6">
+<div class="custom-control custom-switch custom-switch-md mr-4">  
+  <?php echo $form->checkBox($model,"auto_accept",array(
+     'class'=>"custom-control-input",     
+     'value'=>1,
+     'id'=>"auto_accept",     
+     'checked'=>$model->auto_accept==1?true:false,     
+   )); ?>   
+  <label class="custom-control-label" for="auto_accept">
+   <?php echo t("Auto Accept")?>
+  </label>
+</div>    
+</div>
 </div> <!--row-->
 
 
@@ -300,6 +339,8 @@ save_path="<?php echo $model->path2?>"
   
 </DIV>
 <!--row-->
+
+
 
 <?php if($show_status):?>
 <h6 class="mb-4"><?php echo t("Status")?></h6>

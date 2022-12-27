@@ -6,6 +6,7 @@ class AR_merchant extends CActiveRecord
 	public $cuisine2;
 	public $service2;
 	public $featured;
+
 	
 	public $merchant_master_table_boooking;
 	public $merchant_master_disabled_ordering;
@@ -56,13 +57,13 @@ class AR_merchant extends CActiveRecord
 	public function rules()
 	{
 		 return array(
-            array('restaurant_slug,restaurant_name,contact_phone,contact_email,cuisine2,service2,
+            array('restaurant_slug,restaurant_name,contact_phone,contact_email,cuisine2,
             delivery_distance_covered,distance_unit,contact_name,status', 
             'required','on'=>'information',
             'message'=> CommonUtility::t(Helper_field_required) ), 
             
             array('restaurant_slug,restaurant_name,contact_phone,contact_email,contact_name,restaurant_phone,
-            ,description,terms,popup_text,allergen',	
+            ,description,terms,popup_text,allergen,auto_accept',	
             'filter','filter'=>array($obj=new CHtmlPurifier(),'purify')),         
             
             array('contact_email','email','message'=> t(Helper_field_email) ),              
@@ -241,9 +242,9 @@ class AR_merchant extends CActiveRecord
 			MerchantTools::saveMerchantMeta($this->merchant_id,$data,'payment_gateway');
 		}
 						
-		if(is_array($this->service2) && count($this->service2)>=1){
-			MerchantTools::saveMerchantMeta($this->merchant_id,$this->service2,'services');	
-		}		
+// 		if(is_array($this->service2) && count($this->service2)>=1){
+// 			MerchantTools::saveMerchantMeta($this->merchant_id,$this->service2,'services');	
+// 		}		
 		
 		if(is_array($this->featured) && count($this->featured)>=1){
 			MerchantTools::saveMerchantMeta($this->merchant_id,$this->featured,'featured');	

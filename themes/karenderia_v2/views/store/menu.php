@@ -1,4 +1,51 @@
-<section class="loginbox sliderbox">
+<style>
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+</style><style>
+.error{
+    width: 100%;
+    color: red;
+}
+</style><section class="loginbox sliderbox">
      <div id="owl-carousel" class="owl-carousel2 owl-carousel owl-theme">    
          <?php if($gallery):?>
   
@@ -91,25 +138,25 @@
                   <div class="prod-tabs tabs-box">
                      
                      <ul class="nav nav-tabs clearfix">
-                         <?php if($data['package_id']==1){?>
+                         <?php if($data['package_id']==1 || $data['package_id']==4){?>
                         <li class="tab-btn  text-uppercase active"   data-toggle="tab" >
                             <a href="#tab_default_1" data-toggle="tab">Available Products</a>
                         </li>
                         <?php } ?>
-                        <?php if($data['package_id']==1){?>
+                        <?php if($data['package_id']==1 || $data['package_id']==4){?>
                          <li class="tab-btn text-uppercase" data-toggle="tab"> 
                         <a href="#tab_default_2"  data-toggle="tab">Gallery of Work</a></li>
                         
                         <?php } ?>
                         
-                         <?php if($data['package_id']==2){?>
+                         <?php if($data['package_id']==2 || $data['package_id']==3){?>
                         
                         <li class="tab-btn text-uppercase active" data-toggle="tab"> 
                         <a href="#tab_default_2"  data-toggle="tab">Gallery of Work</a></li>
                         
                         <?php } ?>
                         
-                         <?php if($data['package_id']==1){?>
+                         <?php if($data['package_id']==1 || $data['package_id']==4){?>
                         <li class="tab-btn text-uppercase" data-toggle="tab"><a href="#tab_default_3"  data-toggle="tab">Reviews</a></li>
                          <?php } ?>
                      </ul>
@@ -165,7 +212,7 @@
                            <!-- End Related Products -->
                         </div>
                         
-                        <?php if($data['package_id']==2){?>
+                        <?php if($data['package_id']==2 || $data['package_id']==3){?>
                         <div class="tab-pane active" id="tab_default_2">
                             <?php }else{ ?>
                             <div class="tab-pane " id="tab_default_2">
@@ -311,7 +358,7 @@
                   </div>
                </div>
             </div>
-            <?php if($data['package_id']==1){?>
+            <?php if($data['package_id']==1  || $data['package_id']==4){?>
             <div class=" trem-conditiom">
                <h2>Terms &amp; Conditions</h2>
                <?php echo Yii::app()->input->xssClean($data['terms'])?>
@@ -364,9 +411,10 @@
           </div>
       </div-->
          </div>
+      
          <div class="col-md-4 profilebox loginbox pt-0">
              <div class="card boxsha">
-                 <?php if($data['package_id']==1){ ?>
+                 <?php if($data['package_id']==1 || $data['package_id']==4 ){ ?>
                  <div class="card-body">
                       <?php $this->renderPartial("//store/cart",array(
 	        'checkout'=>false,
@@ -391,10 +439,10 @@
             <div class="card boxsha mt-4">
                <div class="card-body text-center" id="first-items">
                   <h2 class="text-uppercase mt-4 mb-4">Connect with Baker</h2>
-                 <?php if($data['package_id']==1){?> <a href="#"><?php echo $data['contact_email'];?></a>
+                 <?php if($data['package_id']==1 || $data['package_id']==4){?> <a href="#"><?php echo $data['contact_email'];?></a>
                  <?php } ?>
                  
-                 <?php if($data['package_id']==2){?>
+                 <?php if($data['package_id']==2 || $data['package_id']==3){?>
         <?php     $all=Yii::app()->db->createCommand('
         SELECT *
         FROM st_option
@@ -441,49 +489,43 @@
                   <?php } ?>
                </div>
             </div>
-             <?php if($data['package_id']==1){?>
+             <?php if($data['package_id']==1 || $data['package_id']==4){?>
            <div class="card boxsha mt-4">
                <div class="card-body text-center" id="first-items">
                   <h2 class="text-uppercase mt-4 mb-4">Custom Order Request</h2>
                   <div class="checkout-form payment-box">
-                       <?php
-                    $form = $this->beginWidget(
-                    'CActiveForm',
-                    array(
-                    'id' => 'upload-form',
-                    'enableAjaxValidation' => false,		
-                    )
-                    );
-                    ?>
+                      <form id="addrequest">
                         <div class="form-group">
                            <div class="field-label">Name <sup>*</sup></div>
-                           <input type="text" name="request_name" required value="" placeholder="">
+                           <input type="text" id="request_name" name="request_name" required value="" placeholder="">
+                           <input type="hidden" id="YII_CSRF_TOKEN" name="YII_CSRF_TOKEN"  value="" placeholder="">
+                           <input type="hidden" id="merchant_id" name="merchant_id"  value="<?php echo $data['merchant_id'];?>" placeholder="">
                         </div>
                         <!--Form Group-->
                         <div class="form-group">
                            <div class="field-label">Email <sup>*</sup></div>
-                           <input type="email" name="request_email" required value="" placeholder="">
+                           <input type="email" id="request_email" name="request_email" required value="" placeholder="">
                         </div>
                         <!--Form Group-->
                         <div class="form-group">
                            <div class="field-label">Phone Number <sup>*</sup></div>
-                           <input type="text" name="request_phone" required value="" placeholder="">
+                           <input type="text"id="request_phone" name="request_phone" required value="" placeholder="">
                         </div>
                         <div class="form-group">
                            <div class="field-label">Requested Order Date <sup>*</sup></div>
-                           <input class="form-control flatpickr-input" name="request_order_date" required type="date" id="datetime" >
+                           <input class="form-control flatpickr-input"id="request_order_date" name="request_order_date" required type="date" id="datetime" >
                         </div>
                         <div class="form-group">
                            <div class="field-label">Occasion <sup>*</sup></div>
-                           <input type="text" name="occasion" value=""  required placeholder="">
+                           <input type="text" name="occasion" value=""  required placeholder="" id="occasion">
                         </div>
                         <div class="form-group">
                            <div class="field-label">Requested Quantity <sup>*</sup></div>
-                           <input type="text" name="requested_quantity" required value="" placeholder="">
+                           <input type="text" name="requested_quantity" required value="" placeholder="" id="requested_quantity">
                         </div>
                         <div class="form-group">
                            <div class="field-label">Request Details (product, colors, flavors and any other specific details)<sup>*</sup></div>
-                           <input type="text" name="requested_details" value="" placeholder="">
+                           <input type="text" name="requested_details" id="requested_details" value="" placeholder="">
                         </div>
                        <!--COMPONENTS REVIEW -->
                         <div>
@@ -493,17 +535,17 @@
                                 <div class="upload__btn-box">
                                   <label class="upload__btn">
                                     <i class="fa fa-upload" aria-hidden="true"></i>
-                                    <p class="mb-0">Upload images</p>
+                                    <p class="mb-0">Upload image</p>
                                     <input type="file" name="images"data-max_length="20" class="upload__inputfile">
                                   </label>
                                 </div>
                                 <div class="upload__img-wrap"></div>
                               </div>
                            </div>
-                           <div class="or-div">
+                           <!--div class="or-div">
                                <span>or</span>
                            </div>
-                           <a href="#" class="btn btn-success addbtn mb-3">Select a photo from favorites saved</a>
+                           <a href="#" class="btn btn-success addbtn mb-3">Select a photo from favorites saved</a-->
                         </div>
 
                        
@@ -511,7 +553,7 @@
                           <button type="submit" class="btn theme-btn">Send Message</button>
                            <!--<a class="theme-btn" data-toggle="modal" href="#exampleModalToggle" role="button">Send Message</a>-->
                         </div>
-                      <?php $this->endWidget(); ?>
+                     </form>
                   </div>
                </div>
             </div>
@@ -1156,3 +1198,103 @@
   </div>
 </div>
 <?php } ?>
+<div id="snackbar">Some text some message..</div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script>
+  jQuery(function($) {
+  	var token=document.querySelector('meta[name=YII_CSRF_TOKEN]').content;
+ 
+  	$('#YII_CSRF_TOKEN').val(token);
+    $("#addrequest").validate({
+        
+        
+          rules: {
+     request_name: {
+        required: true
+      },
+      request_email:{
+          required: true
+      },
+       request_phone:{
+          required: true
+      },
+      request_order_date:{
+          required: true
+      },
+      occasion:{
+          required: true
+      }, requested_quantity:{
+          required: true
+      },requested_details:{
+          required: true
+      }
+       
+    },
+    messages: {
+     
+       request_name: {
+        required: "Enter Name",
+      
+      },
+      request_email: {
+        required: "Enter Email",
+      
+      },
+       request_phone: {
+        required: "Enter Phone",
+      
+      },  request_order_date: {
+        required: "Enter Order Date",
+      
+      }, occasion: {
+        required: "Enter Occasion",
+      
+      }, requested_quantity: {
+        required: "Enter Quantity",
+      
+      }, requested_details: {
+        required: "Enter Details",
+      
+      },
+     
+    },
+    submitHandler: function (form) {
+        
+        var formData = new FormData(form);
+        $.ajax({
+        url: "https://dev.indiit.solutions/your_baking_connection/api/saveRequest",
+        type: 'post',
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        data: formData,
+        success: function(result) {
+        console.log(result);
+        if(result.code == 1){
+            var x = document.getElementById("snackbar");
+            $('#snackbar').html('Request saved successfully');
+            x.className = "show";
+            setTimeout(function(){
+            x.className = x.className.replace("show", ""); }, 2000);
+            form.reset();
+        }
+        else if(result.code == 2){
+            var x = document.getElementById("snackbar");
+            $('#snackbar').html(result.msg);
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
+
+        }
+        else{
+        
+        }
+        }
+        });
+     }
+     
+     });
+        
+    });
+    </script>

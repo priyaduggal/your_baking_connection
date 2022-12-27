@@ -771,8 +771,12 @@ class ApibackendController extends CommonServices
 	
 	public function actionaddCartItems()
 	{			
+	   // print_r($this->data);die;
 		$cart_uuid = isset($this->data['order_uuid'])?$this->data['order_uuid']:'';
+	
 		$order_uuid = $cart_uuid;
+	
+		
 		$cart_row = CommonUtility::createUUID("{{ordernew_item}}",'item_row');
 		
 		$transaction_type = isset($this->data['transaction_type'])?$this->data['transaction_type']:'';		
@@ -836,7 +840,7 @@ class ApibackendController extends CommonServices
 				}
 			}
 		}
-		
+	
 		
 		$attributes = array();
 		$meta = isset($this->data['meta'])?$this->data['meta']:'';
@@ -861,7 +865,7 @@ class ApibackendController extends CommonServices
 		try {
 			
 			$model = COrders::get($order_uuid);
-			
+		
 			$criteria=new CDbCriteria();	
 	        $criteria->alias = "a";
 	        $criteria->select = "a.item_id,a.item_token,
@@ -2325,23 +2329,37 @@ HTML;
         $models = AR_notifications::model()->findAll($criteria);
         if($models){
         	foreach ($models as $item) {
-        	    
-        	    
-        		
+        	     $mss=substr($item->message,6,12);
+        	     
+               
+            
         		$params = !empty($item->message_parameters)?json_decode($item->message_parameters,true):'';  
         		
-        		$view_order= Yii::app()->createAbsoluteUrl('orders/view',array(
-			         	  'order_uuid'=>t('{{order_uuid}}',(array)$params)
+        		$view_order= Yii::app()->createAbsoluteUrl('orders/vieworders',array(
+			         	  'order_id'=>t($mss,(array)$params)
 			           ));
-        	
-        		$data[]=array(		
+        	if($item->type==0){
+        		$data[]=array(	
+        		    
         		    'message'=>'<a target="_blank" href="'.$view_order.'">'.t($item->message,(array)$params).'</a>',
+        		    'order_id'=>t($mss,(array)$params),
+        		    'pdate_created'=>$item->date_created,
         		  'date_created'=>Date_Formatter::dateTime($item->date_created),
 				  				  
 				);
+        	}else{
+        	   	$data[]=array(	
+        		    
+        		    'message'=>'<a target="_blank" href="'.$view_order.'">Custom-'.t($item->message,(array)$params).'</a>',
+        		    'order_id'=>t($mss,(array)$params),
+        		    'pdate_created'=>$item->date_created,
+        		  'date_created'=>Date_Formatter::dateTime($item->date_created),
+				  				  
+				); 
+        	}
         	}        	
         }
-       
+     
          $datatables = array(
 		  'draw'=>intval($draw),
 		  'recordsTotal'=>intval($count),
@@ -3756,9 +3774,10 @@ HTML;
     
     public function actioncreateOrder()
     {
+       
     	try {	
     		    		
-    		$order_uuid = CPos::createOrder(Yii::app()->merchant->merchant_id);		
+    		$order_uuid = CPos::createOrder(Yii::app()->merchant->merchant_id);	
     		$this->code = 1; $this->msg = "ok";
 		    $this->details = array(
 		      'order_uuid'=>$order_uuid,
@@ -4069,10 +4088,16 @@ HTML;
 		LEFT JOIN {{ordernew_meta}} b on  a.order_id=b.order_id 
 		LEFT JOIN {{client}} c on  a.client_id = c.client_id 
 		';
-		$criteria->condition = "a.merchant_id=:merchant_id AND meta_name=:meta_name ";
-		$criteria->params  = array(
+	//	$criteria->condition = "a.merchant_id=:merchant_id AND meta_name=:meta_name ";
+	$criteria->condition = "a.merchant_id=:merchant_id";
+// 		$criteria->params  = array(
+// 		  ':merchant_id'=>intval($merchant_id),		  
+// 		  ':meta_name'=>'customer_name'
+// 		);
+
+	$criteria->params  = array(
 		  ':merchant_id'=>intval($merchant_id),		  
-		  ':meta_name'=>'customer_name'
+		  
 		);
 	
 		$criteria->addInCondition('a.service_code', array('pos') );
@@ -4106,10 +4131,10 @@ HTML;
         $pages->pageSize = intval($length);
         $pages->applyLimit($criteria);        
            
-           
+           //print_r($criteria);die;
                        
         $models = AR_ordernew::model()->findAll($criteria);
-      //   print_r($models);die; 
+      // print_r($models);die; 
         if($models){
          	foreach ($models as $item) {         		
         // print_r($item);die;     
@@ -4138,7 +4163,7 @@ HTML;
          		$status_trans = $status[$item->status]['status'];
          	}
          	
-         	$view_order = Yii::app()->createUrl('orders/view',array(
+         	$view_order = Yii::app()->createUrl('orders/viewpos',array(
          	  'order_uuid'=>$item->order_uuid
          	));
          	
@@ -4190,9 +4215,10 @@ HTML;
          		$data[]=array(
          	  	   'date'=>$information1,
         		  //'order_id'=>$item->order_id,
-        		   'client_id'=>$item->customer_name,
-        		   'email'=>$all[0]['email_address'],
-        		   'phoneno'=>$all[0]['phone_prefix'].''.$all[0]['contact_phone'] ,
+        		  // 'client_id'=>$item->customer_name,
+        		   'client_id'=>$item['request_name'],
+        		   'email'=>$item['request_email'],
+        		   'phoneno'=>$item['request_phone'] ,
         		    'fulfillmentdate'=>$item['request_order_date'],
         		    'occasion'=>$item['occasion'],
         		    'requestedquantity'=>$item['requested_quantity'],

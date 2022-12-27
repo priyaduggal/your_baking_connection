@@ -1,4 +1,9 @@
-<?php
+<style>
+.breadcrumbs{
+    display:none !important;
+    
+    }
+</style><?php
 $form = $this->beginWidget(
 	'CActiveForm',
 	array(
@@ -53,7 +58,7 @@ $form = $this->beginWidget(
   </label>
 </div>   
 </div>
-<div class="col-lg-6">
+<!--div class="col-lg-6">
 <div class="custom-control custom-switch custom-switch-md mr-4">  
   <?php echo $form->checkBox($model,"auto_accept",array(
      'class'=>"custom-control-input",     
@@ -65,7 +70,21 @@ $form = $this->beginWidget(
    <?php echo t("Auto Accept")?>
   </label>
 </div>    
-</div>
+</div-->
+<!--div class="col-lg-6">
+    
+<div class="custom-control custom-switch custom-switch-md mr-4">  
+  <?php echo $form->checkBox($model,"tax_on_products",array(
+     'class'=>"custom-control-input",     
+     'value'=>1,
+     'id'=>"tax_on_products",     
+     'checked'=>$model->tax_on_products==1?true:false,     
+   )); ?>   
+  <label class="custom-control-label" for="tax_on_products">
+   <?php echo t("Sales tax on products")?>
+  </label>
+</div>    
+</div-->
 <div class="col-lg-6">
 <div class="custom-control custom-switch custom-switch-md mr-4">  
   <?php echo $form->checkBox($model,"tax_on_delivery_fee",array(

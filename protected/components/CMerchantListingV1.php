@@ -502,6 +502,7 @@ class CMerchantListingV1
 	*/
 	public static function Search($filter=array(), $lang = KMRS_DEFAULT_LANGUAGE )
 	{
+	   
 		if(!is_array($filter) && count($filter)<=0){
 			throw new Exception( 'Invalid filter' );
 		}
@@ -619,8 +620,13 @@ class CMerchantListingV1
 		$and
 		ORDER BY close_store,disabled_ordering,pause_ordering ASC, merchant_open_status+0 DESC, is_sponsored DESC, distance ASC		
 		LIMIT $filter[offset],$filter[limit]
-		";				
-		if($res = CCacheData::queryAll($stmt)){						
+		";	
+		
+	
+		if($res = CCacheData::queryAll($stmt)){	
+		    
+		   // print_r($res);die;
+		   
 			foreach ($res as $val) {
 				$val2 = $val;	
 				
@@ -678,7 +684,9 @@ class CMerchantListingV1
 				$data[] = $val2;
 			}
 			return $data;
-		} else throw new Exception( 'no results' );		
+		}else{
+		    return array();
+		} 
 	}
 	
 	public static function getDayWeek($date='',$day=0)

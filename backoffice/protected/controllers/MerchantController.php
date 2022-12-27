@@ -263,7 +263,21 @@ class MerchantController extends Commonmerchant
 		$upload_path = CMedia::merchantFolder();
 		
 		if(isset($_POST['AR_merchant'])){
-		    $model->attributes=$_POST['AR_merchant'];			
+		    $model->attributes=$_POST['AR_merchant'];	
+		    $service2=array();
+		    if(isset($_POST['AR_merchant']['delivery']) && $_POST['AR_merchant']['delivery']=='1'){
+		        $service2[]='delivery';
+		    }
+		    if(isset($_POST['AR_merchant']['pickup']) && $_POST['AR_merchant']['pickup']=='1'){
+		        $service2[]='pickup';
+		    }
+		    
+		    $_POST['AR_merchant']['service2']=$service2;
+		   
+            if(is_array($_POST['AR_merchant']['service2']) && count($_POST['AR_merchant']['service2'])>=1){
+            MerchantTools::saveMerchantMeta($model->merchant_id,$_POST['AR_merchant']['service2'],'services');	
+            }	
+		
 		    if($model->validate()){			    	
 		    		    	    	    	    
 	    	    if(isset($_POST['photo'])){
@@ -279,7 +293,8 @@ class MerchantController extends Commonmerchant
 						$model->path2 = isset($_POST['path2'])?$_POST['path2']:$upload_path;
 					} else $model->header_image = '';
 				} else $model->header_image = '';
-		    	
+				
+					
 				if($model->save()){																					
 					Yii::app()->user->setFlash('success',CommonUtility::t(Helper_update));
 					$this->refresh();
@@ -1169,6 +1184,8 @@ class MerchantController extends Commonmerchant
 			AR_merchant_meta::saveMeta($merchant_id,'tax_service_fee', isset($post['tax_service_fee'])? intval($post['tax_service_fee']) :0 );
 			AR_merchant_meta::saveMeta($merchant_id,'tax_packaging', isset($post['tax_packaging'])? intval($post['tax_packaging']) :0 );	
 			AR_merchant_meta::saveMeta($merchant_id,'auto_accept', isset($post['auto_accept'])? intval($post['auto_accept']) :0 );	
+			AR_merchant_meta::saveMeta($merchant_id,'auto_accept', isset($post['auto_accept'])? intval($post['auto_accept']) :0 );	
+			AR_merchant_meta::saveMeta($merchant_id,'tax_on_products', isset($post['tax_on_products'])? intval($post['tax_on_products']) :0 );	
 			
 			AR_merchant_meta::model()->deleteAll('merchant_id=:merchant_id AND meta_name=:meta_name ',array(
 			 ':merchant_id'=> $merchant_id,
@@ -1190,13 +1207,14 @@ class MerchantController extends Commonmerchant
 			$this->refresh();
 		}
 		
-		$data = AR_merchant_meta::getMeta($merchant_id,array('auto_accept','tax_enabled','tax_on_delivery_fee','tax_type','tax_service_fee','tax_packaging'));
+		$data = AR_merchant_meta::getMeta($merchant_id,array('auto_accept','tax_on_products','tax_enabled','tax_on_delivery_fee','tax_type','tax_service_fee','tax_packaging'));
 		$model->tax_enabled = isset($data['tax_enabled'])?$data['tax_enabled']['meta_value']:false;				
 		$model->tax_on_delivery_fee = isset($data['tax_on_delivery_fee'])?$data['tax_on_delivery_fee']['meta_value']:false;
 		$model->tax_type = isset($data['tax_type'])?$data['tax_type']['meta_value']:'';
 		$model->tax_service_fee = isset($data['tax_service_fee'])?$data['tax_service_fee']['meta_value']:false;				
 		$model->tax_packaging = isset($data['tax_packaging'])?$data['tax_packaging']['meta_value']:false;				
 		$model->auto_accept = isset($data['auto_accept'])?$data['auto_accept']['meta_value']:false;	
+		$model->tax_on_products = isset($data['tax_on_products'])?$data['tax_on_products']['meta_value']:false;	
 	
 		$model->tax_for_delivery = CommonUtility::getDataToDropDown("{{merchant_meta}}",'meta_value','meta_value',
 		"where merchant_id=".q($merchant_id)." and meta_name='tax_for_delivery' ");		

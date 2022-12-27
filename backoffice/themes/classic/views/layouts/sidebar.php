@@ -44,12 +44,15 @@
                     <?php  $all=Yii::app()->db->createCommand('
                     SELECT *
                     FROM st_merchant
-                    Where  merchant_id='.Yii::app()->merchant->id.' 
+                    Where  merchant_id='.Yii::app()->merchant->merchant_id.' 
                     limit 0,8
                     ')->queryAll();
+                    
+                    
+                 
                    
                     ?>
-                    <?php if($all[0]['package_id']==2){ ?>
+                    <?php if($all[0]['package_id']==2 || $all[0]['package_id']==3){ ?>
                     <style>
                     .merchant_taxes,.merchant_orders,.merchnat_fulfillment,.pos,.attributes,.food,.customer_reviews,.merchant_dashboard,.food_item_gallery,.merchant_managepopup,.merchant_payment_list {
                         display:none;

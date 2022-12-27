@@ -42,8 +42,8 @@
       <h5><?php echo t("Menu")?></h5>
       <div class="row align-items-center ">
         <div class="col-6">
-           <div class="form-group has-search" :class="{loading : awaitingSearch}">
-	        <span class="fa fa-search form-control-feedback"></span>	  
+           <div class="form-group has-search searchord" :class="{loading : awaitingSearch}">
+	        <span class="fa fa-search  form-control-feedback"></span>	  
 	        <div class="circle-loader" data-loader="circle-side"></div>      
 	        <input v-model="q" type="text" class="form-control" placeholder="<?php echo t("Search")?>">
 	       </div>
@@ -57,17 +57,17 @@
       
         <div v-for="(items,item_id) in item_list" 
         @click="itemShow(items)"
-        class="col-md-3 mb-3 pl-1 pr-1">
+        class="col-md-4 mb-3 pl-1 pr-1">
            
            <div class="row items no-gutters align-items-center rounded w-100">
-             <div class="col-5 position-relative">
+             <div class="col-12 position-relative">
                 <img class="rounded lozad" 
                 :data-background-image="image_placeholder"
                 :data-src="items.url_image" 
                 :src="items.url_image" 
                 >
              </div>
-             <div class="col-7 text-center p-1">
+             <div class="col-12 text-center p-1">
                <p class="m-0 text-truncate"><b>{{items.item_name}}</b></p>
                                              
                <p class="m-0 text-green text-truncate" v-for="(price, index) in items.price" >

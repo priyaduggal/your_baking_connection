@@ -4,8 +4,8 @@ class AR_item extends CActiveRecord
 
 	public $item_name_translation,$item_description_translation,
 	$multi_language,$image,$category_selected,$item_price, $item_unit, $item_featured,
-	$prices, $group_category,
-	$discount_type,$discount_start,$discount_end,$discount_valid
+	$prices, $group_category,$inventory_stock,$non_taxable,
+	$discount_type,$discount_start,$discount_end,$discount_valid, $available_day, $available_time_start, $available_time_end
 	;	
 	
 	/**
@@ -216,14 +216,14 @@ class AR_item extends CActiveRecord
 		
 		/*INSERT SIZE*/
 		if($this->isNewRecord){
-			$item_size = new AR_item_size;
-			$item_size->merchant_id = (integer)$merchant_id;			
-			$item_size->item_id = (integer)$this->item_id;
-			$item_size->price = (float)$this->item_price;		
-			if(!empty($this->item_unit)){
-				$item_size->size_id = (integer)$this->item_unit;
-			} 	
-			$item_size->save();			
+// 			$item_size = new AR_item_size;
+// 			$item_size->merchant_id = (integer)$merchant_id;			
+// 			$item_size->item_id = (integer)$this->item_id;
+// 			$item_size->price = (float)$this->item_price;		
+// 			if(!empty($this->item_unit)){
+// 				$item_size->size_id = (integer)$this->item_unit;
+// 			} 	
+// 			$item_size->save();			
 		}
 		
 		/*DELETE META*/
