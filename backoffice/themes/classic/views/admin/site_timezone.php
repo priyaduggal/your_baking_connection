@@ -56,7 +56,7 @@ $form = $this->beginWidget(
 </div>		
 
 
-<div class="form-label-group">  
+<!--div class="form-label-group">  
    <?php    
     echo $form->label($model,'website_time_picker_interval'); ?>
    <?php echo $form->textField($model,'website_time_picker_interval',array(
@@ -65,7 +65,7 @@ $form = $this->beginWidget(
    )); ?>   
 
    <?php echo $form->error($model,'website_time_picker_interval'); ?>   
-</div>
+</div-->
 
 <?php echo CHtml::submitButton('submit',array(
 'class'=>"btn btn-submit",

@@ -1,3 +1,8 @@
+<style>
+.bootstrap-select{
+    display:none !important;
+}
+</style>
 <nav class="navbar navbar-light justify-content-between">
   <a class="navbar-brand">
   <h5><?php echo CHtml::encode($this->pageTitle)?></h5>
@@ -10,10 +15,10 @@
 <div class="mb-3">
   <h5 class="mb-4"><?php echo t("Transaction History")?></h5>
   
-  <div class="bg-light p-3 mb-3 rounded">
+  <!--div class="bg-light p-3 mb-3 rounded">
    <div class="row align-items-center">
 
-     <div class=" col-lg-4 col-md-4 col-sm-6  mb-3 mb-xl-0"><h5 class="m-0"><?php echo t("Earnings")?></h5>
+     <div class=" col-lg-4 col-md-4 col-sm-6  mb-3 mb-xl-0 "><h5 class="m-0"><?php echo t("Earnings")?></h5>
      <p class="m-0 text-muted"><?php echo t("Your commission transaction for all orders")?></p></div>
 
      <div class=" col-lg-4 col-md-4 col-sm-6  mb-3 mb-xl-0">
@@ -42,10 +47,10 @@
 		  </div>
 		</div>
        
-     </div> <!--flex-col-->
+     </div>
         
-   </div> <!--d-flex-->
-  </div><!-- bg-light-->
+   </div> 
+  </div--><!-- bg-light-->
 
 </div>
 

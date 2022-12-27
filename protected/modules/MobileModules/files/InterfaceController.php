@@ -10,8 +10,7 @@ class InterfaceController extends InterfaceCommon
 {
  
     public function beforeAction($action)
-	{
-	    
+	{										
 		$method = Yii::app()->getRequest()->getRequestType();    		
 		if($method=="POST"){
 			$this->data = Yii::app()->input->xssClean(json_decode(file_get_contents('php://input'), true));
@@ -93,7 +92,7 @@ class InterfaceController extends InterfaceCommon
 			
 			$model=new AR_clientsignup;
 			$model->scenario = 'register';
-			$model->capcha = $capcha;
+			$model->capcha = false;
 			$model->recaptcha_response = $recaptcha_response;
 			$model->captcha_secret = $merchant_captcha_secret;
 			
@@ -145,8 +144,7 @@ class InterfaceController extends InterfaceCommon
 	}
 
 	private function autoLogin($username='',$password='')
-	{	
-	    
+	{		
 	  $login=new AR_customer_login;	
 	  $login->username = $username;
 	  $login->password = $password;
@@ -170,8 +168,7 @@ class InterfaceController extends InterfaceCommon
    } 	
 
    public function actionuserLogin()
-   {
-     
+   {						   
 		$local_id = isset($this->data['local_id'])?$this->data['local_id']:'';
 		$_POST['AR_customer_login'] = array(
 			'username'=>isset($this->data['username'])?$this->data['username']:'',
@@ -186,7 +183,7 @@ class InterfaceController extends InterfaceCommon
 		
 		$model=new AR_customer_login;
 		$model->attributes=$_POST['AR_customer_login'];		
-		$model->capcha = $capcha;		
+		$model->capcha = false;		
 		$model->recaptcha_response = $recaptcha_response;
 		$model->captcha_secret = $merchant_captcha_secret;
 		$model->merchant_id = 0;
@@ -919,7 +916,11 @@ class InterfaceController extends InterfaceCommon
 
 			$promos = [];
 			if(in_array('promo',$payload)){
-				$promos = CPromos::getAvaialblePromo($data['merchant'],CommonUtility::dateOnly());
+				try {
+				   $promos = CPromos::getAvaialblePromo($data['merchant'],CommonUtility::dateOnly());
+				} catch (Exception $e) {
+					$promos = [];
+				}
 			}
 			
 			$page_count = $data['page_count'];
@@ -4470,7 +4471,7 @@ class InterfaceController extends InterfaceCommon
 		    $recaptcha_response = isset($this->data['recaptcha_response'])?$this->data['recaptcha_response']:'';			
 
 			$model=new AR_customer_login;
-			$model->capcha = $capcha;
+			$model->capcha = false;
 			$model->recaptcha_response = $recaptcha_response;
 		    $model->captcha_secret = $merchant_captcha_secret;
 		    $model->merchant_id = 0;

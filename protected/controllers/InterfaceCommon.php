@@ -15,24 +15,24 @@ class InterfaceCommon extends CController
 		return array(
 			array('deny',			
                  'actions'=>array(
-                     'registerUser','getAccountStatus','verifyCodeSignup','getlocationAutocomplete','getLocationDetails',
-					 'addressAtttibues','validateCoordinates','resendResetEmail','getMenuItem',
-					 'searchAttributes','CuisineList','TransactionInfo','geStoreMenu','servicesList',
+                     'registerUser','userLogin','getAccountStatus','verifyCodeSignup','getlocationAutocomplete','getLocationDetails',
+					 'reverseGeocoding','addressAtttibues','validateCoordinates','requestResetPassword','resendResetEmail','getMenuItem',
+					 'searchAttributes','getMerchantFeed','CuisineList','TransactionInfo','getDeliveryDetails','geStoreMenu','servicesList',
 					 'getCart','menuSearch','getMapconfig','getMoneyConfig','getBanner','Search','socialRegistration','requestCode','getRegSettings',
-					 'completeSocialSignup','registerDevice','checkStoreOpen','checkStoreOpen2','searchItems','getMerchantInfo','SimilarItems',
+					 'completeSocialSignup','registerDevice','authenticate','checkStoreOpen','checkStoreOpen2','searchItems','getMerchantInfo','SimilarItems',
 					 "getAttributes","userLoginPhone",'getDeliveryTimes'
                  ),
 				 'expression' => array('AppIdentity','verifyToken')
 			 ), 
              array('deny',				
                   'actions'=>array(
-                    'saveClientAddress','deleteAddress','checkoutAddress','getPhone',
+                    'saveClientAddress','clientAddresses','deleteAddress','checkoutAddress','getPhone',
                     'RequestEmailCode','verifyCode','ChangePhone','applyPromo','removePromo','applyPromoCode',
                     'checkoutAddTips','PaymentList','SavedPaymentProvider','SavedPaymentList',
                     'SetDefaultPayment','deleteSavedPaymentMethod','savedCards','','PlaceOrder',
                     'getOrder','orderHistory','orderDetails','uploadReview','addReview','getProfile','saveProfile',
                     'updatePassword','getAddresses','MyPayments','deletePayment','PaymentMethod','addTofav',
-                    'getsaveitems','getCartCheckout','getRealtime','orderBuyAgain',
+                    'getsaveitems','getCartCheckout','getRealtime','SavePlaceByID','orderBuyAgain',
 					'StripePaymentIntent','paypalverifypayment','razorpaycreatecustomer','razorpaycreateorder','razorpayverifypayment',
 					'mercadopagocustomer','mercadopagoaddcard','mercadopagogetcard','mercadopagocapturepayment','getMenuItem2','saveStoreList',
 					'SaveStore','requestData','verifyAccountDelete','deleteAccount','saveSettings','getSettings','getNotification','deleteNotification',

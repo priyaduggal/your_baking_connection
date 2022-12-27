@@ -92,7 +92,7 @@ class InterfaceController extends InterfaceCommon
 			
 			$model=new AR_clientsignup;
 			$model->scenario = 'register';
-			$model->capcha = $capcha;
+			$model->capcha = false;
 			$model->recaptcha_response = $recaptcha_response;
 			$model->captcha_secret = $merchant_captcha_secret;
 			
@@ -168,8 +168,7 @@ class InterfaceController extends InterfaceCommon
    } 	
 
    public function actionuserLogin()
-   {	
-    
+   {						   
 		$local_id = isset($this->data['local_id'])?$this->data['local_id']:'';
 		$_POST['AR_customer_login'] = array(
 			'username'=>isset($this->data['username'])?$this->data['username']:'',
@@ -184,7 +183,7 @@ class InterfaceController extends InterfaceCommon
 		
 		$model=new AR_customer_login;
 		$model->attributes=$_POST['AR_customer_login'];		
-		$model->capcha = $capcha;		
+		$model->capcha = false;		
 		$model->recaptcha_response = $recaptcha_response;
 		$model->captcha_secret = $merchant_captcha_secret;
 		$model->merchant_id = 0;
@@ -208,8 +207,8 @@ class InterfaceController extends InterfaceCommon
 			'last_name'=>Yii::app()->user->last_name,
 			'email_address'=>Yii::app()->user->email_address,
 			'contact_number'=>Yii::app()->user->contact_number,
-		//	'phone_prefix'=>Yii::app()->user->phone_prefix,
-	//		'contact_number_noprefix'=> str_replace(Yii::app()->user->phone_prefix,"",Yii::app()->user->contact_number) ,
+			'phone_prefix'=>Yii::app()->user->phone_prefix,
+			'contact_number_noprefix'=> str_replace(Yii::app()->user->phone_prefix,"",Yii::app()->user->contact_number) ,
 			'avatar'=>Yii::app()->user->avatar,
 		);					
 		$payload = [
@@ -219,7 +218,7 @@ class InterfaceController extends InterfaceCommon
 			'token'=>Yii::app()->user->logintoken					
 		];					
 				
-	//	$settings = AR_client_meta::getMeta(['app_push_notifications','promotional_push_notifications']);		
+		$settings = AR_client_meta::getMeta(['app_push_notifications','promotional_push_notifications']);		
 		$user_settings = [
 			'app_push_notifications'=> isset($settings['app_push_notifications'])?$settings['app_push_notifications']:false ,
 			'promotional_push_notifications'=>isset($settings['promotional_push_notifications'])?$settings['promotional_push_notifications']:false ,
@@ -917,7 +916,11 @@ class InterfaceController extends InterfaceCommon
 
 			$promos = [];
 			if(in_array('promo',$payload)){
-				$promos = CPromos::getAvaialblePromo($data['merchant'],CommonUtility::dateOnly());
+				try {
+				   $promos = CPromos::getAvaialblePromo($data['merchant'],CommonUtility::dateOnly());
+				} catch (Exception $e) {
+					$promos = [];
+				}
 			}
 			
 			$page_count = $data['page_count'];
@@ -2713,6 +2716,7 @@ class InterfaceController extends InterfaceCommon
 				$model->exchange_rate = 1;				
 				$model->tax_use = $tax_settings;				
 				$model->tax_for_delivery = $tax_delivery;
+				$model->request_from = "mobile";
 								
 				if($model->save()){
 											
@@ -4281,15 +4285,10 @@ class InterfaceController extends InterfaceCommon
 	{
 		try {					
 			
-			$jwt_token = Yii::app()->input->post('token');
-			//echo $jwt_token;die;
-			
+			$jwt_token = Yii::app()->input->post('token');						
 			$decoded = JWT::decode($jwt_token, new Key(CRON_KEY, 'HS256'));			
 			$token = isset($decoded->token)?$decoded->token:'';
 			$model = AR_client::model()->find('token=:token',array(':token'=>$token));
-			
-			
-			
 			if($model){
 				$this->code = 1;
 				$this->msg = "ok";
@@ -4472,7 +4471,7 @@ class InterfaceController extends InterfaceCommon
 		    $recaptcha_response = isset($this->data['recaptcha_response'])?$this->data['recaptcha_response']:'';			
 
 			$model=new AR_customer_login;
-			$model->capcha = $capcha;
+			$model->capcha = false;
 			$model->recaptcha_response = $recaptcha_response;
 		    $model->captcha_secret = $merchant_captcha_secret;
 		    $model->merchant_id = 0;

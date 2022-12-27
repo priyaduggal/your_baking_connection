@@ -250,7 +250,9 @@ class BackendController extends CommonController
 		  ));   
 		$auto_login = Yii::app()->createUrl("/vendor/autologin",array(		  
 			'merchant_uuid'=>'-merchant_uuid-',				 
-		));   
+		));  
+		
+		
 		  
 		$html='
 		<div class="btn-group btn-group-actions" role="group" >				
@@ -303,11 +305,25 @@ class BackendController extends CommonController
 		 	    '[status_title]'=>"status_title"
 		 	  )
 		 	);
-		 	
-		 	$cols[]=array(
-		 	  'key'=>'merchant_type',
-		 	  'value'=>'merchant_type'		 	  
-		 	);		 
+		 
+		 		$cols[]=array(
+		 	  'key'=>'title',
+		 	  'value'=>'title',
+		 	  'action'=>"format",
+		 	  'format'=>'<h6>[title]</h6>
+		 	    <p class="dim">[package_period]<br></p>
+		 	  ',
+		 	  'format_value'=>array(
+		 	    '[title]'=>'title',
+		 	    '[package_period]'=>'package_period'
+		 	  
+		 	  )
+		 	);
+		 
+		 	// $cols[]=array(
+		 	//   'key'=>'merchant_type',
+		 	//   'value'=>'merchant_type'		 	  
+		 	// );		 
 		 	// $cols[]=array(
 		 	//   'key'=>'a.date_created',
 		 	//   'value'=>'date_created',
@@ -338,6 +354,23 @@ class BackendController extends CommonController
 			 limit 0,1
 			 ),a.merchant_type) as merchant_type,
 			 
+			 
+			 	 
+			 IFNULL((
+			 select title from {{plans}}
+			 where package_id = a.package_id
+		
+			 limit 0,1
+			 ),a.status) as title,
+			 
+			 
+			 IFNULL((
+			 select package_period from {{plans}}
+			 where package_id = a.package_id
+		
+			 limit 0,1
+			 ),a.status) as package_period,
+			 
 			 IFNULL((
 			 select title_trans from {{view_status_management}}
 			 where
@@ -348,7 +381,8 @@ class BackendController extends CommonController
 			 			 			 
 			 FROM {{merchant}} a			 
 			 
-			 WHERE 1
+			 WHERE a.status='active' or a.status='expired'
+			
 			 [and]
 			 [search]
 			 [order]

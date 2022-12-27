@@ -222,7 +222,7 @@ class ApiController extends CommonApi
 		$date_end = isset($this->data['date_end'])?$this->data['date_end']:'';
 		$transaction_type = isset($this->data['transaction_type'])?$this->data['transaction_type']:'';		
 				
-		$sortby = "transaction_id"; $sort = 'DESC';
+		$sortby = "invoice_number"; $sort = 'DESC';
 		
 		if(is_array($order) && count($order)>=1){
 			if(array_key_exists($order['column'],(array)$columns)){			
@@ -233,52 +233,57 @@ class ApiController extends CommonApi
 				
 		$page = $page>0? intval($page)/intval($length) :0;
 		$criteria=new CDbCriteria();
-		$criteria->addCondition('card_id=:card_id');
-		$criteria->params = array(':card_id'=>intval($card_id));
+	//	$criteria->addCondition('card_id=:card_id');
+	//	$criteria->params = array(':card_id'=>intval($card_id));
 		
 		if(!empty($date_start) && !empty($date_end)){
-			$criteria->addBetweenCondition("DATE_FORMAT(transaction_date,'%Y-%m-%d')", $date_start , $date_end );
+			$criteria->addBetweenCondition("DATE_FORMAT(date_created,'%Y-%m-%d')", $date_start , $date_end );
 		}
-		if(is_array($transaction_type) && count($transaction_type)>=1){
-			$criteria->addInCondition('transaction_type',(array) $transaction_type );
-		}		
+			
 		
 		$criteria->order = "$sortby $sort";
-		$count = AR_wallet_transactions::model()->count($criteria); 
+		$count = AR_plans_invoice::model()->count($criteria); 
 		$pages=new CPagination( intval($count) );
         $pages->setCurrentPage( intval($page) );        
         $pages->pageSize = intval($length);
         $pages->applyLimit($criteria);        
-        $models = AR_wallet_transactions::model()->findAll($criteria);
-        if($models){
-        	foreach ($models as $item) {
-        		$description = Yii::app()->input->xssClean($item->transaction_description);        		
-        		$parameters = json_decode($item->transaction_description_parameters,true);        		
-        		if(is_array($parameters) && count($parameters)>=1){        			
-        			$description = t($description,$parameters);
-        		}
-        		
-        		$transaction_amount = Price_Formatter::formatNumber($item->transaction_amount);        		
-        		switch ($item->transaction_type) {
-        			case "debit":
-        			case "payout":
-        				$transaction_amount = "(".Price_Formatter::formatNumber($item->transaction_amount).")";
-        				break;        		        			
-        		}
-        		
+        $models = AR_plans_invoice::model()->findAll($criteria);
+       //print_r($models);die;
+        
+if($models){
+foreach ($models as $item) {
+
+
+$all=Yii::app()->db->createCommand('SELECT * FROM `st_merchant` where merchant_id='.$item->merchant_id.'
+            ')->queryAll(); 
+            $alla=Yii::app()->db->createCommand('SELECT * FROM `st_plans` where package_id='.$item->package_id.'
+            ')->queryAll(); 
+    
+    
+$description = Yii::app()->input->xssClean($item->payment_code);        		
+$transaction_amount = Price_Formatter::formatNumber($item->amount);  
+$status = $item->status;  
+        	
 $trans_html = <<<HTML
-<p class="m-0 $item->transaction_type">$transaction_amount</p>
+<p class="m-0 ">$transaction_amount</p>
 HTML;
 
 
-        		$data[]=array(
-        		  'transaction_date'=>Date_Formatter::date($item->transaction_date),
-        		  'transaction_description'=>$description,
-        		  'transaction_amount'=>$trans_html,
-        		  'running_balance'=>Price_Formatter::formatNumber($item->running_balance),
-        		);
-        	}
-        }
+$trans_html1 = <<<HTML
+<span class="badge order_status $item->status ">$status</span>
+HTML;
+
+
+$data[]=array(
+'transaction_date'=>Date_Formatter::dateTime($item->date_created,"MM/dd/yyyy",true),
+'transaction_description'=>$all[0]['restaurant_name'],
+'transaction_amount'=>$alla[0]['title'].' ('.$alla[0]['package_period'].')',
+'running_balance'=>Price_Formatter::formatNumber($item->amount),
+'payment_method'=>$item->payment_code,
+'status'=>$trans_html1,
+);
+}
+}
         
         $datatables = array(
 		  'draw'=>intval($draw),

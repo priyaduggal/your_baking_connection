@@ -16,7 +16,7 @@
 <th width="10%"></th>
 <th width="18%"><?php echo t("Name")?></th>
 <th width="30%"><?php echo t("Address")?></th>
-<th width="20%"><?php echo t("Charge Type")?></th>
+<th width="20%"><?php echo t("Membership")?></th>
 <th width="15%"><?php echo t("Actions")?></th>
 </tr>
 </thead>
