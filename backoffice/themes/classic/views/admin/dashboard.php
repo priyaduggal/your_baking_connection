@@ -1,4 +1,50 @@
-<style>
+<style>#container {
+    height: 400px;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+#datatable {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+#datatable caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+#datatable th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+#datatable td,
+#datatable th,
+#datatable caption {
+    padding: 0.5em;
+}
+
+#datatable thead tr,
+#datatable tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+#datatable tr:hover {
+    background: #f1f7ff;
+}
+
 .colgreen{
     border: 1px solid #a7e8d4;
     background-color: #a7e8d4;
@@ -411,120 +457,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
                         
                         
                         
-    <div class="card mt-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col mb-3 mb-xl-0">
-                    <h5 class="m-0">Membership cancellations</h5>
-                    
-                    </div><div class="col"><div class="d-none d-sm-block">
-                     
-                                </div>
-                                <div class="d-block d-sm-none text-right">
-                                    <div class="dropdown btn-group dropleft">
-                                        <button class="btn btn-sm dropdown-togglex dropleft" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="zmdi zmdi-more-vert"></i>
-                                            </button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item active">All</a>
-                                                <a class="dropdown-item">Processing</a>
-                                                <a class="dropdown-item">Ready</a>
-                                                <a class="dropdown-item">Completed</a>
-                                                </div></div></div></div></div>
-                                                <div class="mt-3 table-orders table-responsive">
-                                                    <table class="table"><thead>
-                                                        <tr>
-                                                   <th class="p-0 mw-200">Baker ID</th>
-                                                    <th class="p-0 mw-200">
-                                                        Baker Name
-                                                    </th>
-                                                    <th class="p-0 mw-200">
-                                                       Payment Method
-                                                    </th>
-                                                    <th class="p-0 mw-200">
-                                                        Amount
-                                                    </th>
-                                                     <th class="p-0 mw-200">
-                                                        Package Name
-                                                    </th>
-                                                      <th class="p-0 mw-200">
-                                                       Status
-                                                    </th>
-                                                  
-                                                   </tr></thead>
-                                                    <tbody>
-                    <?php   
-                    
-                    $recent1=Yii::app()->db->createCommand('
-                    SELECT st_merchant.restaurant_name,st_plans_invoice.*,st_plans.title,st_plans.package_period,st_merchant.status as mstatus from  st_plans_invoice 
-                    inner join st_merchant 
-                    on 
-                    st_plans_invoice.merchant_id=st_merchant.merchant_id
-                    inner join st_plans
-                    on
-                    st_plans.package_id=st_plans_invoice.package_id
-                    where st_merchant.status="expired"
-                    order by  invoice_number DESC limit 0,5
-                    ')->queryAll();
-                        
-                      foreach($recent1 as $re){
-                           if($re['package_period']=='anually'){
-                                              
-                                        $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 year'));
-                                               
-                                          }else if($re['package_period']=='monthly'){
-                                              
-                                                 $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 months'));
-                                               
-                                          }           
-
-                                $next_month = date('Y-m-d', strtotime('+1 month'));
-                      
-                         
-                                $testdate=strtotime($newDate); // this will be converted to 2018-07-01
-                                if (date('Ym',strtotime($next_month))==date('Ym', $testdate)) {
-                                 $curr=true;
-                                } else {
-                                $curr=false;
-                                }
-                                if($curr==true){
-                      ;?>
-                      
-                                    <tr>
-                                    <td class="pl-0 align-middle"><?php echo $re['invoice_number'];?></td>
-                                    <td width="15%" class="text-left align-middle"><?php echo $re['restaurant_name'];?></td>
-                                    <td>
-                                    
-                                    <span class="badge order_status complete"><?php echo $re['payment_code'];?></span> 
-                                    
-                                    </td>
-                                    <td width="15%" class="text-left align-middle">$<?php echo $re['amount'];?></td>
-                                    
-                                    
-                                    <td>
-                                    <div><a href="#" class="font-weight-bold hover-text-primary mb-1"> 
-                                          <?php if($re['package_id']=='1' || $re['package_id']=='4'){
-                                              ?>
-                                              <?php echo 'Premium Membership';?>
-                                         <?php } ?>
-                                         
-                                           <?php if($re['package_id']=='2' || $re['package_id']=='3'){
-                                              ?>
-                                              <?php echo 'Basic Membership';?>
-                                         <?php } ?>
-                                               
-                                        <?php if($re['package_id']==0){
-                                            
-                                            
-                                        }   ?>                  
-                                        </a></div>
-                                        </td>
-                                        <td><?php echo $re['mstatus'];?></td>
-                                        </tr>
-              <?php } } ?>
-                        
-                        </tbody></table></div><!----></div></div>
-      
+   
       <components-customer-details
 	  ref="customer"    
 	  :client_id="client_id"
@@ -584,7 +517,7 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
    >
    </components-chart-sales>
    </div>
-   
+      
    
    <!--div class="position-relative mb-3">
     <components-popular-customer   
@@ -613,6 +546,121 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
     >
     </components-latest-review>
     </div>   
+    
+     <div class="card mt-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col mb-3 mb-xl-0">
+                    <h5 class="m-0">Membership cancellations</h5>
+                    
+                    </div><div class="col"><div class="d-none d-sm-block">
+                     
+                                </div>
+                                <div class="d-block d-sm-none text-right">
+                                    <div class="dropdown btn-group dropleft">
+                                        <button class="btn btn-sm dropdown-togglex dropleft" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="zmdi zmdi-more-vert"></i>
+                                            </button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item active">All</a>
+                                                <a class="dropdown-item">Processing</a>
+                                                <a class="dropdown-item">Ready</a>
+                                                <a class="dropdown-item">Completed</a>
+                                                </div></div></div></div></div>
+                                                <div class="mt-3 table-orders table-responsive">
+                                                    <table class="table"><thead>
+                                                        <tr>
+                                                   
+                                                    <th class="p-0 mw-200">
+                                                        Baker Name
+                                                    </th>
+                                                    <th class="p-0 mw-200">
+                                                       Payment Method
+                                                    </th>
+                                                    <th class="p-0 mw-200">
+                                                        Amount
+                                                    </th>
+                                                     <th class="p-0 mw-200">
+                                                        Package Name
+                                                    </th>
+                                                      <th class="p-0 mw-200">
+                                                       Status
+                                                    </th>
+                                                  
+                                                   </tr></thead>
+                                                    <tbody>
+                    <?php   
+                    
+                    $recent1=Yii::app()->db->createCommand('
+                    SELECT st_merchant.restaurant_name,st_plans_invoice.*,st_plans.title,st_plans.package_period,st_merchant.status as mstatus from  st_plans_invoice 
+                    inner join st_merchant 
+                    on 
+                    st_plans_invoice.merchant_id=st_merchant.merchant_id
+                    inner join st_plans
+                    on
+                    st_plans.package_id=st_plans_invoice.package_id
+                    where st_merchant.status="expired"
+                    order by  invoice_number DESC limit 0,5
+                    ')->queryAll();
+                        
+                      foreach($recent1 as $re){
+                           if($re['package_period']=='anually'){
+                                              
+                                        $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 year'));
+                                               
+                                          }else if($re['package_period']=='monthly'){
+                                              
+                                                 $newDate = date('Y-m-d', strtotime($re['date_created']. ' + 1 months'));
+                                               
+                                          }           
+
+                                $next_month = date('Y-m-d', strtotime('+1 month'));
+                      
+                         
+                                $testdate=strtotime($newDate); // this will be converted to 2018-07-01
+                                if (date('Ym',strtotime($next_month))==date('Ym', $testdate)) {
+                                 $curr=true;
+                                } else {
+                                $curr=false;
+                                }
+                                if($curr==true){
+                      ;?>
+                      
+                                    <tr>
+                                  
+                                    <td width="15%" class="text-left align-middle"><?php echo $re['restaurant_name'];?></td>
+                                    <td>
+                                    
+                                    <span class="badge order_status complete"><?php echo $re['payment_code'];?></span> 
+                                    
+                                    </td>
+                                    <td width="15%" class="text-left align-middle">$<?php echo $re['amount'];?></td>
+                                    
+                                    
+                                    <td>
+                                    <div><a href="#" class="font-weight-bold hover-text-primary mb-1"> 
+                                          <?php if($re['package_id']=='1' || $re['package_id']=='4'){
+                                              ?>
+                                              <?php echo 'Premium Membership';?>
+                                         <?php } ?>
+                                         
+                                           <?php if($re['package_id']=='2' || $re['package_id']=='3'){
+                                              ?>
+                                              <?php echo 'Basic Membership';?>
+                                         <?php } ?>
+                                               
+                                        <?php if($re['package_id']==0){
+                                            
+                                            
+                                        }   ?>                  
+                                        </a></div>
+                                        </td>
+                                        <td><?php echo $re['mstatus'];?></td>
+                                        </tr>
+              <?php } } ?>
+                        
+                        </tbody></table></div><!----></div></div>
+      
     
     <!--div class="position-relative mb-3">
     <components-recent-payout
@@ -647,5 +695,95 @@ td.text-right.align-middle.pr-0 a.btn.btn-sm.text-muted.btn-light.hover-bg-prima
 </div> <!--row--> 
 
 </DIV> <!--vue-->
+  <div id="container"></div>
 
+    <table id="datatable1" style="display:none">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Basic</th>
+                <th>Premium</th>
+            </tr>
+        </thead>
+        
+            <?php    
+            $basic1=Yii::app()->db->createCommand('
+            SELECT MONTH (date_created) as MONTH,YEAR (date_created),COUNT(*) 
+            FROM st_merchant
+            where status="active"
+            GROUP BY MONTH (date_created), YEAR (date_created)
+            ')->queryAll();
+            ?>
+                        
+                       
+        <tbody>
+            <?php foreach($basic1 as $b){?>
+            <tr>
+                <th><?php 
+                $monthNum = $b['MONTH'];
+                $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+                echo $monthName; 
+                ?></th>
+                <td><?php 
+                $basic_count=Yii::app()->db->createCommand('
+                SELECT COUNT(*) as count from st_merchant where MONTH (date_created)="'.$b['MONTH'].'" and  (package_id = "2" OR package_id = "3")
+                and  (status = "active")
+                ')->queryAll();
+                echo $basic_count[0]['count'];
+                
+                ?></td>
+                <td><?php 
+                $basic_count1=Yii::app()->db->createCommand('
+                SELECT COUNT(*) as count from st_merchant where MONTH (date_created)="'.$b['MONTH'].'" and  (package_id = "1" OR package_id = "4")
+                and  (status = "active")
+                ')->queryAll();
+                echo $basic_count1[0]['count'];
+                
+                ?>
+              </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 <?php $this->renderPartial("/orders/template_customer_all");?>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script type="text/javascript">
+
+
+Highcharts.chart('container', {
+    data: {
+        table: 'datatable1'
+    },
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Membership Overview'
+    },
+    subtitle: {
+        text:
+            ''
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        allowDecimals: false,
+        title: {
+            text: 'No. of bakers'
+        }
+    },
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.series.name + '</b><br/>' +
+                this.point.y + ' ' + this.point.name.toLowerCase();
+        }
+    }
+});
+
+
+</script>

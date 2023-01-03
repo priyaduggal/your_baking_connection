@@ -143,7 +143,7 @@ $form = $this->beginWidget(
    )); ?>      
    <?php echo $form->error($model,'item_description'); ?>
 </div>
-
+<?php if($model->scenario=='create'){?>
 <div class="form-label-group">   
 <label>Quantity</label>
    <?php echo $form->textField($model,'inventory_stock',array(
@@ -153,6 +153,7 @@ $form = $this->beginWidget(
   
    <?php echo $form->error($model,'inventory_stock'); ?>
 </div>
+<?php } ?>
 <?php if($model->isNewRecord):?>
 <div class="d-flex">
 

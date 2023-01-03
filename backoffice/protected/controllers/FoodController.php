@@ -779,6 +779,10 @@ class FoodController extends Commonmerchant
 		   $model->non_taxable=$_POST['AR_item']['non_taxable'];
 		   $model->available=$_POST['AR_item']['available'];
 		   $model->inventory_stock=$_POST['AR_item']['inventory_stock'];
+		   
+		   
+		   
+		   
 		   $model->not_for_sale=$_POST['AR_item']['not_for_sale'];
 		   $model->available_at_specific=$_POST['AR_item']['available_at_specific'];
 			
@@ -808,6 +812,11 @@ class FoodController extends Commonmerchant
                 }
 					
 		if(!$update){
+		    
+		     $all=Yii::app()->db->createCommand('INSERT INTO `st_inventory`( `item_id`, `stock`, `stock_type`, `status`) VALUES ("'.$model->item_id.'","'.$_POST['AR_item']['inventory_stock'].'","in","1")
+            ')->queryAll();   
+            
+            
                 $itemmodel=new AR_item_size;
                 $itemmodel->merchant_id = (integer) $model->merchant_id;
 				$itemmodel->item_id = (integer) $model->item_id;

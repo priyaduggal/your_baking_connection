@@ -23,7 +23,7 @@ $form = $this->beginWidget(
 	</div>
 <?php endif;?>
 
-<div class="custom-control custom-switch custom-switch-md">  
+<!--div class="custom-control custom-switch custom-switch-md">  
   <?php echo $form->checkBox($model,"merchant_opt_contact_delivery",array(
      'class'=>"custom-control-input checkbox_child",     
      'value'=>1,
@@ -46,7 +46,7 @@ $form = $this->beginWidget(
   <label class="custom-control-label" for="free_delivery_on_first_order">
    <?php echo t("Free Delivery On First Order")?>
   </label>
-</div>    
+</div-->    
 
 
 <h6 class="mb-3"><?php echo t("Delivery Charge Type")?></h6>

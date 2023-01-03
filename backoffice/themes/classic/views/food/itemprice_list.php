@@ -1,3 +1,9 @@
+<style>
+.addbtn,.datatables_delete,#frm_search{
+    display:none;
+    }
+    
+</style>
 <?php $this->renderPartial("/tpl/search-form",array(
  'link'=>isset($link)?$link:''
 ))?>
@@ -16,7 +22,6 @@ echo CHtml::hiddenField('item_id',$model->item_id);
 <tr>
 <th width="25%"><?php echo t("Price")?></th>
 <th width="20%"><?php echo t("Cost Price")?></th>
-<th width="20%"><?php echo t("Discount")?></th>
 <th width="15%"><?php echo t("Actions")?></th>
 </tr>
 </thead>

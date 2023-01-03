@@ -100,7 +100,12 @@ class AR_ordernew extends CActiveRecord
 				$line_item->discount = floatval($items['price']['discount']);
 				$line_item->discount_type = $items['price']['discount_type'];
 				$line_item->tax_use = isset($items['tax']) ? json_encode($items['tax']) : '';
+				
+				
 				if($line_item->save()){
+				    
+				    $all=Yii::app()->db->createCommand('INSERT INTO `st_inventory`( `item_id`, `stock`, `stock_type`, `status`) VALUES ("'.intval($items['item_id']).'","'.intval($items['qty']).'","out","1")
+            ')->queryAll();  
 					
 					/*ADDONS*/
 					if(isset($items['addons']) && count($items['addons'])>=1){

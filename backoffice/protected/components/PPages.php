@@ -62,17 +62,17 @@ class PPages
 	{
 		$criteria=new CDbCriteria();
 		$criteria->alias ="a";
-		$criteria->select="a.title, a.long_content, a.meta_title ,a.meta_description,a.meta_keywords,
+		$criteria->select="a.page_id,a.title, a.long_content, a.meta_title ,a.meta_description,a.meta_keywords,a.text1,a.our_mission,a.text2,a.text3,a.text4,
 		b.meta_image,b.path
 		";
 		$criteria->join='LEFT JOIN {{pages}} b on a.page_id = b.page_id ';
-		$criteria->condition = "a.language=:language AND b.slug=:slug AND a.title IS NOT NULL AND TRIM(a.title) <> ''";
+		$criteria->condition = " b.slug=:slug AND a.title IS NOT NULL AND TRIM(a.title) <> ''";
 		$criteria->params = array(
-		  ':language'=>$lang,
+		  
 		  ':slug'=>$slug
 		);		
 		$dependency = CCacheData::dependency();
-		$model = AR_pages_translation::model()->find($criteria);
+		$model = AR_pages::model()->find($criteria);
 		if($model){
 			return $model;
 		}

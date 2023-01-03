@@ -1,6 +1,8 @@
 <?php
-define( 'DB_NAME', 'devindiit_your_baking_connection' );
-define( 'DB_USER', 'devindiit_your_baking_connection' );
+// define( 'DB_NAME', 'devindiit_your_baking_connection' );
+// define( 'DB_USER', 'devindiit_your_baking_connection' );
+define('DB_NAME', 'devindiit_demokd');
+define('DB_USER', 'devindiit_demokd');
 define( 'DB_PASSWORD', 'indiit@123' );
 define( 'DB_HOST', 'localhost' );
 define( 'DB_CHARSET', 'utf8' );

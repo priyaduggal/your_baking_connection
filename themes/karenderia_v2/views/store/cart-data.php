@@ -54,10 +54,10 @@
     </p>	     
             
         <template v-if="items.price.discount>0">         
-        <p class="m-0 font11"><del>{{items.price.pretty_price}}</del> {{items.price.pretty_price_after_discount}}</p>
+        <p class="m-0 font11"><del>{{items.price.pretty_price}}</del>----pretty_price_after_discount---- {{items.price.pretty_price_after_discount}}</p>
         </template>
         <template v-else>
-        <p class="m-0 font11">{{items.price.pretty_price}}</p>
+        <p class="m-0 font11">----pretty_price----{{items.price.pretty_price}}</p>
         </template>
             
         <!--quantity-->

@@ -3168,50 +3168,122 @@ class BackendController extends CommonController
 	 	$this->DataTablesNodata();	
 	}
 	
-    public function actionmerchant_type_list()
-	{
+    public function actiontestimonials_list()
+    	{
 		$cols=array(
+		    array(
+		   'key'=>'id',
+	 	   'value'=>'id'		 	  	 	   
+	 	  
+		  ),
 		   array(
 		   'key'=>'id',
-	 	   'value'=>'color_hex',		 	  	 	   
-	 	    'action'=>"format",	 	  
-	 	    'format'=>'<div class="color_hex_box img-60 rounded-circle" style="background:[color_hex];"></div>',
-	 	    'format_value'=>array(	 	     
-	 	     '[color_hex]'=>'color_hex',
-	 	    )
-		  ),		  
-		  array(
-		    'key'=>'type_name',
-	 	    'value'=>'type_name',	
-	 	    'action'=>"format",	 	  
-	 	    'format'=>'<h6>[type_name] <span class="badge ml-2 post [status]">[status_title]</span></h6>	 	    
-	 	    ',
-	 	    'format_value'=>array(
-	 	     '[type_name]'=>'type_name',	 	     
-	 	     '[status]'=>'status',	 	     	 	     
-	 	     '[status_title]'=>'status_title',	 	
-	 	    )
+	 	   'value'=>'image',	
+	 	   'action'=>'item_photo'
 		  ),
+		    array(
+		   'key'=>'name',
+	 	   'value'=>'name'		 	  	 	   
+	 	  
+		  ),
+		   	array(
+		   'key'=>'description',
+	 	   'value'=>'description'		 	  	 	   
+	 	  
+		  ),
+		   	
+		   		  
+		  //array(
+		  //  'key'=>'title',
+	 	 //   'value'=>'title',	
+	 	 //   'action'=>"format",	 	  
+	 	 //   'format'=>'<h6>[title] <span class="badge ml-2 post [status]">[status_title]</span></h6>	 	    
+	 	 //   ',
+	 	 //   'format_value'=>array(
+	 	 //    '[title]'=>'title',	 	     
+	 	 //    '[status]'=>'status',	 	     	 	     
+	 	 //    '[status_title]'=>'status_title',	 	
+	 	 //   )
+		  //),
 		  array(
 		   'key'=>'id',
 	 	   'value'=>'id',		 	  
 	 	   'action'=>"editdelete",
 	 	   'id'=>'id'
 		  ),
+		 
 		);
 	 	
 	 	$stmt = "
 	 	 SELECT SQL_CALC_FOUND_ROWS
-		  a.*,		 
-		 IFNULL((
-		 select title_trans from {{view_status_management}}
-		 where
-		 status=a.status and group_name='post'
-		 and language=".q(Yii::app()->language)."
-		 limit 0,1
-		 ),a.status) as status_title
+		  a.*
 		 			
-		 FROM {{merchant_type}} a
+		 FROM {{testimonials}} a
+		 WHERE 1		 
+		 [and]
+		 [search]
+		 [order]
+		 [limit]
+	 	";		 			 
+	 		 		 	 	
+	 	DatatablesTools::$action_edit_path = "attributes/testimonials_update";
+	 		$this->data['path'] = "/upload/0";		 			 
+	 	if( $feed_data = DatatablesTools::getTables($cols,$stmt,$this->data)){		 		
+	 		$this->DataTablesData($feed_data);
+	 		Yii::app()->end();
+	 	}
+	 	$this->DataTablesNodata();	
+	}	
+    public function actionmerchant_type_list()
+	{
+		$cols=array(
+		    array(
+		   'key'=>'id',
+	 	   'value'=>'id'		 	  	 	   
+	 	  
+		  ),
+		    array(
+		   'key'=>'title',
+	 	   'value'=>'title'		 	  	 	   
+	 	  
+		  ),
+		   	array(
+		   'key'=>'description',
+	 	   'value'=>'description'		 	  	 	   
+	 	  
+		  ),
+		   	 array(
+		   'key'=>'type',
+	 	   'value'=>'type'		 	  	 	   
+	 	  
+		  ),
+		   		  
+		  //array(
+		  //  'key'=>'title',
+	 	 //   'value'=>'title',	
+	 	 //   'action'=>"format",	 	  
+	 	 //   'format'=>'<h6>[title] <span class="badge ml-2 post [status]">[status_title]</span></h6>	 	    
+	 	 //   ',
+	 	 //   'format_value'=>array(
+	 	 //    '[title]'=>'title',	 	     
+	 	 //    '[status]'=>'status',	 	     	 	     
+	 	 //    '[status_title]'=>'status_title',	 	
+	 	 //   )
+		  //),
+		  array(
+		   'key'=>'id',
+	 	   'value'=>'id',		 	  
+	 	   'action'=>"editdelete",
+	 	   'id'=>'id'
+		  ),
+		 
+		);
+	 	
+	 	$stmt = "
+	 	 SELECT SQL_CALC_FOUND_ROWS
+		  a.*
+		 			
+		 FROM {{faq}} a
 		 WHERE 1		 
 		 [and]
 		 [search]

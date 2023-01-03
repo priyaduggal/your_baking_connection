@@ -67,15 +67,84 @@ $form = $this->beginWidget(
    <?php echo $form->error($model,'long_content'); ?>
 </div>
 
-<h6 class="mb-4 mt-4"><?php echo t("Short Description")?></h6>
+<!--h6 class="mb-4 mt-4"><?php echo t("Short Description")?></h6>
 <div class="form-label-group">    
    <?php echo $form->textArea($model,'short_content',array(
      'class'=>"form-control form-control-text",     
      'placeholder'=>t("Short Description")
    )); ?>      
    <?php echo $form->error($model,'short_content'); ?>
-</div>
+</div-->
 
+
+<?php if(isset($model->page_id) && $model->page_id!='' ){
+    if($model->page_id==5){
+?>
+        <h6 class="mb-4 mt-4"><?php echo t("Our Mission")?></h6>
+            <div class="form-label-group">    
+            <?php echo $form->textArea($model,'our_mission',array(
+            'class'=>"form-control form-control-text",     
+            'placeholder'=>t("Our Mission")
+            )); ?>      
+            <?php echo $form->error($model,'our_mission'); ?>
+            </div>
+               
+        <h6 class="mb-4 mt-4"><?php echo t("Text 1")?></h6>
+            <div class="form-label-group">    
+            <?php echo $form->textArea($model,'text1',array(
+            'class'=>"form-control form-control-text",     
+            'placeholder'=>t("Text 1")
+            )); ?>      
+            <?php echo $form->error($model,'text1'); ?>
+            </div>
+        
+        <h6 class="mb-4 mt-4"><?php echo t("Text 2")?></h6>
+            <div class="form-label-group">    
+            <?php echo $form->textArea($model,'text2',array(
+            'class'=>"form-control form-control-text",     
+            'placeholder'=>t("Text 2")
+            )); ?>      
+            <?php echo $form->error($model,'text2'); ?>
+            </div>
+            
+             <h6 class="mb-4 mt-4"><?php echo t("Text 3")?></h6>
+            <div class="form-label-group">    
+            <?php echo $form->textArea($model,'text3',array(
+            'class'=>"form-control form-control-text",     
+            'placeholder'=>t("Text 3")
+            )); ?>      
+            <?php echo $form->error($model,'text3'); ?>
+            </div>
+            
+             <h6 class="mb-4 mt-4"><?php echo t("Text 4")?></h6>
+            <div class="form-label-group">    
+            <?php echo $form->textArea($model,'text4',array(
+            'class'=>"form-control form-control-text",     
+            'placeholder'=>t("Text 4")
+            )); ?>      
+            <?php echo $form->error($model,'text4'); ?>
+            </div>
+<?php        
+    }
+    if($model->page_id==4){
+        ?>
+           <h6 class="mb-4 mt-4"><?php echo t("Login Text")?></h6>
+            <div class="form-label-group">    
+            <?php echo $form->textArea($model,'text1',array(
+            'class'=>"form-control form-control-text",     
+            'placeholder'=>t("Login Text")
+            )); ?>      
+            <?php echo $form->error($model,'text1'); ?>
+            </div>
+        <?php
+        
+    }
+    
+    
+}
+?>
+
+ <h6 class="mb-4 mt-4"><?php echo t("Status")?></h6>
 <div class="form-label-group">    
    <?php echo $form->dropDownList($model,'status', (array)$status_list,array(
      'class'=>"form-control custom-select form-control-select",     
@@ -84,14 +153,7 @@ $form = $this->beginWidget(
    <?php echo $form->error($model,'status'); ?>
 </div>		
 
-<div class="seobox">
 
-<?php $this->renderPartial("/attributes/pages_seo",array(
- 'model'=>$model,
- 'form'=>$form,
- 'upload_path'=>$upload_path,
-));?>
-</div>
 <!--TRANSLATION-->
 <?php if($multi_language && is_array($language) && count($language)>=1 ):?>
 <?php 

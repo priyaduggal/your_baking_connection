@@ -80,12 +80,13 @@
 		<!--</div> -->
 		
 		<?php
+		   $date=date('Y-m-d');
 		$merchat_id=Yii::app()->user->getState('checkout_merchant_id');
-		$all=Yii::app()->db->createCommand('SELECT * FROM st_delivery_times where merchant_id='.$merchat_id.'
+		$all=Yii::app()->db->createCommand('SELECT * FROM st_delivery_times where merchant_id='.$merchat_id.'  and date > "'.$date.'"  
         ')->queryAll();
         
         
-        $pickups=Yii::app()->db->createCommand('SELECT * FROM st_pickup_times where merchant_id='.$merchat_id.'
+        $pickups=Yii::app()->db->createCommand('SELECT * FROM st_pickup_times where merchant_id='.$merchat_id.' and date > "'.$date.'"  
         ')->queryAll(); 
         
         

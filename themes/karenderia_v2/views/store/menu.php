@@ -171,7 +171,7 @@
 			   'is_mobile'=>Yii::app()->params['isMobile']
 		   ))?>
 
-           
+        
 		  <el-affix 
 		  position="bottom" :offset="20" v-if="item_in_cart>0" 
 		  z-index="9"

@@ -143,13 +143,21 @@ class AR_merchant_login extends CActiveRecord
 	{
 		parent::afterSave();
 		if($this->scenario=="send_forgot_password"){
+		    
 			Yii::import('ext.runactions.components.ERunActions');	
-			$cron_key = CommonUtility::getCronKey();		
+			$cron_key = CommonUtility::getCronKey();	
+			
+		
 			$get_params = array( 
 			   'user_uuid'=> $this->user_uuid,
 			   'key'=>$cron_key,
 			);						
-			CommonUtility::runActions( CommonUtility::getHomebaseUrl()."/task/merchantpassword?".http_build_query($get_params) );					
+		CommonUtility::runActions( CommonUtility::getHomebaseUrl()."/task/merchantpassword?".http_build_query($get_params) );
+		
+		
+		
+		//	die;
+			
 		}
 	}
 

@@ -1361,22 +1361,22 @@ class BackendmerchantController extends CommonServices
 		 	  )
 		 	);		
 		 	
-		 	$cols[]=array(
-		 	  'key'=>'discount',
-		 	  'value'=>'discount',		 
-		 	  'action'=>"format",	
-		 	  'format'=>'<h6>[discount]</h6>
-		 	   <p class="dim">		 	   
-		 	   </p>
-		 	  ',
-		 	  'format_value'=>array(		 	    
-		 	    '[discount]'=>array(
-		 	       'value'=>'discount',
-		 	       'discount_type'=>"discount_type",
-			 	   'display'=>"fixed_discount"
-		 	     ),
-		 	  )
-		 	);		 		 		
+		 	// $cols[]=array(
+		 	//   'key'=>'discount',
+		 	//   'value'=>'discount',		 
+		 	//   'action'=>"format",	
+		 	//   'format'=>'<h6>[discount]</h6>
+		 	//   <p class="dim">		 	   
+		 	//   </p>
+		 	//   ',
+		 	//   'format_value'=>array(		 	    
+		 	//     '[discount]'=>array(
+		 	//       'value'=>'discount',
+		 	//       'discount_type'=>"discount_type",
+			 //	   'display'=>"fixed_discount"
+		 	//      ),
+		 	//   )
+		 	// );		 		 		
 		 	
 		 	$cols[]=array(
 		 	  'key'=>'created_at',

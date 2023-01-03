@@ -10,7 +10,78 @@ class ApibackendController extends CommonServices
 		return true;
 	}
 	
-	
+	public function actiongettimings(){
+	      $date=date('Y-m-d');
+	     
+	     $all=Yii::app()->db->createCommand('SELECT *  FROM `st_pickup_times` where id='.$this->data['id'].' 
+            ')->queryAll(); 
+          
+        if(count($all)>0){
+        $intervals=Yii::app()->db->createCommand('SELECT * FROM st_intervals where merchant_id='.$all[0]['merchant_id'].'
+        ')->queryAll();
+            $html='';
+         if(count($all)>0){
+             $st_time= $all[0]['start_time'];
+             $ed_time= $all[0]['end_time'];
+             
+             if(isset($intervals) && count($intervals)>0){
+                 $slot=$intervals[0]['interval'];
+             }else{
+                 $slot='30';
+             }
+            //  $slots = getTimeSlot(30, '10:00', '13:00');
+            $interval=$slot;
+            $start_time=$st_time;
+            $end_time=$ed_time;
+            
+           
+            
+            
+             $start = new DateTime($start_time);
+             
+          //  echo $start;
+          //  die;
+             
+    $end = new DateTime($end_time);
+    $startTime = $start->format('H:i');
+    $endTime = $end->format('H:i');
+    $i=0;
+    $time = [];
+    while(strtotime($startTime) <= strtotime($endTime)){
+        $start = $startTime;
+        $end = date('H:i',strtotime('+'.$interval.' minutes',strtotime($startTime)));
+        $startTime = date('H:i',strtotime('+'.$interval.' minutes',strtotime($startTime)));
+        $i++;
+        if(strtotime($startTime) <= strtotime($endTime)){
+            $time[$i]['slot_start_time'] = $start;
+            $time[$i]['slot_end_time'] = $end;
+        }
+    }
+     
+      $html='<option value="">Select Time </option>';
+            
+    
+            foreach($time as $t){
+                
+                $times=array(
+                'start_time'=>$t['slot_start_time'],
+                'end_time'=>$t['slot_end_time'],
+                'pretty_time'=>$t['slot_start_time'].'-'.$t['slot_end_time'],
+                );
+            
+          $tt=json_encode($times,JSON_FORCE_OBJECT);
+            
+                $html.='<option value='.$tt.'>'.$t['slot_start_time'].'-'.$t['slot_end_time'].'</option>';    
+                        
+            }
+            $html.='';  
+             
+         }
+         echo $html;
+        }
+            
+	    
+	}
 		public function actioneventdelete(){
 		    $all=Yii::app()->db->createCommand('DELETE  FROM `st_delivery_times` where id='.$this->data['id'].'
             ')->queryAll(); 
@@ -131,7 +202,8 @@ class ApibackendController extends CommonServices
 			COrders::getContent($order_uuid,Yii::app()->language);
 		    $merchant_id = COrders::getMerchantId($order_uuid);
 		    $merchant_info = COrders::getMerchant($merchant_id,Yii::app()->language);
-		    $items = COrders::getItems();		     
+		    $items = COrders::getItems();
+		  
 		    $summary = COrders::getSummary();	
 		    //dump($summary);die();
 		    $summary_total = COrders::getSummaryTotal();
@@ -582,7 +654,98 @@ class ApibackendController extends CommonServices
 		}	
 		$this->responseJson();
 	}
-	
+		public function actionstockList(){
+	   $merchant_id = (integer) Yii::app()->merchant->merchant_id; 
+	    	try {			
+			//$data=Yii::app()->db->createCommand('SELECT * FROM `st_item` where merchant_id='.$merchant_id.' and status="publish" and type="0"
+          //  ')->queryAll(); 			
+			
+			$this->code = 1;
+			$this->msg = "OK";
+		
+			
+			$this->details = array(
+			 
+			);						
+		} catch (Exception $e) {
+		    $this->msg[] = t($e->getMessage());		   
+		}	
+		$this->responseJson();
+//         $merchant_id = (integer) Yii::app()->merchant->merchant_id; 
+//         	$cols[]=array(
+// 		 	  'key'=>'item_id',
+// 		 	  'value'=>'item_id',		 	  
+// 		 	);		 		 	
+		 	
+// 		 	$cols[]=array(
+// 		 	  'key'=>'item_name',
+// 		 	  'value'=>'item_name',		 
+// 		 	);		 	
+		 	
+// 		 	$cols[]=array(
+// 		 	  'key'=>'sum',
+// 		 	  'value'=>'sum',	
+// 		 	);	
+		 	
+// 		 	$cols[]=array(
+// 		 	  'key'=>'sum',
+// 		 	  'value'=>'sum',	
+// 		 	);	
+		 	
+		 	
+// 		 	$stmt = "
+// 		 	 SELECT SQL_CALC_FOUND_ROWS
+// 			 a.*,
+// 			 (
+//                 SELECT sum(IF(`stock_type`='in', `stock`, 0))-sum(IF(`stock_type`='out', `stock`, 0)) 
+//                 from {{inventory}}
+//     	        where item_id = a.item_id
+// 			 ) as sum
+			 
+// 			 FROM {{item}} a			 
+// 			 WHERE a.merchant_id = ".q($merchant_id)."	
+// 			 AND a.status='publish'		 
+// 			 [and]
+// 			 [search]
+// 			 [limit]
+// 		 	";		 		 	
+		 			 			
+// 		DatatablesTools::$action_edit_path = "backendmerchant/customerreview_update";
+// 	 	if( $feed_data = DatatablesTools::getTables($cols,$stmt,$this->data)){
+// 	 		$this->DataTablesData($feed_data);
+// 	 		Yii::app()->end();
+// 	 	}		 
+// 		 $this->DataTablesNodata();	
+        // $all=Yii::app()->db->createCommand('SELECT * FROM `st_item` where merchant_id='.$merchant_id.' and status="publish" and type="0"
+        // ')->queryAll(); 
+        // foreach($all as $al){
+        //   $in_count=Yii::app()->db->createCommand('SELECT sum(stock) as sum FROM st_inventory where item_id='.$al['item_id'].' and stock_type="in"')->queryAll();
+        //         if(isset($in_count) && count($in_count)>0){
+        //             $in=$in_count[0]['sum'];
+        //             if($in==null){
+        //                 $in=0;
+        //             }
+        //         }else{
+        //             $in=0;
+        //         }
+                
+        //      $out_count=Yii::app()->db->createCommand('SELECT sum(stock) as sum FROM st_inventory where item_id='.$al['item_id'].' and stock_type="out"')->queryAll();
+        //         if(isset($out_count) && count($out_count)>0){
+        //             $out=$out_count[0]['sum'];
+        //              if($out==null){
+        //                 $out=0;
+        //             }
+        //         }else{
+        //             $out=0;
+        //         }
+            
+        //     $diff=intval($in)-intval($out);
+            
+          
+        // }
+          
+            
+	}
 	public function actiongetOrderHistory()
 	{
 		try {			
@@ -3783,7 +3946,9 @@ HTML;
 		      'order_uuid'=>$order_uuid,
 		      'order_type'=>AttributesTools::PosCode(),
 		    );
-    		
+            Yii::app()->user->setState("order_uuid_pos", $order_uuid);
+            Yii::app()->user->setState("order_type_pos", AttributesTools::PosCode());
+
     	} catch (Exception $e) {
 		   $this->msg = t($e->getMessage());			   		   		   		
 		}
@@ -3979,9 +4144,12 @@ HTML;
     
     public function actionsubmitPOSOrder()
     {
+      //  print_r($this->data);
+        
     	try {
     		    		
     		$stats = AOrderSettings::getStatus(array('status_completed'));
+    	
     		$status_completed = isset($stats[0])?$stats[0]:'complete';
     		
     		$order_uuid = isset($this->data['order_uuid'])?$this->data['order_uuid']:'';
@@ -3992,9 +4160,35 @@ HTML;
     		$order_change = isset($this->data['order_change'])?$this->data['order_change']:0;    		
     		
     		$model = COrders::get($order_uuid);
-    		$model->status = $status_completed;
-    		$model->payment_status = 'paid';
-    		$model->payment_code  = $payment_code;
+    		
+    		$s_code=Yii::app()->user->getState('service_code_create_order');
+			$d_date=Yii::app()->user->getState('delivery_date_create_order');
+			$de_time=Yii::app()->user->getState('delivery_time_create_order');
+			$de_time_end=Yii::app()->user->getState('delivery_time_end_create_order');
+			
+			 
+			 
+    		
+    		if($payment_code=='cod'){
+    		   $model->status = 'new'; 
+    		   $model->payment_status = 'unpaid';
+    		   	$model->payment_code  = 'cash';
+    		}else{
+    		    $model->status = 'complete';
+    		    $model->payment_status = 'paid';
+    		    	$model->payment_code  = $payment_code;
+    		}
+    		if($s_code!=null){
+    		$model->service_code=$s_code;
+    		$model->delivery_date=$d_date;
+    		$model->delivery_time=$de_time;
+    		$model->delivery_time_end=$de_time_end;
+    		}else{
+    		 $model->service_code='delivery';
+    	
+    		}
+           
+    	
     		$model->client_id = intval($client_id);
     		$model->use_currency_code = Price_Formatter::$number_format['currency_code'];
 			$model->base_currency_code = Price_Formatter::$number_format['currency_code'];
@@ -4031,7 +4225,12 @@ HTML;
 			$model->scenario = "pos_entry";
     		if($model->save()){
     			$this->code = 1;
-		        $this->msg = "ok";		        		        
+		        $this->msg = "ok";	
+		        
+		  Yii::app()->user->unsetState('service_code_create_order');
+			 Yii::app()->user->unsetState('delivery_date_create_order');
+			 
+			 
     		} else $this->msg = CommonUtility::parseModelErrorToString($model->getErrors(),"<br/>");
     		
     	} catch (Exception $e) {
@@ -4852,9 +5051,10 @@ HTML;
 		) as prices
 
 		";
-		$criteria->condition = "a.merchant_id=:merchant_id";		
+		$criteria->condition = "a.merchant_id=:merchant_id AND a.type=:type";		
 		$criteria->params = [
-			':merchant_id'=>intval($merchant_id)
+			':merchant_id'=>intval($merchant_id),
+			':type'=>0
 		];
 		
 		if (is_string($search) && strlen($search) > 0){

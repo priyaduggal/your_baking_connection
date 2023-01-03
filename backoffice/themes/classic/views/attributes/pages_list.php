@@ -8,7 +8,11 @@
   'onsubmit'=>"return false;"
 )); 
 ?> 
-
+<style>
+.datatables_delete,.addbtn {
+    display:none;
+}
+</style>
 <table class="ktables_list table_datatables">
 <thead>
 <tr>

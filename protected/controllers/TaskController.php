@@ -1574,7 +1574,7 @@ class TaskController extends SiteCommon
 						'youtube'=>isset($site['youtube'])?$site['youtube']:'',
 						'reset_password_link'=>websiteUrl()."/".BACKOFFICE_FOLDER."/resetpswd/reset?token=".$model->user_uuid
 					);		
-					$this->runActions($template_id, $data , array('email') , array(					     
+					$this->runActions('30', $data , array('email') , array(					     
 						'email'=>$model->contact_email,
 					));
 				}				

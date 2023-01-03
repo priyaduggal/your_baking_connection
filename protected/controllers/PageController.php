@@ -15,8 +15,8 @@ class PageController extends SiteCommon
 		
 			
 			try {
-			   $model = PPages::pageDetailsSlug($slug_name , Yii::app()->language );	
-			   
+			   $model = PPages::pageDetailsSlug($slug_name , Yii::app()->language );
+			 
 			
 			   $this->render('//store/page',array(
 			    'model'=>$model,

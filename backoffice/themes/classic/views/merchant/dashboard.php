@@ -1,6 +1,100 @@
+<style>
+#vue-order-history .dataTables_wrapper {
+    visibility:hidden;
+    height:0px;
+}
+</style>
+<!--nav class="navbar navbar-light justify-content-between">
+  <a class="navbar-brand">
+  <h5><?php echo CHtml::encode($this->pageTitle)?></h5>
+  </a>     
+</nav-->
+
+<div id="vue-order-history" class="card boxsha default-tabs tabs-box">
+    
+                       
+                         <div class="export-btn">
+ <a  href="#" id="btnExport" class="btn btn-success addbtn ml-3">
+                           <span>Export</span>
+                        </a>
+                     
+                     </div>
+<div class="card style-2">
+    <div class="card-header">
+     <h4 class="mb-0 mr20"><?php echo CHtml::encode($this->pageTitle)?></h4></div>
+    <div class="card-body">
+<div class="mb-3">
+  
+  
+  <div class="row  d-none">
+   <div class="col">
+	  <div class="bg-light p-3 mb-3 rounded">   
+	   <div class="d-flex">
+        <p class="m-0 mr-2 text-muted text-truncate"><?php echo t("Orders")?></p><h5 ref="summary_orders" class="m-0">0</h5>
+       </div>  	  
+	  </div><!-- bg-light-->
+	</div> <!--col-->
+	
+	<div class="col">
+	  <div class="bg-light p-3 mb-3 rounded">   
+	   <div class="d-flex">
+        <p class="m-0 mr-2 text-muted text-truncate"><?php echo t("Cancel")?></p><h5 ref="summary_cancel" class="m-0">0</h5>
+       </div>  	  
+	  </div><!-- bg-light-->
+	</div> <!--col-->
+	
+	<div class="col">
+	  <div class="bg-light p-3 mb-3 rounded">   
+	   <div class="d-flex">
+        <p class="m-0 mr-2 text-muted text-truncate"><?php echo t("Total refund")?></p><h5 ref="total_refund" class="m-0">0</h5>
+       </div>  	  
+	  </div><!-- bg-light-->
+	</div> <!--col-->
+	
+	<div class="col">
+	  <div class="bg-light p-3 mb-3 rounded">   
+	   <div class="d-flex">
+        <p class="m-0 mr-2 text-muted text-truncate"><?php echo t("Total Orders")?></p><h5 ref="summary_total" class="m-0">0</h5>
+       </div>  	  
+	  </div><!-- bg-light-->
+	</div> <!--col-->
+	
+  </div> <!--row-->
+
+
+
+<components-datatable
+ref="datatable"
+ajax_url="<?php echo Yii::app()->createUrl("/apibackend")?>" 
+actions="reportSales"
+:table_col='<?php echo json_encode($table_col)?>'
+:columns='<?php echo json_encode($columns)?>'
+:export="<?php echo true; ?>"
+:settings="{
+ export:'<?php echo true;?>',
+    filter : '<?php echo false;?>',   
+    ordering :'<?php echo true;?>',    
+    order_col :'<?php echo intval($order_col);?>',   
+    sortby :'<?php echo $sortby;?>',    
+    placeholder : '<?php echo t("Start date -- End date")?>',  
+    separator : '<?php echo t("to")?>',
+    all_transaction : '<?php echo t("All transactions")?>',
+    searching : '<?php echo t("Searching...")?>',
+    no_results : '<?php echo t("No results")?>'
+  }"  
+page_limit = "<?php echo Yii::app()->params->list_limit?>"  
+>
+</components-datatable>
+
+</div> <!--mb-3-->
+
+</div> <!--body-->
+</div> <!--card-->
+</div> <!--card-->
+
 <div class="card boxsha default-tabs tabs-box">
             <div class="card style-2">
-               <div class="card-header">
+               <!--div class="card-header">
                   <h4 class="mb-0">Reports</h4>
                   <div class="my-or reflex">
                      <div class="form-group">
@@ -15,7 +109,8 @@
                         <a href="" class="btn btn-success addbtn">Export</a>
                      </div>
                   </div>
-               </div>
+               </div-->
+               
 <DIV id="vue-dashboard" class="dashboard-desktopx mt-3">
 
 <div class="row m-0 p-0 ">
@@ -25,8 +120,13 @@
             <div id="boxes" class="d-flex align-items-center">
             <div class="mr-2"><div class="rounded box box-1 d-flex align-items-center justify-content-center">
             <!--<i class="zmdi zmdi-money-box"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Orders")?></h6>-->
+             <div class="d-flex">
+        
+       </div>  
             <i class="zmdi zmdi-shopping-cart"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Orders")?></h6>
-            <h6 class="m-0 position-relative" ref="summary_orders">0</h6>
+            <h6 class="m-0 position-relative" ref="summary_orders"><?php echo $orders;?></h6>
+            
+            
             </div>
             </div>
          </div>
@@ -62,7 +162,7 @@
             <div id="boxes" class="d-flex align-items-center">
             <div class="mr-2"><div class="rounded box box-4 d-flex align-items-center justify-content-center">
             <i class="zmdi zmdi-money-box"></i></div></div><div><h6 class="m-0 text-muted font-weight-normal"><?php echo t("Total Sales")?></h6>
-            <h6 class="m-0 position-relative" ref="summary_total">$0</h6>
+            <h6 class="m-0 position-relative" ref="summary_total">$<?php echo $total;?></h6>
             </div>
             </div>
          </div>
@@ -211,7 +311,66 @@
    >
    </components-chart-sales>
 </div>
-    <div class="tabs-content main-g" style="padding: 20px;">
+<div id="vue-report-sales-summary" class="card">
+<div class="card-body">
+
+<div class="mb-3">
+  
+<div class="row">
+<div class="col"></div>
+<div class="col">
+
+  <div class="d-none d-md-block">    
+  <ul class="nav nav-pills justify-content-end">			  
+	  <li class="nav-item">
+    <a href="<?php echo Yii::app()->createUrl("/merchantreport/summary")?>" class="nav-link py-1 px-3">
+      <?php echo t("Sales summary")?>
+    </a>	    
+	  </li>			  
+	  <li class="nav-item">
+	    <a class="nav-link py-1 px-3 active">
+      <?php echo t("Sales chart")?></a>	    
+	  </li>			  
+  </ul>
+  </div>
+
+  <div class="d-block d-md-none text-right">
+     <div class="dropdown btn-group dropleft">
+		      <button class="btn btn-sm dropdown-togglex dropleft" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		       <i class="zmdi zmdi-more-vert"></i>
+		     </button>
+         <div class="dropdown-menu dropdown-menu-mobile" aria-labelledby="dropdownMenuButton">
+             <a class="dropdown-item" href="<?php echo Yii::app()->createUrl("/merchantreport/summary")?>">
+               <?php echo t("Sales Summary")?>
+              </a>
+             <a class="dropdown-item active" >
+              <?php echo t("Sales chart")?>
+             </a>
+         </div>         
+       </div> 
+  </div>
+ 
+</div>
+</div>  
+<!--row-->	
+
+
+<div class="position-relative m-5">
+<components-report-sales-summary-chart
+ref="report_summary_chart"
+ajax_url="<?php echo Yii::app()->createUrl("/apibackend")?>" 
+:label="{    
+    sold : '<?php echo t("Sold")?>'
+  }"  
+>
+</components-report-sales-summary-chart>
+</div>
+
+</div> <!--mb-3-->
+
+</div> <!--body-->
+</div> <!--card-->
+    <!--div class="tabs-content main-g" style="padding: 20px;">
                   <div class="covrx">
                      <h5 class="m-0 titledash"> Product Sales </h5>
                      <div class="main-dr">
@@ -225,8 +384,8 @@
                   <figure class="highcharts-figure">
                      <div id="container"></div>
                   </figure>
-               </div>
-                   <div class="tabs-content main-g" style="padding: 20px;">
+               </div-->
+                   <!--div class="tabs-content main-g" style="padding: 20px;">
                   <div class="covrx">
                       <h5 class="m-0 titledash"> Sales Tax Report </h5>
                      <div class="main-dr">
@@ -240,7 +399,7 @@
                   <figure class="highcharts-figure">
                     <div id="taxreport"></div>
                   </figure>
-               </div>
+               </div-->
 	 
    <div class="position-relative mb-3 d-none">
     <components-popular-customer   
@@ -360,3 +519,43 @@
 	});
 
   </script>
+ <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+	var token=document.querySelector('meta[name=YII_CSRF_TOKEN]').content;
+    $( document ).ready(function() {
+    
+       $('body').on('click','#btnExport',function(){
+           
+    var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+    var textRange; var j=0;
+    tab = document.getElementById('DataTables_Table_0'); // id of table
+
+    for(j = 0 ; j < tab.rows.length ; j++) 
+    {     
+        tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+        //tab_text=tab_text+"</tr>";
+    }
+
+    tab_text=tab_text+"</table>";
+    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE "); 
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(tab_text);
+        txtArea1.document.close();
+        txtArea1.focus(); 
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }  
+    else                 //other browser not tested on IE 11    
+    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+    return (sa);
+});
+    });
+</script>

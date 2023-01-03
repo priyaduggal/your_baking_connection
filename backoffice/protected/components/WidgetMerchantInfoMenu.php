@@ -34,10 +34,10 @@ class WidgetMerchantInfoMenu extends CMenu
 	 	    'label'=>'<i class="zmdi zmdi-cutlery"></i>'.t("Merchant Type"),
 	 	    'url'=>array("/".Yii::app()->controller->id."/membership",'id'=>$this->merchant_id)
 	 	  );
-	 	  $menu[]=array(	 	    
-	 	    'label'=>'<i class="zmdi zmdi-star-outline"></i>'.t("Featured"),
-	 	    'url'=>array("/".Yii::app()->controller->id."/featured",'id'=>$this->merchant_id)
-	 	  );
+	 	 // $menu[]=array(	 	    
+	 	 //   'label'=>'<i class="zmdi zmdi-star-outline"></i>'.t("Featured"),
+	 	 //   'url'=>array("/".Yii::app()->controller->id."/featured",'id'=>$this->merchant_id)
+	 	 // );
 	 	  $menu[]=array(	 	    
 	 	    'label'=>'<i class="zmdi zmdi-tv-list"></i>'.t("Payment history"),
 	 	    'url'=>array("/".Yii::app()->controller->id."/payment_history",'id'=>$this->merchant_id)

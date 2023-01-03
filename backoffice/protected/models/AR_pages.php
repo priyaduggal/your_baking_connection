@@ -40,11 +40,11 @@ class AR_pages extends CActiveRecord
 	public function rules()
 	{
 		return array(
-		  array('slug,title,long_content,short_content', 
+		  array('slug,title,long_content', 
 		  'required','message'=> t( Helper_field_required ) ),
 		  
 		  array('slug,title,long_content,status, short_content,meta_title,meta_description,meta_keywords,
-		  title_translation,long_content_translation
+		  title_translation,long_content_translation,our_mission,text1,text2,text3,text4
 		  ', 'filter','filter'=>array($obj=new CHtmlPurifier(),'purify')), 
 		  		  
 		  array('slug','unique','message'=>t(Helper_field_unique)),
@@ -96,22 +96,22 @@ class AR_pages extends CActiveRecord
 			$description[KMRS_DEFAULT_LANGUAGE] = $this->long_content;
 		}*/
 		
-		$name = $this->title_translation;
-		$description = $this->long_content_translation;
+	//	$name = $this->title_translation;
+// 		$description = $this->long_content_translation;
 		
-		$name[KMRS_DEFAULT_LANGUAGE] = $this->title;
-		$description[KMRS_DEFAULT_LANGUAGE] = $this->long_content;
+// 		$name[KMRS_DEFAULT_LANGUAGE] = $this->title;
+// 		$description[KMRS_DEFAULT_LANGUAGE] = $this->long_content;
 		
 		
-		Item_translation::insertTranslation( 
-		(integer) $this->page_id ,
-		'page_id',
-		'title',
-		'long_content',
-		array(	                  
-		  'title'=>$name,
-		  'long_content'=>$description
-		),"{{pages_translation}}");
+// 		Item_translation::insertTranslation( 
+// 		(integer) $this->page_id ,
+// 		'page_id',
+// 		'title',
+// 		'long_content',
+// 		array(	                  
+// 		  'title'=>$name,
+// 		  'long_content'=>$description
+// 		),"{{pages_translation}}");
 		
 		/*ADD CACHE REFERENCE*/
 		CCacheData::add();

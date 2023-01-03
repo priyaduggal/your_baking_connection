@@ -720,10 +720,15 @@ class AttributesController extends CommonController
 			$model=new AR_pages;							
 		}
 
+//print_r($model);die;
 		$model->multi_language = $multi_language;
 		
 		if(isset($_POST['AR_pages'])){
+		    
 			$model->attributes=$_POST['AR_pages'];
+			
+		
+			
 			if($model->validate()){
 				$model->slug = CommonUtility::SeoURL($model->slug);
 								
@@ -748,11 +753,11 @@ class AttributesController extends CommonController
 		}
 		
 		$data  = array();
-		if($update){
-			$translation = AttributesTools::pagesTranslation($id);
-			$data['title_translation'] = isset($translation['title'])?$translation['title']:'';
-			$data['long_content_translation'] = isset($translation['long_content'])?$translation['long_content']:'';
-		}		
+// 		if($update){
+// 			$translation = AttributesTools::pagesTranslation($id);
+// 			$data['title_translation'] = isset($translation['title'])?$translation['title']:'';
+// 			$data['long_content_translation'] = isset($translation['long_content'])?$translation['long_content']:'';
+// 		}		
 		
 		$fields[]=array(
 		  'name'=>'title_translation',
@@ -1493,9 +1498,27 @@ class AttributesController extends CommonController
 				));		
 	}
 	
+	public function actiontestimonials(){
+	    $this->pageTitle=t("Testimonials");
+		$action_name='testimonials_list';
+		$delete_link = Yii::app()->CreateUrl("attributes/testimonial_delete");
+		
+		ScriptUtility::registerScript(array(
+		  "var action_name='$action_name';",
+		  "var delete_link='$delete_link';",
+		),'action_name');
+		
+		if(Yii::app()->params['isMobile']==TRUE){
+			$tpl = 'testimonials_list_app';
+		} else $tpl = 'testimonials_list';
+		
+		$this->render( $tpl ,array(
+			'link'=>Yii::app()->CreateUrl(Yii::app()->controller->id."/testimonial_create")
+		));
+	}
 	public function actionmerchant_type_list()
 	{		
-		$this->pageTitle=t("Merchant Type");
+		$this->pageTitle=t("Faq");
 		$action_name='merchant_type_list';
 		$delete_link = Yii::app()->CreateUrl("attributes/merchant_type_delete");
 		
@@ -1513,17 +1536,18 @@ class AttributesController extends CommonController
 		));
 	}
 	
-	public function actionmerchant_type_create($update=false)
-	{
-		$this->pageTitle = $update==false? t("Add Merchant Type") : t("Update Merchant Type");
-		CommonUtility::setMenuActive('.attributes',".attributes_merchant_type_list");
+	public function actiontestimonial_create($update=false){
+	    $this->pageTitle = $update==false? t("Add Testimonial") : t("Update Testimonial");
+		CommonUtility::setMenuActive(".attributes_testimonials");
 		
 		$id='';
 		$multi_language = CommonUtility::MultiLanguage();
-		
+		$upload_path = CMedia::adminFolder();
 		if($update){
 			$id = (integer) Yii::app()->input->get('id');	
-			$model = AR_merchant_type::model()->findByPk( $id );				
+			$model = AR_testimonial::model()->findByPk( $id );	
+		
+			
 			if(!$model){				
 				$this->render("/admin/error",array(
 				 'error'=>array(
@@ -1534,16 +1558,113 @@ class AttributesController extends CommonController
 			}	
 			
 		} else {			
-			$model=new AR_merchant_type;							
+			$model=new AR_testimonial;							
 		}
+		
+		//print_r($model);die;
 		
 		$model->multi_language = $multi_language;
 				
 		
-		if(isset($_POST['AR_merchant_type'])){
-			$model->attributes=$_POST['AR_merchant_type'];
+		if(isset($_POST['AR_testimonial'])){
+			$model->attributes=$_POST['AR_testimonial'];
+	        if(isset($_POST['photo'])){
+					if(!empty($_POST['photo'])){
+						$model->image = $_POST['photo'];
+						$model->path = isset($_POST['path'])?$_POST['path']:$upload_path;
+					} else $model->image = '';
+				} else $model->image = '';
+        
+      
 			if($model->validate()){		
-						
+				
+				if($model->save()){
+					if(!$update){
+					   $this->redirect(array(Yii::app()->controller->id.'/testimonials'));		
+					} else {
+						Yii::app()->user->setFlash('success',CommonUtility::t(Helper_update));
+						$this->refresh();
+					}
+				} else Yii::app()->user->setFlash('error',t(Helper_failed_update));
+			} 
+		}
+		
+		$data  = array();
+// 		if($update && !isset($_POST['AR_testimonial'])){
+// 			$translation = AttributesTools::GetFromTranslation($id,'{{testimonials}}',
+// 			'{{merchant_type_translation}}',
+// 			'type_id',
+// 			array('type_id','type_name'),
+// 			array('type_name'=>'type_name_trans')
+// 			);					
+// 			$data['type_name_trans'] = isset($translation['type_name'])?$translation['type_name']:'';			
+// 		}		
+				
+		$fields[]=array(
+		  'name'=>'type_name_trans',
+		  'placeholder'=>"Enter [lang] title here"
+		);
+		
+		$commission_based=array(
+		    'FAQ Page'=>"FAQ Page",
+		    'Baker resources'=>"Baker resources",
+		    'FAQ Page,Baker resources'=>"Both"
+		    );
+				
+		$this->render("testimonial_create",array(
+		    'model'=>$model,
+		    'upload_path'=>$upload_path,
+		    'group'=>AttributesTools::statusGroup(),
+		    'links'=>array(
+	            t("All Type")=>array(Yii::app()->controller->id.'/testimonials'),        
+                $this->pageTitle,
+		    ),	  		    
+		    'commission_based'=>$commission_based,
+		    'multi_language'=>$multi_language,
+		    'language'=>AttributesTools::getLanguage(),
+		    'fields'=>$fields,
+		    'data'=>$data,
+		    'status'=>(array)AttributesTools::StatusManagement('post'),
+		    'commission_type_list'=>AttributesTools::CommissionType()
+		));
+	}
+	public function actionmerchant_type_create($update=false)
+	{
+		$this->pageTitle = $update==false? t("Add Faq") : t("Update Faq");
+		CommonUtility::setMenuActive(".attributes_merchant_type_list");
+		
+		$id='';
+		$multi_language = CommonUtility::MultiLanguage();
+		
+		if($update){
+			$id = (integer) Yii::app()->input->get('id');	
+			$model = AR_faq::model()->findByPk( $id );	
+		
+			
+			if(!$model){				
+				$this->render("/admin/error",array(
+				 'error'=>array(
+				   'message'=>t(HELPER_RECORD_NOT_FOUND)
+				 )
+				));		
+				Yii::app()->end();
+			}	
+			
+		} else {			
+			$model=new AR_faq;							
+		}
+		
+		//print_r($model);die;
+		
+		$model->multi_language = $multi_language;
+				
+		
+		if(isset($_POST['AR_faq'])){
+			$model->attributes=$_POST['AR_faq'];
+// 			print_r($_POST);
+// 					die;
+			if($model->validate()){		
+				
 				if($model->save()){
 					if(!$update){
 					   $this->redirect(array(Yii::app()->controller->id.'/merchant_type_list'));		
@@ -1570,6 +1691,12 @@ class AttributesController extends CommonController
 		  'name'=>'type_name_trans',
 		  'placeholder'=>"Enter [lang] title here"
 		);
+		
+		$commission_based=array(
+		    'FAQ Page'=>"FAQ Page",
+		    'Baker resources'=>"Baker resources",
+		    'FAQ Page,Baker resources'=>"Both"
+		    );
 				
 		$this->render("merchant_type_create",array(
 		    'model'=>$model,
@@ -1578,7 +1705,7 @@ class AttributesController extends CommonController
 	            t("All Type")=>array(Yii::app()->controller->id.'/merchant_type_list'),        
                 $this->pageTitle,
 		    ),	  		    
-		    'commission_based'=>AttributesTools::commissionBased(),
+		    'commission_based'=>$commission_based,
 		    'multi_language'=>$multi_language,
 		    'language'=>AttributesTools::getLanguage(),
 		    'fields'=>$fields,
@@ -1588,15 +1715,32 @@ class AttributesController extends CommonController
 		));
 	}	
 	
+	public function actiontestimonials_update()
+	{
+	   	$this->actiontestimonial_create(true); 
+	}
 	public function actionmerchant_type_update()
 	{
 		$this->actionmerchant_type_create(true);
 	}
 	
+	public function actiontestimonial_delete(){
+	   	$id = Yii::app()->input->get('id');							
+		$model = AR_testimonial::model()->findByPk( $id );				
+		if($model){			
+			$model->delete(); 			
+			Yii::app()->user->setFlash('success', t("Succesful") );					
+			$this->redirect(array(Yii::app()->controller->id.'/testimonials'));
+		} else $this->render("/admin/error",array(
+				 'error'=>array(
+				   'message'=>t(HELPER_RECORD_NOT_FOUND)
+				 )
+				));		 
+	}
 	public function actionmerchant_type_delete()
 	{
 		$id = Yii::app()->input->get('id');							
-		$model = AR_merchant_type::model()->findByPk( $id );				
+		$model = AR_faq::model()->findByPk( $id );				
 		if($model){			
 			$model->delete(); 			
 			Yii::app()->user->setFlash('success', t("Succesful") );					

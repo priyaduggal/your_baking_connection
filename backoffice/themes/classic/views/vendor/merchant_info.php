@@ -247,16 +247,16 @@ if(isset($model->service2)){
  </div>
 
 
-<h6 class="mb-0"><?php echo t("Tags")?></h6>
+<!---h6 class="mb-0"><?php echo t("Tags")?></h6-->
 
-<div class="form-label-group">    
+<!--div class="form-label-group">    
    <?php echo $form->dropDownList($model,'tags',(array)$tags,array(
      'class'=>"form-control custom-select form-control-select select_two",
      'placeholder'=>$form->label($model,'tags'),
      'multiple'=>true,
    )); ?>         
    <?php echo $form->error($model,'tags'); ?>
-</div>
+</div-->
 <h6 class="mb-0"><?php echo t("Allergen information")?></h6>
 
 <div class="form-label-group">    
@@ -268,15 +268,15 @@ if(isset($model->service2)){
    <?php echo $form->error($model,'delivery_distance_covered'); ?>
 </div>
 
-<h6 class="mb-0"><?php echo t("Featured")?></h6>
-<div class="form-label-group">    
+<!--h6 class="mb-0"><?php echo t("Featured")?></h6-->
+<!--div class="form-label-group">    
    <?php echo $form->dropDownList($model,'featured',(array)$featured,array(
      'class'=>"form-control custom-select form-control-select select_two",
      'placeholder'=>$form->label($model,'featured'),
      'multiple'=>true,
    )); ?>         
    <?php echo $form->error($model,'featured'); ?>
-</div>
+</div-->
 
 <div class="row">
  <div class="col-md-6">

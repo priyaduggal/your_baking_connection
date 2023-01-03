@@ -50,7 +50,7 @@
     <a href="<?php echo Yii::app()->createUrl("/store/bakermembership")?>" class="nav-link">Baker Membership</a>
 </li>
 <li class="nav-item d-none d-lg-inline ">
-    <a href="<?php echo Yii::app()->createUrl("/store/aboutthebakers")?>" class="nav-link">About The Bakers</a>
+    <a href="<?php echo Yii::app()->createUrl("/about-the-bakers")?>" class="nav-link">About The Bakers</a>
 </li>
  <li class="d-none d-lg-inline nav-item lastchild ">
  

@@ -15,7 +15,7 @@ class InterfaceCommon extends CController
 		return array(
 			array('deny',			
                  'actions'=>array(
-                     'registerUser','userLogin','getAccountStatus','verifyCodeSignup','getlocationAutocomplete','getLocationDetails',
+                     'registerUser','getAccountStatus','verifyCodeSignup','getlocationAutocomplete','getLocationDetails',
 					 'reverseGeocoding','addressAtttibues','validateCoordinates','requestResetPassword','resendResetEmail','getMenuItem',
 					 'searchAttributes','getMerchantFeed','CuisineList','TransactionInfo','getDeliveryDetails','geStoreMenu','servicesList',
 					 'getCart','menuSearch','getMapconfig','getMoneyConfig','getBanner','Search','socialRegistration','requestCode','getRegSettings',

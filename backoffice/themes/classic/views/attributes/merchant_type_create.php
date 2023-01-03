@@ -9,7 +9,6 @@ array(
 ));
 ?>
 </nav>
-
   
 <?php
 $form = $this->beginWidget(
@@ -35,116 +34,38 @@ $form = $this->beginWidget(
 		<?php echo Yii::app()->user->getFlash('error'); ?>
 	</div>
 <?php endif;?>
-
-
-<div class="form-label-group">    
-   <?php echo $form->textField($model,'type_id',array(
+<div class="form-label-group">  
+ <label>Title</label>
+   <?php echo $form->textField($model,'title',array(
      'class'=>"form-control form-control-text",
-     'placeholder'=>$form->label($model,'type_id'),
-     'readonly'=>$model->isNewRecord?false:true
+     'placeholder'=>$form->label($model,'title'),     
    )); ?>   
-   <?php    
-    echo $form->labelEx($model,'type_id'); ?>
-   <?php echo $form->error($model,'type_id'); ?>
+  
+   <?php echo $form->error($model,'title'); ?>
 </div>
 
-<div class="form-label-group">    
-   <?php echo $form->textField($model,'type_name',array(
+<div class="form-label-group">  
+ <label>Description</label>
+   <?php echo $form->textField($model,'description',array(
      'class'=>"form-control form-control-text",
-     'placeholder'=>$form->label($model,'type_name'),     
+     'placeholder'=>$form->label($model,'description'),     
    )); ?>   
-   <?php    
-    echo $form->labelEx($model,'type_name'); ?>
-   <?php echo $form->error($model,'type_name'); ?>
+  
+   <?php echo $form->error($model,'description'); ?>
 </div>
 
-<div class="row">
-  <div class="col">
-  
-   <h6 class="mb-2"><?php echo t("Commission Type")?></h6>
-   <div class="form-label-group">    
-	   <?php echo $form->dropDownList($model,'commision_type', (array) $commission_type_list,array(
-	     'class'=>"form-control custom-select form-control-select",
-	     'placeholder'=>$form->label($model,'commision_type'),
-	   )); ?>         
-	   <?php echo $form->error($model,'commision_type'); ?>
-	</div>
-  
-  </div>
-  <div class="col">
-
-   <h6 class="mb-2">&nbsp;</h6>
-    <div class="form-label-group">    
-	   <?php echo $form->textField($model,'commission',array(
-	     'class'=>"form-control form-control-text",
-	     'placeholder'=>$form->label($model,'commission'),     
-	   )); ?>   
-	   <?php    
-	    echo $form->labelEx($model,'commission'); ?>
-	   <?php echo $form->error($model,'commission'); ?>
-	</div> 
-  
-  </div>
-</div>
-<!--row-->
-
-<h6 class="mb-4"><?php echo t("Commission based on Subtotal / Total")?></h6>
+<?php //print_r($commission_based);?>
+<h6 class="mb-4"><?php echo t("Type")?></h6>
 <div class="form-label-group">    
-   <?php echo $form->dropDownList($model,'based_on', (array) $commission_based,array(
+   <?php echo $form->dropDownList($model,'type', (array) $commission_based,array(
      'class'=>"form-control custom-select form-control-select",
-     'placeholder'=>$form->label($model,'based_on'),
+     'placeholder'=>$form->label($model,'type'),
    )); ?>         
-   <?php echo $form->error($model,'based_on'); ?>
-</div>
-
-<h6 class="mb-4 mt-4"><?php echo t("Background Color Hex")?></h6>
-<div class="form-label-group">    
-   <?php echo $form->textField($model,'color_hex',array(
-     'class'=>"form-control form-control-text colorpicker",
-     'placeholder'=>$form->label($model,'color_hex'),
-     'readonly'=>true
-   )); ?>      
-   <?php echo $form->error($model,'color_hex'); ?>
-</div>
-
-<h6 class="mb-4 mt-4"><?php echo t("Font Color Hex")?></h6>
-<div class="form-label-group">    
-   <?php echo $form->textField($model,'font_color_hex',array(
-     'class'=>"form-control form-control-text colorpicker",
-     'placeholder'=>$form->label($model,'font_color_hex'),
-     'readonly'=>true
-   )); ?>      
-   <?php echo $form->error($model,'font_color_hex'); ?>
-</div>
-
-
-<h6 class="mb-4"><?php echo t("Status")?></h6>
-<div class="form-label-group">    
-   <?php echo $form->dropDownList($model,'status', (array) $status,array(
-     'class'=>"form-control custom-select form-control-select",
-     'placeholder'=>$form->label($model,'status'),
-   )); ?>         
-   <?php echo $form->error($model,'status'); ?>
+   <?php echo $form->error($model,'type'); ?>
 </div>
 
   </div> <!--body-->
 </div> <!--card-->
-
-
-<!--TRANSLATION-->
-<?php if($multi_language && is_array($language) && count($language)>=1 ):?>
-<?php 
-$this->widget('application.components.WidgetTranslation',array(
-  'form'=>$form,
-  'model'=>$model,
-  'language'=>$language,
-  'field'=>$fields,
-  'data'=>$data
-));
-?>   
-<?php endif;?>
-<!--END TRANSLATION-->	
-
 
 <?php echo CHtml::submitButton('submit',array(
 'class'=>"btn btn-green btn-full mt-3",

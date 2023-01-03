@@ -13,8 +13,10 @@
 <table class="ktables_list table_datatables">
 <thead>
 <tr>
-<th width="10%"><?php echo t("Color Hex")?></th>
-<th width="30%"><?php echo t("Name")?></th>
+<th width="10%"><?php echo t("ID")?></th>
+<th width="30%"><?php echo t("Title")?></th>
+<th width="30%"><?php echo t("Description")?></th>
+<th width="30%"><?php echo t("Type")?></th>
 <th width="15%"><?php echo t("Actions")?></th>
 </tr>
 </thead>

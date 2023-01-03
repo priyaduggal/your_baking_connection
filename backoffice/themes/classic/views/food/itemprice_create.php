@@ -80,7 +80,7 @@ $form = $this->beginWidget(
 </div>
 </div> <!--flex-->
 
-<div class="d-flex">
+<!--div class="d-flex">
 	<div class="form-label-group w-50 mr-3">    
 	 <?php    
 	    echo $form->labelEx($model,'cost_price'); ?>
@@ -104,9 +104,9 @@ $form = $this->beginWidget(
 	   <?php echo $form->error($model,'discount'); ?>
 	</div>
 
-</div> <!--flex-->
+</div--> <!--flex-->
 
-<div class="d-flex">
+<!--div class="d-flex">
 <div class="form-label-group w-50 mr-3"> 
  <?php    
     echo $form->labelEx($model,'discount_start'); ?>
@@ -130,9 +130,9 @@ $form = $this->beginWidget(
    
    <?php echo $form->error($model,'discount_end'); ?>
 </div>
-</div> <!--flex-->
+</div--> <!--flex-->
 
-<h6 class="mb-4"><?php echo t("Discount Type")?></h6>
+<!--h6 class="mb-4"><?php echo t("Discount Type")?></h6>
 <div class="form-label-group">    
    <?php echo $form->dropDownList($model,'discount_type', (array) $discount_type,array(
      'class'=>"form-control custom-select form-control-select",
@@ -151,7 +151,7 @@ $form = $this->beginWidget(
    )); ?>   
   
    <?php echo $form->error($model,'sku'); ?>
-</div>
+</div-->
 
 
 <?php echo CHtml::submitButton('submit',array(

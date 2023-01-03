@@ -42,11 +42,79 @@ class MerchantController extends Commonmerchant
 	public function actiondashboard()
 	{				
 		$this->pageTitle = t("Dashboard");
-		$merchant_type = CMerchants::getMerchantType(Yii::app()->merchant->merchant_id);		
+		$merchant_type = CMerchants::getMerchantType(Yii::app()->merchant->merchant_id);	
+		
+		$merchant_id=Yii::app()->merchant->merchant_id;
+    	  $status_delivered = AOrderSettings::getStatus(array('status_delivered','status_completed'));
+    	  $initial_status = AttributesTools::initialStatus();
+		$total = AOrders::getOrderSummary($merchant_id,$status_delivered);
+		 $total=Price_Formatter::formatNumberNoSymbol($total);
+		 	$not_in_status = AOrderSettings::getStatus(array('status_cancel_order','status_rejection'));
+	    	array_push($not_in_status,$initial_status);    		    	
+	    	$orders = AOrders::getOrdersTotal($merchant_id,array(),$not_in_status);
+	    	
+		
+		
+		$action_name='sales_report';
+		$delete_link = Yii::app()->CreateUrl(Yii::app()->controller->id."/sales_delete");
+				
+		
+		$table_col = array(		  
+		  /*'client_id'=>array(
+		    'label'=>t(""),
+		    'width'=>'7%'
+		  ),*/
+		  	  'order_uuid'=>array(
+		    'label'=>t("Items"),
+		    'width'=>'20%'
+		  ),
+		  'order_id'=>array(
+		    'label'=>t("Order ID"),
+		    'width'=>'20%'
+		  ),
+		   'total'=>array(
+		    'label'=>t("Transaction"),
+		    'width'=>'15%'
+		  ),
+	
+		  'payment_code'=>array(
+		    'label'=>t("Type"),
+		    'width'=>'25%'
+		  ),
+		 	  'service_code'=>array(
+		    'label'=>t("Status"),
+		    'width'=>'15%'
+		  ),
+		  'action'=>array(
+		    'label'=>t("Action"),
+		    'width'=>'15%'
+		  ),
+		);
+		$columns = array(		  
+		  //array('data'=>'client_id','orderable'=>false),
+		   array('data'=>'order_uuid','orderable'=>false),
+		  array('data'=>'order_id'),
+		  array('data'=>'total'),
+		   array('data'=>'payment_code'),
+		  array('data'=>'service_code'),
+		   array('data'=>'action'),
+		);				
+		
+		$transaction_type = array();
+		
+	
+		
 		
 		$this->render('dashboard',array(
+		    'table_col'=>$table_col,
+		  'columns'=>$columns,
+		  'order_col'=>1,
+          'sortby'=>'desc',
+		  'transaction_type'=>$transaction_type,
+		   'orders'=>$orders,
 		  'orders_tab'=>AttributesTools::dashboardOrdersTab(),
 		  'item_tab'=>AttributesTools::dashboardItemTab(),
+		  'total'=>$total,
 		  'limit'=>5,
 		  'months'=>6,
 		  'merchant_id'=>Yii::app()->merchant->merchant_id,
@@ -246,6 +314,21 @@ class MerchantController extends Commonmerchant
 		} else $this->render("error");
 	}
 	
+	public function actioninventory(){
+	   
+	  	$this->pageTitle=t("Inventory");
+	//	$action_name='stock_list';
+		$delete_link = Yii::app()->CreateUrl(Yii::app()->controller->id."/customerreview_delete");
+		
+		ScriptUtility::registerScript(array(
+		  "var action_name='$action_name';",
+		  "var delete_link='$delete_link';",
+		),'action_name');
+
+		$tpl = '//merchant/stock_list';				
+		
+		$this->render($tpl);
+	}
 	public function actionedit()
 	{
 		CommonUtility::setMenuActive('.vendor_list');
@@ -1594,10 +1677,31 @@ class MerchantController extends Commonmerchant
 		));	
 	}
 	
+	public function actionaddStock(){
+	    	$item_id = Yii::app()->input->get('item_id');	
+         	$this->pageTitle = t("Add Stock");  
+         	
+         	if(isset($_POST)){
+         	    
+         	    if(!empty($_POST['stock'])){
+         	    
+                $all=Yii::app()->db->createCommand('INSERT INTO `st_inventory`( `item_id`, `stock`, `stock_type`, `status`) VALUES ("'.$item_id.'","'.$_POST['stock'].'","in","1")
+                ')->queryAll();   
+                
+                  Yii::app()->user->setFlash('success',CommonUtility::t(Helper_created));
+				  $this->redirect(array(Yii::app()->controller->id.'/inventory' ));
+         	    }
+         	    
+         	}
+         		CommonUtility::setMenuActive('.merchant_inventory');			
+            	$this->render("add_stock",array(
+		  'item_id'=>$item_id
+		));			
+	}
 	public function actionorder_view()
 	{
 		$this->pageTitle = t("View Order");
-		
+
 		CommonUtility::setMenuActive('.merchant_orders','.merchant_all_order');			
 		
 		$id = Yii::app()->input->get('id');		

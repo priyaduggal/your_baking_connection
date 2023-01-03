@@ -73,7 +73,7 @@ class CMerchantMenu
 	{
 				
 		$stmt="
-		SELECT a.merchant_id,a.item_id, a.slug, a.item_token,a.photo,a.path,
+		SELECT a.merchant_id,a.item_id, a.slug, a.item_token,a.inventory_stock,a.photo,a.path,
 		b.item_name,a.item_short_description,
 		
 		(
@@ -113,6 +113,7 @@ class CMerchantMenu
 		WHERE 
 		a.merchant_id = ".q($merchant_id)."
 		AND a.status ='publish'
+		AND a.type=0
 		AND a.available=1
 		AND b.language = ".q($lang)."				
 		";		
@@ -150,10 +151,37 @@ class CMerchantMenu
 						);
 					}
 				}
+				
+                $in_count=Yii::app()->db->createCommand('SELECT sum(stock) as sum FROM st_inventory where item_id='.$val['item_id'].' and stock_type="in"')->queryAll();
+                if(isset($in_count) && count($in_count)>0){
+                    $in=$in_count[0]['sum'];
+                    if($in==null){
+                        $in=0;
+                    }
+                }else{
+                    $in=0;
+                }
+            
+             $out_count=Yii::app()->db->createCommand('SELECT sum(stock) as sum FROM st_inventory where item_id='.$val['item_id'].' and stock_type="out"')->queryAll();
+                if(isset($out_count) && count($out_count)>0){
+                    $out=$out_count[0]['sum'];
+                     if($out==null){
+                        $out=0;
+                    }
+                }else{
+                    $out=0;
+                }
+            
+            $diff=$in-$out;
+            
 				$data[$val['item_id']] = array(  
 				  'item_id'=>$val['item_id'],
+				  'in_count'=>intval($in),
+				  'diff'=>intval($diff),
+				  'out_count'=>intval($out),
 				  'item_uuid'=>$val['item_token'],
 				  'slug'=>$val['slug'],
+				  'inventory_stock'=>$val['inventory_stock'],
 				  'item_name'=>CHtml::decode($val['item_name']),
 				  'item_description'=>CommonUtility::formatShortText($val['item_short_description'],130),
 				  'url_image'=>CMedia::getImage($val['photo'],$val['path'],Yii::app()->params->size_image
@@ -246,6 +274,8 @@ class CMerchantMenu
 					
 					} else $item_discount = 0;
 				
+				
+				
 					$price[$item_size_id] = array(
 					  'key'=>$price_key,
 					  'size_uuid'=>$size_uuid,
@@ -273,10 +303,35 @@ class CMerchantMenu
 				}
 			}
 		//	print_r($price);die;
+		
+		 $in_count=Yii::app()->db->createCommand('SELECT sum(stock) as sum FROM st_inventory where item_id='.$item['item_id'].' and stock_type="in"')->queryAll();
+                if(isset($in_count) && count($in_count)>0){
+                    $in=$in_count[0]['sum'];
+                    if($in==null){
+                        $in=0;
+                    }
+                }else{
+                    $in=0;
+                }
+            
+             $out_count=Yii::app()->db->createCommand('SELECT sum(stock) as sum FROM st_inventory where item_id='.$item['item_id'].' and stock_type="out"')->queryAll();
+                if(isset($out_count) && count($out_count)>0){
+                    $out=$out_count[0]['sum'];
+                     if($out==null){
+                        $out=0;
+                    }
+                }else{
+                    $out=0;
+                }
+                
+                $diff=$in-$out;
 			
 			return array(
 			  'merchant_id'=>$merchant_id,
 			  'item_id'=>$item['item_id'],
+			  'in_count'=>intval($in),
+			  'out_count'=>intval($out),
+			  'diff'=>intval($diff),
 			  'item_token'=>$item['item_token'],
 			  'cat_id'=>$cat_id,
 			  'item_name'=>Yii::app()->input->xssClean($item['item_name']),

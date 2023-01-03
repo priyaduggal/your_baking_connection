@@ -195,6 +195,7 @@ id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModal" aria-hidd
                 <template v-if=" addon_items.checked==true " >  
 			    <div class="quantity-parent" >
 					 <div class="quantity d-flex justify-content-between m-auto">
+					    
 						<div><a href="javascript:;" @click="addon_items.qty>1?addon_items.qty--:addon_items.checked=false" class="rounded-pill qty-btn multiple_qty" data-id="less"><i class="zmdi zmdi-minus"></i></a></div>
 						<div class="qty" :data-id="addon_items.sub_item_id" >{{ addon_items.qty }}</div>
 						<div><a href="javascript:;" @click="addon_items.qty++" class="rounded-pill qty-btn multiple_qty" data-id="plus"><i class="zmdi zmdi-plus"></i></a></div>
@@ -264,14 +265,14 @@ id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModal" aria-hidd
       </div> <!--modal body-->
       
       <div class="item-modal-footer modal-footer justify-content-start">
-      
+     
        <div class="w-25">
        
         <!--quantity-->
          <div class="quantity d-flex justify-content-between">
             <div><a @click="item_qty>1?item_qty--:1" href="javascript:;" class="rounded-pill qty-btn" data-id="less"><i class="zmdi zmdi-minus"></i></a></div>
             <div class="qty">{{ item_qty }}</div>
-            <div><a @click="item_qty++" href="javascript:;" class="rounded-pill qty-btn" data-id="plus"><i class="zmdi zmdi-plus"></i></a></div>
+            <div><a @click="item_qty++"  v-if="item_qty<items.diff" href="javascript:;" class="rounded-pill qty-btn" data-id="plus"><i class="zmdi zmdi-plus"></i></a></div>
          </div>
          <!--quantity-->
        

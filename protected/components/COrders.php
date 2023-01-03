@@ -83,11 +83,12 @@ class COrders
 		self::$packaging_fee = 0;
 		
 		$model = AR_ordernew::model()->find('order_uuid=:order_uuid', 
-		array(':order_uuid'=>$order_uiid)); 				
+		array(':order_uuid'=>$order_uiid)); 
+	
 		if($model){		   
 		   COrders::$order_id = $model->order_id;	
 		   COrders::$order = $model; 	   
-		   $content = COrders::getOrder($model->order_id,$lang);	
+		   $content = COrders::getOrder($model->order_id,$lang);
 		   $subcategory = COrders::getSubcategory($model->order_id,$lang);
 		   $size = COrders::getSize($model->order_id,$lang);		
 		   $addon_items = COrders::getAddonItems($model->order_id,$lang);
@@ -100,6 +101,8 @@ class COrders
 		   COrders::getUseTax();
 		   
 		   COrders::setCondition($model);
+		   
+		   
 		   
 		   //if($content){
 		   	  self::$content = array(			  
@@ -324,9 +327,12 @@ class COrders
 		WHERE order_id = ".q($order_id)."			
 		$and
 		ORDER BY id ASC
-		";							
+		";
+	
 		$dependency = CCacheData::dependency();
 		if($res = Yii::app()->db->cache(Yii::app()->params->cache, $dependency )->createCommand($stmt)->queryAll()){
+		    
+		
 			foreach ($res as $val) {												
 				$addon_items = array();
 				$_addon_items = isset($val['addon_items'])? explode(",",$val['addon_items']) :'';
@@ -2308,6 +2314,108 @@ class COrders
 			return true;
     	} 
     	throw new Exception( 'order not found' );
+    }
+    
+    public static function add1($data = array() )
+    {    	
+    	    	
+    	$items = new AR_ordernew_item;
+    	$scenario = isset($data['scenario'])?$data['scenario']:'';
+    	$order_uuid = isset($data['order_uuid'])?$data['order_uuid']:'';
+    	if(!empty($scenario)){
+    	   $items->scenario = $scenario;
+    	}
+    	if(!empty($order_uuid)){
+    		$items->order_uuid = $order_uuid;
+    	}
+		$items->item_row = isset($data['cart_row'])?$data['cart_row']:'';
+		$items->order_id = isset($data['order_id'])?$data['order_id']:'';		
+		$items->cat_id = isset($data['cat_id'])?(integer)$data['cat_id']:'';
+		$items->item_id = isset($data['item_id'])?(integer)$data['item_id']:'';
+		$items->item_token = isset($data['item_token'])?$data['item_token']:'';
+		$items->item_size_id = isset($data['item_size_id'])?(integer)$data['item_size_id']:'';
+		$items->qty = isset($data['qty'])?(integer)$data['qty']:'';
+		$items->special_instructions = isset($data['special_instructions'])?$data['special_instructions']:'';
+		$items->if_sold_out = isset($data['if_sold_out'])?$data['if_sold_out']:'';
+		$items->price = isset($data['price'])?floatval($data['price']):0;
+		$items->discount = isset($data['discount'])?floatval($data['discount']):0;
+		$items->discount_type = isset($data['discount_type'])?trim($data['discount_type']):'';
+		$items->tax_use = isset($data['tax_use'])? json_encode($data['tax_use']) :'';
+		
+		/*CHECK IF ITEM IS FOR REPLACEMENT*/
+		if(!empty($data['item_row']) && !empty($data['old_item_token'])  ){			
+			$items->item_changes = "replacement";
+			$items->item_changes_meta1 = $data['old_item_token'];			
+			$models = AR_ordernew_item::model()->find("item_row=:item_row",array(
+			 ':item_row'=>$data['item_row']
+			));						
+			if($models){
+				$models->delete();
+			}
+		}		
+		if($items->save()){
+			
+			$builder=Yii::app()->db->schema->commandBuilder;
+			
+// 			// addon
+// 			$item_addons = array();
+// 			$addons = isset($data['addons'])?$data['addons']:'';
+// 			if(is_array($addons) && count($addons)>=1){
+// 				foreach ($addons as $item) {		
+// 					$addon_qty = intval($item['qty']);
+// 					if($item['multi_option']!="multiple"){
+// 						$addon_qty = $items->qty;
+// 					}					
+// 					$addon_price = isset($item['price'])?floatval($item['price']):0;		
+// 					$addons_total = $addon_qty*$addon_price;
+// 					$item_addons[] = array(
+// 					 'order_id'=>isset($data['order_id'])?$data['order_id']:'',
+// 					 'item_row'=>isset($item['cart_row'])?$item['cart_row']:'',					 
+// 					 'subcat_id'=>isset($item['subcat_id'])?(integer)$item['subcat_id']:0,
+// 					 'sub_item_id'=>isset($item['sub_item_id'])?(integer)$item['sub_item_id']:0,
+// 					 'qty'=>$addon_qty,
+// 					 'price'=>floatval($addon_price),
+// 					 'addons_total'=>floatval($addons_total),
+// 					 'multi_option'=>isset($item['multi_option'])?$item['multi_option']:'',
+// 					);
+// 				}				
+// 				$command=$builder->createMultipleInsertCommand('{{ordernew_addons}}',$item_addons);
+// 				$command->execute();
+// 			}
+			
+// 			// attributes
+// 			$item_attributes = array();
+// 			$attributes = isset($data['attributes'])?$data['attributes']:'';			
+// 			if(is_array($attributes) && count($attributes)>=1){
+// 				foreach ($attributes as $item) {					
+// 					$item_attributes[] = array(
+// 					 'order_id'=>isset($data['order_id'])?$data['order_id']:'',
+// 					 'item_row'=>isset($item['cart_row'])?$item['cart_row']:'',					 
+// 					 'meta_name'=>isset($item['meta_name'])?$item['meta_name']:'',
+// 					 'meta_value'=>isset($item['meta_id'])?(integer)$item['meta_id']:'',
+// 					);					
+// 				}						
+// 				$command=$builder->createMultipleInsertCommand('{{ordernew_attributes}}',$item_attributes);
+// 				$command->execute();
+// 			}
+						
+			if($scenario=="update_cart"){
+// 			$update=Yii::app()->db->createCommand('UPDATE `st_ordernew` SET `service_code`="'.$_POST['service_code'].'",`delivery_date`="'.$_POST['delivery_date'].'" where order_uuid="'.$order_uuid.'"
+//             ')->queryAll();
+			
+				Yii::import('ext.runactions.components.ERunActions');	
+				$cron_key = CommonUtility::getCronKey();		
+				$get_params = array( 
+				   'order_uuid'=> $order_uuid,
+				   'key'=>$cron_key,
+				);			
+				CommonUtility::runActions( CommonUtility::getHomebaseUrl()."/task/updatesummary?".http_build_query($get_params) );
+			
+			}
+			return true;	
+			
+		} 
+	
     }
     
     public static function add($data = array() )

@@ -18,33 +18,56 @@
                                                        </el-image>
                                           </figure>
                                     <div class="btn-box">
-                                            <template v-if="items.total_addon <=0 && items.total_meta <=0 && items.price.length<=1 ">		                            	                 
+            <template v-if="items.total_addon <=0 && items.total_meta <=0 && items.price.length<=1 ">		                            	                 
                     <div class="position-relative quantity-wrapper">	     
                         <template v-if=" items.qty>0 " >              
                         <div class="quantity-parent">
                             <div class="quantity d-flex justify-content-between m-auto">
                             <div><a href="javascript:;" @click="updateInlineQtyBefore('less',items,val.cat_id)" class="rounded-pill qty-btn" data-id="less"><i class="zmdi zmdi-minus"></i></a></div>
                             <div class="qty">{{ items.qty }}</div>
-                            <div><a href="javascript:;" @click="updateInlineQtyBefore('add',items,val.cat_id)" class="rounded-pill qty-btn" data-id="plus"><i class="zmdi zmdi-plus"></i></a></div>
+                            <div>
+                                <a href="javascript:;" 
+                                v-if="items.qty<items.diff"
+                                @click="updateInlineQtyBefore('add',items,val.cat_id)" 
+                                class="rounded-pill qty-btn" data-id="plus"><i class="zmdi zmdi-plus"></i></a></div>
                             </div>  
                         </div> <!--quantity-parent-->		
                         </template>                
-                        
+                       
                         <template v-else=" items<=0 " >  
-                        <a href="javascript:;" @click="updateInlineQtyBefore('add',items,val.cat_id)" class="btn btn-grey quantity-add-cart">								 
-                            <?php echo t("Add to cart")?>
-                        </a>	                
+                       
+                          <p v-if="items.in_count>items.out_count" > 
+                            <a href="javascript:;" @click="updateInlineQtyBefore('add',items,val.cat_id)" class="btn btn-grey quantity-add-cart">								 
+                                <?php echo t("Add to cart")?>
+                            </a>
+                            </p>
+                        <p v-else>
+                            <a href="javascript:;" class="btn btn-grey xget-item-details" >
+                            <?php echo t("Out of stock")?>
+                            
+                            </a>  
+                        </p>
                         </template>
                                                     
                     </div> <!--position-relative-->
                 </template> <!--v-if-->
                 
+                <!--cart with addons--->
+                
                 <template v-else>
-                <a href="javascript:;" class="btn btn-grey xget-item-details" 
-                @click="viewItemBefore({cat_id:val.cat_id,item_uuid:items.item_uuid})">					   
-                <?php echo t("Add to cart")?>
-                </a>
+                <p v-if="items.in_count>items.out_count " >  
+                    <a href="javascript:;" class="btn btn-grey xget-item-details" 
+                    @click="viewItemBefore({cat_id:val.cat_id,item_uuid:items.item_uuid})">					   
+                    <?php echo t("Add to cart")?>
+                    </a>
+                </p>
+                <p v-else>
+                    <a href="javascript:;" class="btn btn-grey xget-item-details" >
+                    <?php echo t("Out of stock")?>
+                    </a>
+                </p>
                 </template> <!--v-else-->
+                
                                         
                                         
                                     </div>

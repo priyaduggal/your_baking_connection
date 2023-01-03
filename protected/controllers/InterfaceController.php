@@ -207,8 +207,8 @@ class InterfaceController extends InterfaceCommon
 			'last_name'=>Yii::app()->user->last_name,
 			'email_address'=>Yii::app()->user->email_address,
 			'contact_number'=>Yii::app()->user->contact_number,
-			'phone_prefix'=>Yii::app()->user->phone_prefix,
-			'contact_number_noprefix'=> str_replace(Yii::app()->user->phone_prefix,"",Yii::app()->user->contact_number) ,
+			//'phone_prefix'=>Yii::app()->user->phone_prefix,
+			'contact_number_noprefix'=> Yii::app()->user->contact_number ,
 			'avatar'=>Yii::app()->user->avatar,
 		);					
 		$payload = [
